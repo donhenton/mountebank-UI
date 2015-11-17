@@ -1,0 +1,85 @@
+{
+    "port":3445,
+    "imposters":
+            [{
+                    "response":
+                            {
+                                "status": 200,
+                                "headers": {
+                                    "user": "elmo"
+                                },
+                                "body": {
+                                    "id": 34,
+                                    "product": "ice cream"
+                                }
+                            },
+                    "match":
+                            {
+                                "path": "products/1",
+                                "verb": "POST",
+                                "headers": {
+                                    "user": "elmo"
+                                },
+                                "body_match":
+                                        {
+                                            "type": "equal",
+                                            "body": {
+                                                "search": "ice"
+                                            }
+                                        }
+                            }
+                }
+                ,
+                {
+                    "response":
+                            {
+                                "status": 200,
+                                "headers": {
+                                    "user": "elmo"
+                                },
+                                "body": {
+                                    "id": 34,
+                                    "product": "ice cream"
+                                }
+                            },
+                    "match":
+                            {
+                                "path": "products/1",
+                                "verb": "POST",
+                                "headers": {
+                                    "user": "elmo"
+                                },
+                                "body_match":
+                                        {
+                                            "type": "regex",
+                                            "regex": "*search*"
+                                        }
+                            }
+                }
+                ,
+                {
+                    "response":
+                            {
+                                "status": 404,
+                                "headers": {},
+                                "body": {
+                                    "id": 34,
+                                    "product": "ice cream"
+                                }
+                            },
+                    "match":
+                            {
+                                "path": "products?id=905&product_line=food",
+                                "verb": "GET",
+                                "headers": {},
+                                "body_match":
+                                        {
+                                            "type": "regex",
+                                            "regex": "*search*"
+                                        }
+                            }
+                }
+            ]
+
+}
+       

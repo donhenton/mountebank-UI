@@ -9,3 +9,5 @@ bower_components
 /npm-debug.log
 /public_html/mountebank-UI/assets/js/
 /reports/
+/mb.pid
+/mb.log

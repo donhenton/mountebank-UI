@@ -1,1 +1,60 @@
-{{ home.welcome_message }}
+
+
+
+<h3>Form Test</h3>
+
+<div class="row">
+
+<div style="" class="well well-sm"><span class="emphasis text-danger">{{home.errorMessage}}</span></div>
+
+
+</div>
+<div class="row">
+
+
+    <div class="col-sm-6 limitY">
+
+        <div ng-repeat="item in home.data.items">
+            <form    class="form-horizontal" name="home.repeatForm_{{$index}}" role="form">   
+                <div style="border:thin solid black;padding:10px">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="name">Name</label> 
+
+                        <div class="col-sm-6">
+                            <input ng-blur="home.inputChange(this,$event)" type="text" class="form-control"   id="name_{{$index}}" name="name" ng-model="item.name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="name">Age</label> 
+
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" ng-blur="home.inputChange(this,$event)"  id="age_{{$index}}" name="name" ng-model="item.age" required>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    
+    
+    
+    <div class="col-sm-6 limitY">
+
+
+        <form name="home.jsonForm" novalidate>
+            <textarea   ng-keydown="home.clearMessage()" 
+                        style="width:100%;height:500px;overflow-y:hidden" 
+                        ng-model="home.displayData"  name="data" id="data" required></textarea>
+
+
+        </form>
+        
+        
+
+        </div>
+
+
+
+
+
