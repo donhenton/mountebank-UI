@@ -7,5 +7,6 @@ angular.module('app.homePages', [])
   })
 
   .controller('HomeCtrl', function($scope, welcomeMessage) {
-    $scope.welcome_message = welcomeMessage();
+      vm = this;
+      vm.welcome_message = welcomeMessage();
   });

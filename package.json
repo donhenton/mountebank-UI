@@ -1,6 +1,6 @@
 {
-  "name": "MorgueFile",
-  "description": "Angular Testing with Karma and Jasmine",
+  "name": "Angular Sample",
+  "description": "Minimal Sample App",
   "main": "nosuchfile.js",
   "version": "0.0.1",
   "engines": {

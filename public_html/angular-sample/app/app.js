@@ -5,6 +5,7 @@ angular.module('myApp', ['ngRoute', 'app.homePages'])
   .config(function($routeProvider, TPL_PATH) {
     $routeProvider.when('/',{
       controller : 'HomeCtrl',
+      controllerAs: 'home',
       templateUrl : TPL_PATH + '/home.tpl.html'
     });
   });

@@ -22,7 +22,7 @@ module.exports = function (config) {
             
    
             '**/*.tpl.html',
-            'test/unit_tests/**/*.js'
+            'test/unit_tests/**/*_tests.js'
 
         ],
         htmlReporter: {
