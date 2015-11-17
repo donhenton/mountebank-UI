@@ -1,6 +1,6 @@
 angular.module('myApp', ['ngRoute', 'app.homePages'])
 
-  .constant('TPL_PATH', '/mountebank-UI/public_html/mountebank-UI/templates')
+  .constant('TPL_PATH', '/mountebank-UI/mountebank-UI/templates')
 
   .config(function($routeProvider, TPL_PATH) {
     $routeProvider.when('/',{
