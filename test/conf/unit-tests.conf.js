@@ -12,13 +12,13 @@ module.exports = function (config) {
              
              
              
-            'public_html/angular-sample/assets/js/jquery/jquery.min.js',
-            'public_html/angular-sample/assets/js/bootstrap/dist/js/bootstrap.min.js',
-            'public_html/angular-sample/assets/js/angular/angular.min.js',
-            'public_html/angular-sample/assets/js/angular-route/angular-route.min.js',
-            'public_html/angular-sample/assets/js/angular-mocks/angular-mocks.js',
-            'public_html/angular-sample/sections/homePages.js',
-            'public_html/angular-sample/app/app.js',
+            'public_html/mountebank-UI/assets/js/jquery/jquery.min.js',
+            'public_html/mountebank-UI/assets/js/bootstrap/dist/js/bootstrap.min.js',
+            'public_html/mountebank-UI/assets/js/angular/angular.min.js',
+            'public_html/mountebank-UI/assets/js/angular-route/angular-route.min.js',
+            'public_html/mountebank-UI/assets/js/angular-mocks/angular-mocks.js',
+            'public_html/mountebank-UI/sections/homePages.js',
+            'public_html/mountebank-UI/app/app.js',
             
    
             '**/*.tpl.html',
@@ -32,10 +32,10 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'public_html/angular-sample/components/*.js': ['coverage'],
-            'public_html/angular-sample/sections/*.js': ['coverage'],
-            'public_html/angular-sample/services/*.js': ['coverage'],
-            'public_html/angular-sample/app/*.js': ['coverage'],
+            'public_html/mountebank-UI/components/*.js': ['coverage'],
+            'public_html/mountebank-UI/sections/*.js': ['coverage'],
+            'public_html/mountebank-UI/services/*.js': ['coverage'],
+            'public_html/mountebank-UI/app/*.js': ['coverage'],
             '**/*.tpl.html': ['ng-html2js']
 
 
