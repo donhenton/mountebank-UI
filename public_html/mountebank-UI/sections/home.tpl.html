@@ -34,25 +34,58 @@
 
     <div id="formColumn" class="col-sm-10">
 
-        <uib-tabset>
+        <uib-tabset justified="true">
 
-            <uib-tab heading="Imposter Data"> 
+            <uib-tab heading="Response" select="home.tabSelect('Response')"> 
+
+                <div class="row">
+
+                    <form name="home.responseForm" class="form-horizontal" novalidate>   
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-1" for="status">Status</label> 
+
+                            <div class="col-sm-2">
+                                <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_status" name="status" ng-model="home.responseBuffer.status" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Headers</h4>
+                            <div style="overflow-y: scroll;height:120px">
+                                
+                                <div ng-repeat="i in home.responseBuffer.headerCount">
+
+                                    <label class="control-label col-sm-1" for="status">Key</label> 
+
+                                    <div class="col-lg-5">
+                                        <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="ressponse_key_1" name="status" ng-model="home.responseBuffer.status" required>
+                                    </div>
+                                    <label class="control-label col-sm-1" for="status">Value</label> 
+                                    <div class="col-lg-5">
+                                        <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_value_1" name="status" ng-model="home.responseBuffer.status" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
 
+                    </form>
+                </div>
 
 
 
             </uib-tab>
 
+            <uib-tab heading="Match Criteria" select="home.tabSelect('Match')"> 
 
+            </uib-tab>
 
-
-
-            <uib-tab heading="Port and Submitting"> 
+            <uib-tab heading="Port and Submitting" select="home.tabSelect('Port')">  
 
                 <br>
                 <div class="row">
-                    <form    class="form-horizontal" name="home.portForm" ng-model="home.portForm" role="form">   
+                    <form name="home.portForm"   class="form-horizontal" novalidate>   
 
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="name">Port</label> 
@@ -80,6 +113,14 @@
 
 
 
+
+            </uib-tab>
+
+            <uib-tab  heading="JSON" select="home.tabSelect('JSON')"> 
+
+                <textarea readonly="true" ng-model="home.displayData" style="width:100%;height:350px">
+                    
+                </textarea>
 
             </uib-tab>
 
