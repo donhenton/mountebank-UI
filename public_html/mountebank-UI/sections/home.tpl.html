@@ -36,8 +36,52 @@
 
         <uib-tabset>
 
-            <uib-tab heading="Images">ted</uib-tab>
-            <uib-tab heading="asss">fred</uib-tab>
+            <uib-tab heading="Imposter Data"> 
+
+
+
+
+
+            </uib-tab>
+
+
+
+
+
+            <uib-tab heading="Port and Submitting"> 
+
+                <br>
+                <div class="row">
+                    <form    class="form-horizontal" name="home.portForm" ng-model="home.portForm" role="form">   
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="name">Port</label> 
+
+                            <div class="col-sm-2">
+                                <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="port" name="port" ng-model="home.data.port" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+
+                    <form    class="form-horizontal" name="home.submitForm" ng-model="home.submitForm" role="form">   
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="name">Mountebank Url</label> 
+
+                            <div class="col-sm-6">
+                                <input  type="text" class="form-control"   id="port" name="port" ng-model="home.mounteBankUrl" required>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">Submit to Mountebank</button>
+                        <button class="btn btn-primary">Delete From Mountebank</button>
+                    </form>
+                </div>
+
+
+
+
+            </uib-tab>
 
         </uib-tabset>
     </div><!-- end formColumn -->

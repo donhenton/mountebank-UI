@@ -7,6 +7,7 @@ angular.module('myApp')
             vm.errorMessage = "No errors";
             vm.data = ImpostersService.getData("1");
             vm.currentIndex = 0;
+            vm.mounteBankUrl = "http://localhost:4545"
    
             vm.changeImposter = function (idx)
             {
@@ -18,7 +19,10 @@ angular.module('myApp')
             }
             vm.changeImposter(vm.currentIndex);
  
-
+            vm.inputChange =function(item,event)
+            {
+                
+            }
 
 
 //            vm.displayData = angular.toJson(vm.data, true);
