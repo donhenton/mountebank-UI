@@ -17,7 +17,7 @@ module.exports = function (config) {
             'public_html/mountebank-UI/assets/js/angular/angular.min.js',
             'public_html/mountebank-UI/assets/js/angular-route/angular-route.min.js',
             'public_html/mountebank-UI/assets/js/angular-mocks/angular-mocks.js',
-            'public_html/mountebank-UI/sections/homePages.js',
+            'public_html/mountebank-UI/sections/homePage.ctl.js',
             'public_html/mountebank-UI/app/app.js',
             
    

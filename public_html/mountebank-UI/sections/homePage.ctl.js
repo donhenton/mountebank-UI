@@ -43,6 +43,7 @@ angular.module('app.homePages', [])
                         try
                         {
                             vm.data = angular.fromJson(newValueStr);
+                           // $log.debug("SMMDKFJLDFJDLFJDLJ")
                             vm.errorMessage =  "No errors";
                         }
                         catch (err)
