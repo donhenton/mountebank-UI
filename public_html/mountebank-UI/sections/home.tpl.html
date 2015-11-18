@@ -1,0 +1,52 @@
+
+
+
+<h3>Mountebank Imposter UI</h3>
+
+
+
+
+<div id="messageRow" class="row">
+
+    <div style="" class="well well-sm"><span class="emphasis text-danger">{{home.errorMessage}}</span></div>
+
+
+</div>
+<div class="row">
+
+    <div id="itemSelectorColumn" class="col-sm-2">
+        <div class="limitY">
+
+            <div ng-repeat="item in home.data.imposters">
+                <div>
+
+
+
+                    <button class="btn btn-lg btn-primary pull-right" 
+                            style="margin: 5px"
+                            ng-click="home.changeImposter($index)" id="imposter_{{$index}}">
+                        <i   ng-hide="$index != home.currentIndex" class="glyphicon glyphicon-arrow-right"></i> Item {{$index + 1}}</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="formColumn" class="col-sm-10">
+
+        <uib-tabset>
+
+            <uib-tab heading="Images">ted</uib-tab>
+            <uib-tab heading="asss">fred</uib-tab>
+
+        </uib-tabset>
+    </div><!-- end formColumn -->
+
+</div>   
+
+
+
+
+
+
+

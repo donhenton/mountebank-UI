@@ -1,56 +1,45 @@
 
 
-angular.module('app.homePages', [])
+angular.module('myApp')
 
-
-
-        .controller('HomeCtrl', function ($scope, $log  ) {
+        .controller('HomeCtrl', function ($scope, $log, ImpostersService) {
             vm = this;
             vm.errorMessage = "No errors";
-            vm.data =
-                    {
-                        "id": "alpha",
-                        "items": [
-                            {"name": "Fred", "age": 34},
-                            {"name": "John", "age": 12},
-                            {"name": "Lorenzo", "age": 24},
-                            {"name": "Betgh", "age": 76},
-                            {"name": "Mary", "age": 26}
-                        ]
-
-                    }
-
-
-            vm.inputChange = function (angularForm,ev)
+            vm.data = ImpostersService.getData("1");
+            vm.currentIndex = 0;
+   
+            vm.changeImposter = function (idx)
             {
-               //  $log.debug("inputChange "+ev)  ; 
-                 
-               //  vm.data.items[idx] = angularForm.item
-               vm.displayData = angular.toJson(vm.data, true);
-                
+               // $log.debug(idx);
+                vm.currentIndex = idx;
+                vm.currentData = vm.data.imposters[vm.currentIndex];
+               
+
             }
+            vm.changeImposter(vm.currentIndex);
+ 
 
 
 
-            vm.displayData = angular.toJson(vm.data, true);
-
-            $scope.$watch(
-                    function watchDisplayData(scope) {
-                        // Return the "result" of the watch expression.
-                        return(vm.displayData);
-                    },
-                    function handleDisplayChange(newValueStr, oldValueStr) {
-                        try
-                        {
-                            vm.data = angular.fromJson(newValueStr);
-                           // $log.debug("SMMDKFJLDFJDLFJDLJ")
-                            vm.errorMessage =  "No errors";
-                        }
-                        catch (err)
-                        {
-                            vm.errorMessage = err.message;
-                        }
-                    }
-            );
+//            vm.displayData = angular.toJson(vm.data, true);
+//
+//            $scope.$watch(
+//                    function watchDisplayData(scope) {
+//                        // Return the "result" of the watch expression.
+//                        return(vm.displayData);
+//                    },
+//                    function handleDisplayChange(newValueStr, oldValueStr) {
+//                        try
+//                        {
+//                            vm.data = angular.fromJson(newValueStr);
+//                           // $log.debug("SMMDKFJLDFJDLFJDLJ")
+//                            vm.errorMessage =  "No errors";
+//                        }
+//                        catch (err)
+//                        {
+//                            vm.errorMessage = err.message;
+//                        }
+//                    }
+//            );
 
         });

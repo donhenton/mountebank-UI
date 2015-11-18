@@ -1,11 +1,11 @@
-angular.module('myApp', ['ngRoute', 'app.homePages'])
+angular.module('myApp', ['ngRoute',  'app.constants','app.services','ui.bootstrap'])
 
-  .constant('TPL_PATH', '/mountebank-UI/mountebank-UI/templates/')
+  
 
   .config(function($routeProvider, TPL_PATH) {
     $routeProvider.when('/',{
       controller : 'HomeCtrl',
       controllerAs: 'home',
-      templateUrl : TPL_PATH + 'home.tpl.html'
+      templateUrl : TPL_PATH + 'sections/home.tpl.html'
     });
   });
