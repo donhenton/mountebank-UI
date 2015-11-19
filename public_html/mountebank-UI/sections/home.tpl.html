@@ -130,14 +130,14 @@
                                 </div>
                             </div>
 
-                            <div    ng-if="home.isEqualRequest(home.criteriaBuffer.bodyMatchType)" class="form-group grouping-box">
+                            <div    ng-if="home.isEqualRequest(home.criteriaBuffer.bodyMatch.type)" class="form-group grouping-box">
 
                                 <h4>Body</h4>
 
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="path">Match Type</label> 
                                     <div class="col-sm-3">
-                                        <select    ng-change="home.matchTypeChange(home.criteriaBuffer.bodyMatchType)"  class="form-control"   id="response_verb" name="verb" ng-model="home.criteriaBuffer.bodyMatchType" required>
+                                        <select    ng-change="home.matchTypeChange(home.criteriaBuffer.bodyMatch.type)"  class="form-control"   id="response_verb" name="verb" ng-model="home.criteriaBuffer.bodyMatch.type" required>
 
                                             <option ng-repeat="item in home.criteriaBuffer.matchTypes" value="{{item}}">{{item}}</option>   
 
@@ -145,10 +145,10 @@
                                     </div>
                                 </div>
 
-                                <textarea ng-if="home.isEqualRequest(home.criteriaBuffer.bodyMatchType)" ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.criteriaBuffer.body" style="width:98%;height:150px"></textarea>
+                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.criteriaBuffer.bodyMatch.body" style="width:98%;height:150px"></textarea>
 
-
-                                <div   ng-if="!home.isEqualRequest(home.criteriaBuffer.bodyMatchType)"  class="col-sm-8">
+ß
+                                <div     class="col-sm-8">
 
 
                                     <input  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.criteriaBuffer.matchContents"> 
@@ -156,14 +156,14 @@
 
                             </div>
 
-                            <div    ng-if="!home.isEqualRequest(home.criteriaBuffer.bodyMatchType)" class="form-group grouping-box">
+                            <div    ng-if="!home.isEqualRequest(home.criteriaBuffer.bodyMatch.type)" class="form-group grouping-box">
 
                                 <h4>Match</h4>
 
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="path">Type</label> 
                                     <div class="col-sm-3">
-                                        <select    ng-change="home.matchTypeChange(home.criteriaBuffer.bodyMatchType)"  class="form-control"   id="bodyMatchType" name="verb" ng-model="home.criteriaBuffer.bodyMatchType" required>
+                                        <select    ng-change="home.matchTypeChange(home.criteriaBuffer.bodyMatch.type)"  class="form-control"   id="bodyMatchType" name="verb" ng-model="home.criteriaBuffer.bodyMatch.type" required>
 
                                             <option ng-repeat="item in home.criteriaBuffer.matchTypes" value="{{item}}">{{item}}</option>   
 
@@ -174,7 +174,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="path">Match</label> 
                                     <div  class="col-sm-8">
-                                       <input  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.criteriaBuffer.matchContents"> 
+                                        <input  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.criteriaBuffer.bodyMatch.matchContent"> 
                                     </div>
                                 </div>
                             </div>

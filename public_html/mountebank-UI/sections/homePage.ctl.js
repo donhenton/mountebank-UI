@@ -51,6 +51,23 @@ angular.module('myApp')
                 
                 
                 /*
+                  
+                vm.criteriaBuffer.bodyMatchType = vm.currentImposter.match.body_match.type;
+                vm.criteriaBuffer.body = {};
+                vm.criteriaBuffer.matchContent = "";
+                
+                if (vm.isEqualRequest(vm.criteriaBuffer.bodyMatchType))
+                {
+                    vm.criteriaBuffer.body = angular.toJson(vm.currentImposter.match.body_match.body, true);
+                }
+                else
+                {
+                    vm.criteriaBuffer.matchContent = vm.currentImposter.match.body_match.match_content;
+                }
+                  
+                  
+                  
+                  
                 match -->
                 "body_match":
                     {
@@ -240,17 +257,17 @@ angular.module('myApp')
                     item.key = "";
                     vm.criteriaBuffer.headers.push(item);
                 }
-                vm.criteriaBuffer.bodyMatchType = vm.currentImposter.match.body_match.type;
-                vm.criteriaBuffer.body = {};
-                vm.criteriaBuffer.matchContents = "";
-                
-                if (vm.isEqualRequest(vm.criteriaBuffer.bodyMatchType))
+                vm.criteriaBuffer.bodyMatch = vm.currentImposter.match.body_match;
+                  
+                if (vm.isEqualRequest(vm.criteriaBuffer.bodyMatch.type))
                 {
-                    vm.criteriaBuffer.body = angular.toJson(vm.currentImposter.match.body_match.body, true);
+                    vm.criteriaBuffer.bodyMatch.body = angular.toJson(vm.currentImposter.match.body_match.body, true);
+                    vm.criteriaBuffer.bodyMatch.matchContent ="";
                 }
                 else
                 {
-                    vm.criteriaBuffer.matchContents = vm.currentImposter.match.body_match.match_content;
+                    vm.criteriaBuffer.bodyMatch.matchContent = vm.currentImposter.match.body_match.matchContent;
+                    vm.criteriaBuffer.bodyMatch.body ={};
                 }
                 
 
