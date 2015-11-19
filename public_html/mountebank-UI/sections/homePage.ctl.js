@@ -37,9 +37,39 @@ angular.module('myApp')
              * @param {type} event
              * @returns {undefined}
              */
-            vm.matchTypeChange = function (item, event)
+            vm.matchTypeChange = function (newData)
             {
+                
+                $log.debug("stored->"+vm.currentImposter
+                        .match.body_match.type+" new->"+newData);
+                
+                if (vm.currentImposter.match.body_match.type === newData)
+                {
+                    return;
+                }
+                // zero out the structures
+                
+                
+                /*
+                match -->
+                "body_match":
+                    {
+                        "type": "regex",
+                        "matchContent": "*search1*"
+                    }
 
+                "body_match":
+                    {
+                        "type": "equals",
+                        "body": {
+                            "search": "ice"
+                        }
+                    }
+                
+                
+                */
+               // vm.criteriaBuffer.bodyMatchType = vm.currentImposter.match.body_match.type;
+               // $log.debug(" xxx "+vm.criteriaBuffer.bodyMatchType);
 
             }
             

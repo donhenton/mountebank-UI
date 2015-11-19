@@ -137,7 +137,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="path">Match Type</label> 
                                     <div class="col-sm-3">
-                                        <select  ng-blur="home.matchTypeChange(this, $event)"  class="form-control"   id="response_verb" name="verb" ng-model="home.criteriaBuffer.bodyMatchType" required>
+                                        <select    ng-change="home.matchTypeChange(home.criteriaBuffer.bodyMatchType)"  class="form-control"   id="response_verb" name="verb" ng-model="home.criteriaBuffer.bodyMatchType" required>
 
                                             <option ng-repeat="item in home.criteriaBuffer.matchTypes" value="{{item}}">{{item}}</option>   
 
@@ -163,7 +163,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="path">Type</label> 
                                     <div class="col-sm-3">
-                                        <select  ng-blur="home.matchTypeChange(this, $event)"  class="form-control"   id="response_verb" name="verb" ng-model="home.criteriaBuffer.bodyMatchType" required>
+                                        <select    ng-change="home.matchTypeChange(home.criteriaBuffer.bodyMatchType)"  class="form-control"   id="bodyMatchType" name="verb" ng-model="home.criteriaBuffer.bodyMatchType" required>
 
                                             <option ng-repeat="item in home.criteriaBuffer.matchTypes" value="{{item}}">{{item}}</option>   
 
