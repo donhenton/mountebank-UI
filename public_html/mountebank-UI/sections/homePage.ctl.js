@@ -117,7 +117,8 @@ angular.module('myApp')
                         vm.currentImposter.response.headers[data.key] = data.value;
                     }
                 });
-
+                vm.currentImposter.response.body =
+                        angular.fromJson(vm.responseBuffer.body);
 
             }
             /**
@@ -180,7 +181,7 @@ angular.module('myApp')
                     item.key = "";
                     vm.criteriaBuffer.headers.push(item);
                 }
-                
+                vm.criteriaBuffer.body = angular.toJson(vm.currentImposter.match.body, true);
                 
             }
         });

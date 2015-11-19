@@ -67,7 +67,7 @@ function impostersService($log, localStorageService, $rootScope)
                                             },
                                     "match":
                                             {
-                                                "path": "products/1",
+                                                "path": "products/55",
                                                 "verb": "POST",
                                                 "headers": {
                                                     "user": "elmo"
