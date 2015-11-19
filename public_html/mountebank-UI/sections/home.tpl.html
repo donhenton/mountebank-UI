@@ -59,18 +59,18 @@
                                     <label class="control-label col-sm-1" for="status">Key</label> 
 
                                     <div class="col-lg-5">
-                                        <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_key_{{$index}}" name="status" ng-model="home.responseBuffer.headers[$index].key" required>
+                                        <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control input-sm"   id="response_key_{{$index}}" name="status" ng-model="home.responseBuffer.headers[$index].key" required>
                                     </div>
                                     <label class="control-label col-sm-1" for="status">Value</label> 
                                     <div class="col-lg-5">
-                                        <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_value_{{$index}}" name="status" ng-model="home.responseBuffer.headers[$index].value" required>
+                                        <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control input-sm"   id="response_value_{{$index}}" name="status" ng-model="home.responseBuffer.headers[$index].value" required>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group grouping-box">
                              <h4>Body</h4>
-                             <textarea ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.responseBuffer.body" style="width:100%;height:150px"></textarea>
+                             <textarea ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.responseBuffer.body" style="width:98%;height:150px"></textarea>
                         </div>
 
                     </form>
@@ -80,7 +80,61 @@
 
             </uib-tab>
 
-            <uib-tab heading="Match Criteria" select="home.tabSelect('Match')"> 
+            <uib-tab heading="Match Criteria" select="home.tabSelect('Criteria')"> 
+                
+                
+                 <br>
+                <div class="row">
+
+                    <form name="home.criteriaForm" class="form-horizontal" novalidate>   
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-1" for="path">Path</label> 
+
+                            <div class="col-sm-8">
+                                <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_path" name="status" ng-model="home.criteriaBuffer.path" required>
+                            </div>
+                         
+                            <label class="control-label col-sm-1" for="verb">Verb</label> 
+
+                            <div class="col-sm-2">
+                                <select ng-blur="home.inputChange(this, $event)"  class="form-control"   id="response_verb" name="verb" ng-model="home.criteriaBuffer.verb" required>
+                                    <option>GET</option>
+                                    <option>POST</option>
+                                    <option>PUT</option>
+                                    <option>DELETE</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group grouping-box">
+                            <h4>Headers</h4>
+                            <div style="overflow-y: scroll;height:120px">
+
+                                <div ng-repeat="i in home.criteriaBuffer.headerCount">
+
+                                    <label class="control-label col-sm-1" for="status">Key</label> 
+
+                                    <div class="col-lg-5">
+                                        <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control input-sm"   id="match_key_{{$index}}" name="status" ng-model="home.criteriaBuffer.headers[$index].key" required>
+                                    </div>
+                                    <label class="control-label col-sm-1" for="status">Value</label> 
+                                    <div class="col-lg-5">
+                                        <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control input-sm"   id="match_value_{{$index}}" name="status" ng-model="home.criteriaBuffer.headers[$index].value" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group grouping-box">
+                             <h4>Body</h4>
+                             <textarea ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.responseBuffer.body" style="width:98%;height:150px"></textarea>
+                        </div>
+
+                    </form>
+                </div>
+                
+                
 
             </uib-tab>
 

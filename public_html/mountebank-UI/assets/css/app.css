@@ -6,5 +6,5 @@ div.limitY
 }
 .grouping-box
 {
-    border: thin solid blue;
+    border: thin solid blue; margin:5px;padding:5px 
 }
