@@ -45,7 +45,7 @@ function impostersService($log, localStorageService, $rootScope)
                                                 },
                                                 "body_match":
                                                         {
-                                                            "type": "equal",
+                                                            "type": "equals",
                                                             "body": {
                                                                 "search": "ice"
                                                             }
@@ -75,7 +75,7 @@ function impostersService($log, localStorageService, $rootScope)
                                                 "body_match":
                                                         {
                                                             "type": "regex",
-                                                            "regex": "*search*"
+                                                            "matchContent": "*search1*"
                                                         }
                                             }
                                 }
@@ -98,7 +98,7 @@ function impostersService($log, localStorageService, $rootScope)
                                                 "body_match":
                                                         {
                                                             "type": "regex",
-                                                            "regex": "*search*"
+                                                            "matchContent": "*search2*"
                                                         }
                                             }
                                 }

@@ -11,8 +11,9 @@ angular.module('myApp')
             vm.currentImposter = null;
             vm.responseBuffer = {};
             vm.criteriaBuffer = {};
+            vm.criteriaBuffer.matchTypes = ['matches', 'equals', 'regex', 'startsWith', 'contains', 'endsWith']
             vm.responseBuffer.headerCount = [];
-             vm.criteriaBuffer.headerCount = [];
+            vm.criteriaBuffer.headerCount = [];
             var MAX_RESPONSE_HEADERS = 5;
             for (var i = 0; i < MAX_RESPONSE_HEADERS; i++)
             {
@@ -29,7 +30,33 @@ angular.module('myApp')
                 scatter();
             }
 
+            /**
+             * fired when user changes the type of match criteria,
+             * eg, regex, equals, startswith ......
+             * @param {type} item
+             * @param {type} event
+             * @returns {undefined}
+             */
+            vm.matchTypeChange = function (item, event)
+            {
 
+
+            }
+            
+            /**
+             * central routine for determining if match request is using 
+             * equals, as opposed to regex, startswith ....
+             * @param {type} item
+             * @returns {Boolean}
+             */
+            vm.isEqualRequest = function(item)
+            {
+                if (item === 'equals')
+                {
+                    return true;
+                }
+                return false;
+            }
             //initial call
             vm.changeImposter(vm.currentIndex);
 
@@ -95,11 +122,11 @@ angular.module('myApp')
             function gather()
             {
                 gatherResponse();
-                
+
 
             }
-            
-            
+
+
             /**
              * gather for the response section
              * @returns {undefined}
@@ -121,6 +148,8 @@ angular.module('myApp')
                         angular.fromJson(vm.responseBuffer.body);
 
             }
+
+
             /**
              * scatter for the response section
              * @returns {undefined}
@@ -181,7 +210,20 @@ angular.module('myApp')
                     item.key = "";
                     vm.criteriaBuffer.headers.push(item);
                 }
-                vm.criteriaBuffer.body = angular.toJson(vm.currentImposter.match.body, true);
+                vm.criteriaBuffer.bodyMatchType = vm.currentImposter.match.body_match.type;
+                vm.criteriaBuffer.body = {};
+                vm.criteriaBuffer.matchContents = "";
                 
+                if (vm.isEqualRequest(vm.criteriaBuffer.bodyMatchType))
+                {
+                    vm.criteriaBuffer.body = angular.toJson(vm.currentImposter.match.body_match.body, true);
+                }
+                else
+                {
+                    vm.criteriaBuffer.matchContents = vm.currentImposter.match.body_match.match_content;
+                }
+                
+
+
             }
         });
