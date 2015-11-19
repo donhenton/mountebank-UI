@@ -28,7 +28,8 @@ function impostersService($log, localStorageService, $rootScope)
                                             {
                                                 "status": 200,
                                                 "headers": {
-                                                    "user": "elmo"
+                                                    "user": "elmo",
+                                                    "bonzo":"fred"
                                                 },
                                                 "body": {
                                                     "id": 34,
@@ -55,13 +56,13 @@ function impostersService($log, localStorageService, $rootScope)
                                 {
                                     "response":
                                             {
-                                                "status": 200,
+                                                "status": 450,
                                                 "headers": {
-                                                    "user": "elmo"
+                                                    "user": "elmo100"
                                                 },
                                                 "body": {
-                                                    "id": 34,
-                                                    "product": "ice cream"
+                                                    "id": 567,
+                                                    "product": "coconuts"
                                                 }
                                             },
                                     "match":
@@ -85,8 +86,8 @@ function impostersService($log, localStorageService, $rootScope)
                                                 "status": 404,
                                                 "headers": {},
                                                 "body": {
-                                                    "id": 34,
-                                                    "product": "ice cream"
+                                                    "id": 23,
+                                                    "product": "garbage"
                                                 }
                                             },
                                     "match":

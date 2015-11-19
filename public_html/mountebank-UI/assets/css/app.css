@@ -4,3 +4,7 @@ div.limitY
     
     height:350px
 }
+.grouping-box
+{
+    border: thin solid blue;
+}

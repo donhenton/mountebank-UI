@@ -37,7 +37,7 @@
         <uib-tabset justified="true">
 
             <uib-tab heading="Response" select="home.tabSelect('Response')"> 
-
+                <br>
                 <div class="row">
 
                     <form name="home.responseForm" class="form-horizontal" novalidate>   
@@ -50,25 +50,28 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group grouping-box">
                             <h4>Headers</h4>
                             <div style="overflow-y: scroll;height:120px">
-                                
+
                                 <div ng-repeat="i in home.responseBuffer.headerCount">
 
                                     <label class="control-label col-sm-1" for="status">Key</label> 
 
                                     <div class="col-lg-5">
-                                        <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="ressponse_key_1" name="status" ng-model="home.responseBuffer.status" required>
+                                        <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_key_{{$index}}" name="status" ng-model="home.responseBuffer.headers[$index].key" required>
                                     </div>
                                     <label class="control-label col-sm-1" for="status">Value</label> 
                                     <div class="col-lg-5">
-                                        <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_value_1" name="status" ng-model="home.responseBuffer.status" required>
+                                        <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_value_{{$index}}" name="status" ng-model="home.responseBuffer.headers[$index].value" required>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                        <div class="form-group grouping-box">
+                             <h4>Body</h4>
+                             <textarea ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.responseBuffer.body" style="width:100%;height:150px"></textarea>
+                        </div>
 
                     </form>
                 </div>
