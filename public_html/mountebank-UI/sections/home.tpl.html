@@ -13,11 +13,11 @@
 
 </div>
 <div class="jumbotron">
-    <div class="row">
+    <div class="row  grouping-box">
 
         <div id="itemSelectorColumn" class="col-sm-2">
             <div class="limitY">
-
+                
                 <div ng-repeat="item in home.buffer.data.imposters">
                     <div>
 
@@ -31,8 +31,9 @@
                 </div>
 
             </div>
-            <br>
-            <button  class="btn btn-lg btn-primary pull-left" >Add New<br>Imposter</button>
+            <div>
+            <button  class="btn btn-lg btn-primary">Add New<br>Imposter</button>
+            </div>
         </div>
 
         <div id="formColumn" class="col-sm-10">
@@ -69,7 +70,7 @@
                                         <div class="row">
 
                                             <label class="control-label col-sm-1" for="status">Key</label> 
- 
+
                                             <div class="col-sm-4">
                                                 <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control input-sm"   id="response_key_{{$index}}" name="status" ng-model="header.key" required>
                                             </div>
@@ -78,7 +79,7 @@
                                                 <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control input-sm"   id="response_value_{{$index}}" name="status" ng-model="header.value" required>
 
                                             </div>
-                                             <div class="col-sm-1 center-block">
+                                            <div class="col-sm-1 center-block">
                                                 <button style="height:100%" ng-click="home.deleteResponseHeader($index)" class="center-block btn btn-danger btn-sm"><i  class="glyphicon glyphicon-minus-sign"></i> Delete</button>
 
                                             </div>
@@ -88,7 +89,15 @@
                                 </div>
                             </div>
                             <div class="form-group grouping-box">
-                                <h4>Body</h4>
+                                <div class="internalHeaderRow">
+                                    <span class="internalHeader">Body</span> 
+                                    <span 
+                                        ng-if="home.isJsonString(home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body)"
+                                        class="pull-right">
+                                        <button ng-click="home.formatJson('responseBody',true)" class="btn btn-primary btn-xs">Pretty Print JSON</button>
+                                        <button ng-click="home.formatJson('responseBody',false)" class="btn btn-primary btn-xs">Unformat JSON</button>
+                                   </span>
+                                </div>
                                 <textarea ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body" style="width:98%;height:150px"></textarea>
                             </div>
 

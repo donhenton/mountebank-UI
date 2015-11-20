@@ -16,6 +16,64 @@ angular.module('myApp')
             vm.matchTypes = ['matches', 'equals', 'regex', 'startsWith', 'contains', 'endsWith'];
 
 
+            /**
+             * take the type, find the ref
+             *  to modify 
+             * 
+             *  
+             * @param {type} type responseBody, matchBody
+             * @param {type} pretty
+             * @returns {undefined}
+             */
+            vm.formatJson = function (type, pretty)
+            {
+                var ref = null;
+                if (type == 'responseBody')
+                {
+                  ref =  vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx];
+                }
+                else
+                {
+                  ref =  vm.buffer.data.imposters[vm.currentImposterIdx].match.body_match;  
+                }
+
+
+                //body
+                if (vm.isJsonString(ref.body))
+                {
+                    var jRef = angular.fromJson(ref.body);
+                    if (pretty == true)
+                    {
+                        ref.body = angular.toJson(jRef, true);
+                    }
+                    else
+                    {
+                        ref.body = angular.toJson(jRef, false);
+                    }
+
+                }
+
+
+                //vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].body
+            }
+
+
+
+            /**
+             * test if a string is a valid json object
+             * @param {type} str
+             * @returns {Boolean}
+             */
+            vm.isJsonString = function (str) {
+                try {
+                    angular.fromJson(str);
+                } catch (e) {
+                    return false;
+                }
+                return true;
+            }
+
+
             vm.deleteResponseHeader = function (idx)
             {
                 vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].headers.splice(idx, 1);
