@@ -19,86 +19,68 @@ function impostersService($log, localStorageService, $rootScope)
 
         //TODO if this function returns null, then return a new emptyData
 
-        var data=
+        var data =
                 {
                     "port": 3445,
                     "imposters":
                             [{
-                                    "response":
-                                            {
-                                                "status": 200,
-                                                "headers": {
-                                                    "user": "elmo",
-                                                    "bonzo":"fred"
-                                                },
-                                                "body": {
-                                                    "id": 34,
-                                                    "product": "ice cream"
-                                                }
-                                            },
+                                    "responses": [
+                                        {
+                                            "status": 200,
+                                            "headers": [{key: "alpha", "value": 34}, {key: "beta", "value": 79}],
+                                            "body": "{ \"id\": 34, \"product\": \"ice cream\"}"
+
+
+                                        }],
                                     "match":
                                             {
                                                 "path": "products/1",
                                                 "verb": "POST",
-                                                "headers": {
-                                                    "user": "elmo"
-                                                },
+                                                "headers": [{key: "user", "value": "elmo00"}],
                                                 "body_match":
                                                         {
                                                             "type": "equals",
-                                                            "body": {
-                                                                "search": "ice"
-                                                            }
+                                                            "body": "{  \"search\": \"ice cream\"}"
                                                         }
                                             }
                                 }
                                 ,
                                 {
-                                    "response":
-                                            {
-                                                "status": 450,
-                                                "headers": {
-                                                    "user": "elmo100"
-                                                },
-                                                "body": {
-                                                    "id": 567,
-                                                    "product": "coconuts"
-                                                }
-                                            },
+                                    "responses": [
+                                        {
+                                            "status": 450,
+                                            "headers": [{key: "user", "value": "elmo200"}],
+                                            "body": "{ \"id\": 77, \"product\": \"coconuts\"}"
+                                        }],
                                     "match":
                                             {
                                                 "path": "products/55",
                                                 "verb": "POST",
-                                                "headers": {
-                                                    "user": "elmo"
-                                                },
+                                                "headers": [{key: "user1", "value": "elmo201"}, {key: "user2", "value": "elmo202"}, {key: "user3", "value": "elmo203"}],
                                                 "body_match":
                                                         {
                                                             "type": "regex",
-                                                            "matchContent": "*search1*"
+                                                            "body": "*search1*"
                                                         }
                                             }
                                 }
                                 ,
                                 {
-                                    "response":
-                                            {
-                                                "status": 404,
-                                                "headers": {},
-                                                "body": {
-                                                    "id": 23,
-                                                    "product": "garbage"
-                                                }
-                                            },
+                                    "responses":
+                                            [{
+                                                    "status": 404,
+                                                    "headers": [],
+                                                    "body": "{ \"id\": 77, \"product\": \"garbage\"}"
+                                                }],
                                     "match":
                                             {
                                                 "path": "products?id=905&product_line=food",
                                                 "verb": "GET",
-                                                "headers": {},
+                                                "headers": [],
                                                 "body_match":
                                                         {
                                                             "type": "regex",
-                                                            "matchContent": "*search2*"
+                                                            "body": "*search2*"
                                                         }
                                             }
                                 }
@@ -108,7 +90,7 @@ function impostersService($log, localStorageService, $rootScope)
 
 
 
-                return data;
+        return data;
 
 
     }//end get data
