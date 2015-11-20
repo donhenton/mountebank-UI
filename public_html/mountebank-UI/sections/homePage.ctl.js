@@ -14,6 +14,20 @@ angular.module('myApp')
             vm.displayData = "";
 
             vm.matchTypes = ['matches', 'equals', 'regex', 'startsWith', 'contains', 'endsWith'];
+
+
+            vm.deleteResponseHeader = function (idx)
+            {
+                vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].headers.splice(idx, 1);
+            }
+            vm.addResponseHeader = function ()
+
+            {
+                var newItem = {"key": "", "value": ""};
+                vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].headers.push(newItem);
+
+            }
+
             vm.changeImposter = function (idx)
             {
 
@@ -53,7 +67,7 @@ angular.module('myApp')
                         try
                         {
 
-                            vm.displayData = angular.toJson(vm.data,true)
+                            vm.displayData = angular.toJson(vm.data, true)
 
                         }
                         catch (err)

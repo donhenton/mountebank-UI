@@ -1,7 +1,7 @@
 div.limitY
 {
     overflow-y:scroll;
-    
+    overflow-x: hidden;
     height:350px;
     margin-right:20px
 }
@@ -12,6 +12,18 @@ div.limitY
 
 .internalHeader
 {
-    font-size: 20px;
-    font
+    font-size: 18px;
+    font-weight: bold;
+}
+.internalHeaderRow
+{
+    margin-bottom: 10px
+}
+
+i.centerIcon{
+    
+    display:block;
+    text-align:center;
+     
+    
 }
