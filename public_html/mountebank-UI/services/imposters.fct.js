@@ -96,6 +96,8 @@ function impostersService($log, localStorageService, $rootScope)
                                 "body": "body"
                             }
                 }
+                
+        return newImposter;
 
     }
 
