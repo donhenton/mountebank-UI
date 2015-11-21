@@ -1,13 +1,4 @@
- <nav class="navbar-wrapper navbar-default">
-        <ul class="nav nav-tabs">
-            <li class="navbar-brand">Mountebank Imposter UI</li>
-            
-
-            <li  class="nav navbar-text pull-right"><a href="#/"><i class="glyphicon glyphicon-home"></i> Home</a> </li>
-
-        </ul>
-    </nav>
-
+<ng-include src="settings.headerLocation"></ng-include>  
 
 <div class="row">
     <form name="settings.portForm"   class="form-horizontal" novalidate>   
@@ -16,7 +7,7 @@
             <label class="control-label col-sm-2" for="name">Port</label> 
 
             <div class="col-sm-2">
-                <input ng-blur="settings.inputChange(this, $event)" type="text" class="form-control"   id="port" name="port" ng-model="settings.data.port" required>
+                <input  type="text" class="form-control"   id="port" name="port" ng-model="settings.currentImposter.port" required>
             </div>
         </div>
     </form>

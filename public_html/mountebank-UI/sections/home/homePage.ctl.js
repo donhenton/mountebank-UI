@@ -8,7 +8,7 @@ angular.module('myApp')
             vm.data = currentImposter;
             vm.currentImposterIdx = 0; //the imposter 
             vm.currentResponseIdx = 0; //the current response for the imposter
-            vm.mounteBankUrl = "http://localhost:4545";
+            
             vm.buffer = {};
             vm.buffer.data = vm.data;
             vm.displayData = "";

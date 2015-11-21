@@ -33,7 +33,7 @@ angular.module('app.routes', ['ngRoute', 'app.constants'])
             .when('/json', {
                 controller: 'JsonCtrl',
                 controllerAs: 'json',
-                templateUrl: TPL_PATH + 'sections/settings/settings.tpl.html',
+                templateUrl: TPL_PATH + 'sections/json/json.tpl.html',
                 
                 resolve: {
                     currentImposter: function ($route,$log,ImpostersService) {
