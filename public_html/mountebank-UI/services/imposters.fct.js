@@ -51,16 +51,14 @@ function impostersService($log, localStorageService, $rootScope)
 
     /**
      * create a new collection and position the Idx to point to it
-     * @param {type} description
-     * @param {type} port
      * @returns {undefined}
      */
-    function createNewCollection(description, port)
+    function createNewCollection()
     {
         var newCollection = {};
 
-        newCollection.port = port;
-        newCollection.description = description;
+        newCollection.port = 9999;
+        newCollection.description = "New Imposter Description";
         newCollection.imposters = [];
 
         var newImposter = {};

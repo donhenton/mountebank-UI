@@ -38,14 +38,7 @@
                         <option ng-repeat="item in home.collectionItems track by item.port" ng-selected="item.selected == true"     value="{{item.id}}">{{item.description}}</option>  
                     </select>    
                 </div>
-                <div class="col-sm-1">
-                    <button   ng-click="home.addCollection()" class="center-block btn btn-primary btn-sm"><i  class="glyphicon glyphicon-minus-sign"></i> Add</button>
-
-                </div>
-                <div class="col-sm-1">
-                    <button   ng-click="home.deleteCollection()" class="center-block btn btn-danger btn-sm"><i  class="glyphicon glyphicon-minus-sign"></i> Delete</button>
-
-                </div>
+                 
             </div>
         </form>
     </div>

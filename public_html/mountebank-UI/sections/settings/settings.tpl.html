@@ -1,39 +1,70 @@
 <ng-include src="settings.headerLocation"></ng-include>  
 
-<div class="row">
-    <form name="settings.portForm"   class="form-horizontal" novalidate>   
+
+<div class="grouping-box">
+    <h3>Collection Maintenance</h3>
+    <div class="row">
 
         <div class="form-group">
-            <label class="control-label col-sm-2" for="name">Port</label> 
+            <label class="control-label col-sm-1" for="name">Current</label> 
+            <div class="col-sm-6">
+                <select class="form-control" id="collectionSelector">
+                    <option ng-repeat="item in settings.collectionItems track by item.port" ng-selected="item.selected == true"     value="{{item.id}}">{{item.description}}</option>  
+                </select>    
+            </div>
 
-            <div class="col-sm-2">
-                <input  type="text" class="form-control"   id="port" name="port" ng-model="settings.currentImposter.port" required>
+            <div class="col-sm-1">
+                <button   ng-click="settings.addCollection()" class="center-block btn btn-primary btn-sm"><i  class="glyphicon glyphicon-plus-sign"></i> Add New</button>
+
+            </div>
+            <div class="col-sm-1">
+                <button   ng-click="settings.deleteCollection()" class="center-block btn btn-danger btn-sm"><i  class="glyphicon glyphicon-minus-sign"></i> Delete Current </button>
             </div>
         </div>
-    </form>
-</div>
-<div class="row">
 
+    </div>
+
+
+    <br>
+    <div class="row">
+        <form name="settings.portForm"   class="form-horizontal" novalidate>   
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Port</label> 
+
+                <div class="col-sm-2">
+                    <input  type="text" class="form-control"   id="port" name="port" ng-model="settings.currentImposter.port" required>
+                </div>
+                <div class="col-sm-2">
+                    
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Description</label> 
+
+                <div class="col-sm-8">
+                    <input  ng-blur="settings.updateList()" type="text" class="form-control"   id="port" name="port" ng-model="settings.currentImposter.description" required>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+<br>
+<div class="row grouping-box">
+    <h3>Submit To Mountebank</h3>
     <form    class="form-horizontal" name="settings.submitForm" ng-model="settings.submitForm" role="form">   
         <div class="form-group">
             <label class="control-label col-sm-2" for="name">Mountebank Url</label> 
 
             <div class="col-sm-6">
-                <input  type="text" class="form-control"   id="port" name="port" ng-model="settings.mounteBankUrl" required>
+                <input  type="text" class="form-control" ng-model="settings.mounteBankUrl" required>
             </div>
         </div>
         <button class="btn btn-primary">Submit to Mountebank</button>
         <button class="btn btn-primary">Delete From Mountebank</button>
+
+
     </form>
-
-    <div class="col-sm-1">
-        <button   ng-click="home.addCollection()" class="center-block btn btn-primary btn-sm"><i  class="glyphicon glyphicon-minus-sign"></i> Add</button>
-
-    </div>
-    <div class="col-sm-1">
-        <button   ng-click="home.deleteCollection()" class="center-block btn btn-danger btn-sm"><i  class="glyphicon glyphicon-minus-sign"></i> Delete</button>
-
-    </div>
-
-
 </div>
