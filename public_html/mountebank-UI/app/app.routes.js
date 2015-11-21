@@ -49,6 +49,11 @@ angular.module('app.routes', ['ngRoute', 'app.constants'])
                     currentImposter: function ($route,$log,ImpostersService) {
                          
                          return ImpostersService.getCurrentImposter();
+                    },
+                    mounteBankDisplay: function($log,ImpostersService,MountebankService)
+                    {
+                        var currentImposter = ImpostersService.getCurrentImposter();
+                        return MountebankService.translate(currentImposter);
                     }
 
                 } 

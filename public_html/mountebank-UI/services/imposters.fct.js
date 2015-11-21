@@ -26,7 +26,7 @@ function impostersService($log, localStorageService, $rootScope)
      */
     function save()
     {
-
+       //$log.debug("save called")
     }
 
     /**

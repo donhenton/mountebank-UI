@@ -155,6 +155,9 @@ angular.module('myApp')
                     function handleDisplayChange(newValueStr, oldValueStr) {
                         try
                         {
+                            //$log.debug("home save")
+                            ImpostersService.save();
+
 
                         }
                         catch (err)

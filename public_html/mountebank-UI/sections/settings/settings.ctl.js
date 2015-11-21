@@ -11,6 +11,28 @@ angular.module('myApp')
             vm.collectionSelectorIdx = vm.currentCollectionIdx.toString();
             vm.collectionItems = collectionItems;
 
+            $scope.$watch(
+                    function watchDisplayData(scope) {
+                        // Return the "result" of the watch expression.
+                        return(vm.currentImposter);
+                    },
+                    function handleDisplayChange(newValueStr, oldValueStr) {
+                        try
+                        {
+                            ImpostersService.save();
+
+
+                        }
+                        catch (err)
+                        {
+                            vm.errorMessage = err.message;
+                        }
+                    }, true
+                    );
+
+
+
+
 
             vm.changeCollection = function ()
             {
@@ -29,7 +51,7 @@ angular.module('myApp')
                     return;
                 }
                 var desc = vm.currentImposter.description;
-                var doDelete = confirm("Delete Collection '"+desc+"' ?");
+                var doDelete = confirm("Delete Collection '" + desc + "' ?");
                 if (doDelete)
                 {
                     ImpostersService.deleteCollectionAt(vm.currentCollectionIdx);
