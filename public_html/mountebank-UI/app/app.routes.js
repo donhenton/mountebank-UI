@@ -12,6 +12,11 @@ angular.module('app.routes', ['ngRoute', 'app.constants'])
                     currentImposter: function ($route,$log,ImpostersService) {
                          
                          return ImpostersService.getCurrentImposter();
+                    },
+                    
+                    collectionItems: function($log,ImpostersService)
+                    {
+                        return ImpostersService.getCollectionItems();
                     }
 
                 }

@@ -10,6 +10,11 @@ div.limitY
     border: #1b6d85 ridge; margin:10px;padding:10px 
 }
 
+.internalTitle
+{
+     font-size: 22px;
+    font-weight: bold;
+}
 .internalHeader
 {
     font-size: 18px;

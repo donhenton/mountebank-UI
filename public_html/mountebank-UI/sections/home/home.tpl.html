@@ -25,13 +25,31 @@
 
 <div class="jumbotron">
     <div id="messageRow" class="row">
+        <div>
+            <span class="emphasis text-danger">{{home.errorMessage}}</span> 
+        </div>
+        <form>
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label class="control-label internalTitle col-sm-2" for="status">Collection</h3>
+                </div>
+                <div class="col-sm-8">
+                    <select class="form-control" id="collectionSelector">
+                        <option ng-repeat="item in home.collectionItems track by item.port" ng-selected="item.selected == true"     value="{{item.id}}">{{item.description}}</option>  
+                    </select>    
+                </div>
+                <div class="col-sm-1">
+                    <button   ng-click="home.addCollection()" class="center-block btn btn-primary btn-sm"><i  class="glyphicon glyphicon-minus-sign"></i> Add</button>
 
-     <span class="emphasis text-danger">{{home.errorMessage}}</span> 
+                </div>
+                <div class="col-sm-1">
+                    <button   ng-click="home.deleteCollection()" class="center-block btn btn-danger btn-sm"><i  class="glyphicon glyphicon-minus-sign"></i> Delete</button>
 
-
-</div>
-    
-    
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
     <div class="row">
 
         <div id="itemSelectorColumn" class="col-sm-2">
@@ -39,7 +57,7 @@
                 <h3>Imposters</h3>
             </div>
             <div class="limitY">
-                
+
                 <div ng-repeat="item in home.buffer.data.imposters">
                     <div>
 
@@ -54,7 +72,7 @@
 
             </div>
             <div>
-            <button  class="btn btn-lg btn-primary">Add New<br>Imposter</button>
+                <button  class="btn btn-lg btn-primary">Add New<br>Imposter</button>
             </div>
         </div>
 
@@ -76,19 +94,19 @@
                                 </div>
                             </div>
 
-                            
-                             <headers array="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].headers"></headers>
-                            
-                        
-                             <div class="form-group grouping-box">
+
+                            <headers array="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].headers"></headers>
+
+
+                            <div class="form-group grouping-box">
                                 <div class="internalHeaderRow">
                                     <span class="internalHeader">Body</span> 
                                     <span 
                                         ng-if="home.isJsonString(home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body)"
                                         class="pull-right">
-                                        <button ng-click="home.formatJson('responseBody',true)" class="btn btn-primary btn-xs">Pretty Print JSON</button>
-                                        <button ng-click="home.formatJson('responseBody',false)" class="btn btn-primary btn-xs">Unformat JSON</button>
-                                   </span>
+                                        <button ng-click="home.formatJson('responseBody', true)" class="btn btn-primary btn-xs">Pretty Print JSON</button>
+                                        <button ng-click="home.formatJson('responseBody', false)" class="btn btn-primary btn-xs">Unformat JSON</button>
+                                    </span>
                                 </div>
                                 <textarea ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body" style="width:98%;height:150px"></textarea>
                             </div>
@@ -130,7 +148,7 @@
 
                             <headers array="home.buffer.data.imposters[home.currentImposterIdx].match.headers"></headers>
 
-                         <div class="form-group grouping-box">
+                            <div class="form-group grouping-box">
 
                                 <h4>Body</h4> 
 
@@ -157,9 +175,9 @@
 
                 </uib-tab>
 
-                
 
-               
+
+
             </uib-tabset>
         </div><!-- end formColumn -->
 

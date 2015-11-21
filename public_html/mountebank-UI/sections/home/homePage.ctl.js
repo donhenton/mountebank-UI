@@ -2,12 +2,13 @@
 
 angular.module('myApp')
 
-        .controller('HomeCtrl', function ($scope, $log, ImpostersService,currentImposter) {
+        .controller('HomeCtrl', function ($scope, $log, ImpostersService,currentImposter,collectionItems) {
             var vm = this;
             vm.errorMessage = "No errors";
             vm.data = currentImposter;
             vm.currentImposterIdx = 0; //the imposter 
             vm.currentResponseIdx = 0; //the current response for the imposter
+            vm.collectionItems = collectionItems; //used for the select box
             
             vm.buffer = {};
             vm.buffer.data = vm.data;
