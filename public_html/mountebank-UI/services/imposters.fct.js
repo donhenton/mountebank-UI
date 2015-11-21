@@ -19,6 +19,7 @@ function impostersService($log, localStorageService, $rootScope)
     var data =
             {
                 "port": 3445,
+                "description": "Sample Imposter Collection"
                 "imposters":
                         [{
                                 "responses": [
