@@ -47,12 +47,24 @@ function mountebankService($log)
 
             // predicates
             var newPredicate = {};
+            
+            /*
+              and together each of path, body, mehhtod headers
+              path optional  equals contains, matches
+              body optional  equals, contains, matches
+              method required
+              headers if array is empty drop out
+              http://www.mbtest.org/docs/api/predicates
+             */
+            
+            
+            /* 
             var matchHeaders = {};
             angular.forEach(imposter.match.headers, function (header, idx)
             {
                 matchHeaders[header.key] = header.value;
             });
-            newPredicate["imposter.match.body_match.type"] =
+            newPredicate[imposter.match.body_match.type] =
                     {
                         "path": imposter.match.path,
                         "body": imposter.match.body_match.body,
@@ -62,6 +74,7 @@ function mountebankService($log)
 
 
                     }
+             */
             newStub.predicates.push(newPredicate);
 
         });

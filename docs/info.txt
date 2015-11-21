@@ -1,27 +1,6 @@
 http://www.mbtest.org/docs/api/contracts
 
 responses are round robined used to give 'multiple responses for a predicate'
-
-
-RESPONSE SECTION:
-
-int         STATUS CODE
-json        HEADERS
-json        BODY
-
-MATCH SECTION:
-
-
-string      PATH
-
-when specifying a body match will get a choice of equals or regex via a selectbox,
-changing the select will wipe out the prior contents
-
-json        BODY  (type choice is equals)
-string      regex (type choice is regex)
-
-
-string      GET/PUT/POST/DELETE/PATCH
-json        HEADER
-
  
+
+the matches sec
