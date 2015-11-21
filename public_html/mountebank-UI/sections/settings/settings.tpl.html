@@ -8,7 +8,7 @@
         <div class="form-group">
             <label class="control-label col-sm-1" for="name">Current</label> 
             <div class="col-sm-6">
-                <select class="form-control" id="collectionSelector">
+                <select ng-change="settings.changeCollection()" ng-model="settings.collectionSelectorIdx" class="form-control" id="collectionSelector">
                     <option ng-repeat="item in settings.collectionItems track by item.id" ng-selected="item.selected == true"     value="{{item.id}}">{{item.description}}</option>  
                 </select>    
             </div>

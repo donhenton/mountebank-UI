@@ -59,7 +59,7 @@ function impostersService($log, localStorageService, $rootScope)
         var newIdx = collection.length;
         newCollection.port = 9999;
         newCollection.id = newIdx
-        newCollection.description = "New Imposter Description";
+        newCollection.description = "New Imposter Description "+newIdx;
         newCollection.imposters = [];
 
         var newImposter = {};
