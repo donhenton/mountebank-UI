@@ -171,7 +171,7 @@ function impostersService($log, localStorageService, $rootScope)
                                                 "headers": [{key: "user1", "value": "elmo201"}, {key: "user2", "value": "elmo202"}, {key: "user3", "value": "elmo203"}],
                                                 "body_match":
                                                         {
-                                                            "type": "regex",
+                                                            "type": "deepEquals",
                                                             "body": "*search1*"
                                                         }
                                             }
@@ -191,7 +191,7 @@ function impostersService($log, localStorageService, $rootScope)
                                                 "headers": [],
                                                 "body_match":
                                                         {
-                                                            "type": "regex",
+                                                            "type": "equals",
                                                             "body": "*search2*"
                                                         }
                                             }

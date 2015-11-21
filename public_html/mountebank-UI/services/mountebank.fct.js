@@ -52,7 +52,7 @@ function mountebankService($log)
             {
                 matchHeaders[header.key] = header.value;
             });
-            newPredicate[imposter.match.body_match.type] =
+            newPredicate["imposter.match.body_match.type"] =
                     {
                         "path": imposter.match.path,
                         "body": imposter.match.body_match.body,
