@@ -54,7 +54,7 @@ angular.module('myApp')
                 }
 
 
-                //vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].body
+                
             }
 
 
