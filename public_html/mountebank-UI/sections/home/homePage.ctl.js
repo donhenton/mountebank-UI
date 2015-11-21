@@ -13,10 +13,6 @@ angular.module('myApp')
             vm.currentCollectionIdx = vm.buffer.data.id; // the index into the collection array
             vm.collectionSelectorIdx =  vm.currentCollectionIdx.toString() ;
             
-            //$log.debug("currentcollection idx "
-             //       + vm.currentCollectionIdx);
- 
-            vm.displayData = "";
 
             vm.matchTypes = ['matches', 'equals', 'regex', 'startsWith', 'contains', 'endsWith'];
 
@@ -155,8 +151,6 @@ angular.module('myApp')
                     function handleDisplayChange(newValueStr, oldValueStr) {
                         try
                         {
-
-                            vm.displayData = angular.toJson(vm.buffer.data, true)
 
                         }
                         catch (err)
