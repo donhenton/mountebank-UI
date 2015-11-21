@@ -1,18 +1,33 @@
 
+<header class="app-header">
+
+    <nav class="navbar-wrapper navbar-default">
+        <ul class="nav nav-tabs">
+            <li class="navbar-brand">Mountebank Imposter UI</li>
+            <li  class="nav">
+
+                <a   href="#/settings">Settings</a>
+
+            </li>
+
+            <li  class="nav navbar-text pull-right"><i class="glyphicon glyphicon-home"></i> Home </li>
+
+        </ul>
+    </nav>
+</header>
 
 
-<h3>Mountebank Imposter UI</h3>
 
 
+<div class="jumbotron">
+    <div id="messageRow" class="row">
 
-
-<div id="messageRow" class="row">
-
-    <div style="" class="well well-sm"><span class="emphasis text-danger">{{home.errorMessage}}</span></div>
+     <span class="emphasis text-danger">{{home.errorMessage}}</span> 
 
 
 </div>
-<div class="jumbotron">
+    
+    
     <div class="row">
 
         <div id="itemSelectorColumn" class="col-sm-2">
@@ -135,40 +150,7 @@
 
                 </uib-tab>
 
-                <uib-tab heading="Port and Submitting" select="home.tabSelect('Port')">  
-
-                    <br>
-                    <div class="row">
-                        <form name="home.portForm"   class="form-horizontal" novalidate>   
-
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="name">Port</label> 
-
-                                <div class="col-sm-2">
-                                    <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="port" name="port" ng-model="home.data.port" required>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="row">
-
-                        <form    class="form-horizontal" name="home.submitForm" ng-model="home.submitForm" role="form">   
-                            <div class="form-group">
-                                <label class="control-label col-sm-2" for="name">Mountebank Url</label> 
-
-                                <div class="col-sm-6">
-                                    <input  type="text" class="form-control"   id="port" name="port" ng-model="home.mounteBankUrl" required>
-                                </div>
-                            </div>
-                            <button class="btn btn-primary">Submit to Mountebank</button>
-                            <button class="btn btn-primary">Delete From Mountebank</button>
-                        </form>
-                    </div>
-
-
-
-
-                </uib-tab>
+                
 
                 <uib-tab  heading="JSON" select="home.tabSelect('JSON')"> 
 

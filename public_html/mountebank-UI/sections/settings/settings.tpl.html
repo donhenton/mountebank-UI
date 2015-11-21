@@ -1,0 +1,37 @@
+ <nav class="navbar-wrapper navbar-default">
+        <ul class="nav nav-tabs">
+            <li class="navbar-brand">Mountebank Imposter UI</li>
+            
+
+            <li  class="nav navbar-text pull-right"><a href="#/"><i class="glyphicon glyphicon-home"></i> Home</a> </li>
+
+        </ul>
+    </nav>
+
+
+<div class="row">
+    <form name="settings.portForm"   class="form-horizontal" novalidate>   
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Port</label> 
+
+            <div class="col-sm-2">
+                <input ng-blur="settings.inputChange(this, $event)" type="text" class="form-control"   id="port" name="port" ng-model="settings.data.port" required>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row">
+
+    <form    class="form-horizontal" name="settings.submitForm" ng-model="settings.submitForm" role="form">   
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Mountebank Url</label> 
+
+            <div class="col-sm-6">
+                <input  type="text" class="form-control"   id="port" name="port" ng-model="settings.mounteBankUrl" required>
+            </div>
+        </div>
+        <button class="btn btn-primary">Submit to Mountebank</button>
+        <button class="btn btn-primary">Delete From Mountebank</button>
+    </form>
+</div>

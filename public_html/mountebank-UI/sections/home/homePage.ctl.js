@@ -2,10 +2,10 @@
 
 angular.module('myApp')
 
-        .controller('HomeCtrl', function ($scope, $log, ImpostersService) {
+        .controller('HomeCtrl', function ($scope, $log, ImpostersService,currentImposter) {
             var vm = this;
             vm.errorMessage = "No errors";
-            vm.data = ImpostersService.getData("1");
+            vm.data = currentImposter;
             vm.currentImposterIdx = 0; //the imposter 
             vm.currentResponseIdx = 0; //the current response for the imposter
             vm.mounteBankUrl = "http://localhost:4545";
