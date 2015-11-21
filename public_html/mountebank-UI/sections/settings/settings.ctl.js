@@ -28,13 +28,17 @@ angular.module('myApp')
                     vm.errorMessage = "Cannot delete last item in collection";
                     return;
                 }
-
-                ImpostersService.deleteCollectionAt(vm.currentCollectionIdx);
-                vm.currentCollectionIdx = 0;
-                vm.collectionSelectorIdx = vm.currentCollectionIdx.toString();
-                ImpostersService.setCollectionTo(vm.currentCollectionIdx);
-                vm.currentImposter = ImpostersService.getCurrentImposter();
-                vm.collectionItems = ImpostersService.getCollectionItems();
+                var desc = vm.currentImposter.description;
+                var doDelete = confirm("Delete Collection '"+desc+"' ?");
+                if (doDelete)
+                {
+                    ImpostersService.deleteCollectionAt(vm.currentCollectionIdx);
+                    vm.currentCollectionIdx = 0;
+                    vm.collectionSelectorIdx = vm.currentCollectionIdx.toString();
+                    ImpostersService.setCollectionTo(vm.currentCollectionIdx);
+                    vm.currentImposter = ImpostersService.getCurrentImposter();
+                    vm.collectionItems = ImpostersService.getCollectionItems();
+                }
             }
 
             /**

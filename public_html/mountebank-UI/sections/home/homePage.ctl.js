@@ -6,13 +6,13 @@ angular.module('myApp')
             var vm = this;
             vm.errorMessage = "No errors";
             vm.buffer = {};
-            vm.buffer.data   = currentImposter;
+            vm.buffer.data = currentImposter;
             vm.currentImposterIdx = 0; //the imposter 
             vm.currentResponseIdx = 0; //the current response for the imposter
             vm.collectionItems = collectionItems; //used for the select box
             vm.currentCollectionIdx = vm.buffer.data.id; // the index into the collection array
-            vm.collectionSelectorIdx =  vm.currentCollectionIdx.toString() ;
-            
+            vm.collectionSelectorIdx = vm.currentCollectionIdx.toString();
+
 
             vm.matchTypes = ['matches', 'equals', 'regex', 'startsWith', 'contains', 'endsWith'];
 
@@ -87,14 +87,14 @@ angular.module('myApp')
 
             }
 
-            vm.changeCollection = function()
+            vm.changeCollection = function ()
             {
-              //  $log.debug("HIT CHANGE COLLECTION")
+                //  $log.debug("HIT CHANGE COLLECTION")
                 vm.currentImposterIdx = 0; //reset 
                 vm.currentResponseIdx = 0; //reset
-                
-                vm.currentCollectionIdx = parseInt(vm.collectionSelectorIdx); 
-                ImpostersService.setCollectionTo( vm.currentCollectionIdx);
+
+                vm.currentCollectionIdx = parseInt(vm.collectionSelectorIdx);
+                ImpostersService.setCollectionTo(vm.currentCollectionIdx);
                 vm.buffer.data = ImpostersService.getCurrentImposter();
             }
 
@@ -107,19 +107,23 @@ angular.module('myApp')
 
 
             }
-            
-            vm.addImposter = function()
+
+            vm.addImposter = function ()
             {
-                var newImposter = ImpostersService. createNewImposter();
+                var newImposter = ImpostersService.createNewImposter();
                 vm.buffer.data.imposters.push(newImposter);
-                
+
             }
-            
-            vm.deleteImposter = function()
+
+            vm.deleteImposter = function ()
             {
-                vm.buffer.data.imposters.splice(vm.currentImposterIdx,1);
-                vm.currentImposterIdx = 0;
-                vm.currentResponseIdx = 0;
+                var doDelete = confirm("Delete this Imposter?");
+                if (doDelete)
+                {
+                    vm.buffer.data.imposters.splice(vm.currentImposterIdx, 1);
+                    vm.currentImposterIdx = 0;
+                    vm.currentResponseIdx = 0;
+                }
             }
 
             /**

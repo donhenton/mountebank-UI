@@ -29,7 +29,11 @@ angular.module('myApp').directive('headers',
 
                     $scope.deleteResponseHeader = function (idx)
                     {
-                        $scope.array.splice(idx, 1);
+                        var doDelete = confirm("Delete this Header?");
+                        if (doDelete)
+                        {
+                            $scope.array.splice(idx, 1);
+                        }
                     }
                     $scope.addResponseHeader = function ()
 
