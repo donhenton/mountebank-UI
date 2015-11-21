@@ -15,13 +15,27 @@ angular.module('myApp')
             vm.changeCollection = function ()
             {
 
-                $log.debug("called change collection")
+                // $log.debug("called change collection")
                 vm.currentCollectionIdx = parseInt(vm.collectionSelectorIdx);
                 ImpostersService.setCollectionTo(vm.currentCollectionIdx);
                 vm.currentImposter = ImpostersService.getCurrentImposter();
             }
 
+            vm.deleteCollection = function ()
+            {
+                if (vm.currentCollectionIdx == 0)
+                {
+                    vm.errorMessage = "Cannot delete last item in collection";
+                    return;
+                }
 
+                ImpostersService.deleteCollectionAt(vm.currentCollectionIdx);
+                vm.currentCollectionIdx = 0;
+                vm.collectionSelectorIdx = vm.currentCollectionIdx.toString();
+                ImpostersService.setCollectionTo(vm.currentCollectionIdx);
+                vm.currentImposter = ImpostersService.getCurrentImposter();
+                vm.collectionItems = ImpostersService.getCollectionItems();
+            }
 
             /**
              * update the text in the boxes when editing the description

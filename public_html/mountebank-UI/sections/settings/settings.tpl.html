@@ -3,6 +3,9 @@
 
 <div class="grouping-box">
     <h3>Collection Maintenance</h3>
+     
+        
+      
     <div class="row">
 
         <div class="form-group">
@@ -18,7 +21,7 @@
 
             </div>
             <div class="col-sm-1">
-                <button   ng-click="settings.deleteCollection()" class="center-block btn btn-danger btn-sm"><i  class="glyphicon glyphicon-minus-sign"></i> Delete Current </button>
+                <button  ng-disabled="settings.collectionItems.length==1"  ng-click="settings.deleteCollection()" class="center-block btn btn-danger btn-sm"><i  class="glyphicon glyphicon-minus-sign"></i> Delete Current </button>
             </div>
         </div>
 

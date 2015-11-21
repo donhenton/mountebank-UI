@@ -6,7 +6,7 @@ angular.module('app.services').factory('ImpostersService', impostersService);
 function impostersService($log, localStorageService, $rootScope)
 {
     var currentCollectionIdx = 0;
-
+    
 
 
     var exports =
@@ -35,7 +35,9 @@ function impostersService($log, localStorageService, $rootScope)
      */
     function deleteCollectionAt(idx)
     {
+       // $log.debug("splice at "+idx+" "+collection.length)
         collection.splice(idx, 1);
+       // $log.debug("collection now "+collection.length)
         save();
     }
 
