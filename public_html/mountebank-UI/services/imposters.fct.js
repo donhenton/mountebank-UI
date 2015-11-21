@@ -1,18 +1,95 @@
 
 
 angular.module('app.services').factory('ImpostersService', impostersService);
+
+
 function impostersService($log, localStorageService, $rootScope)
 {
     var currentCollectionIdx = 0;
-    var currentCollectionPort = 0;
+
 
 
     var exports =
             {
                 "getCurrentImposter": getCurrentImposter,
-                "getCollectionItems": getCollectionItems
+                "getCollectionItems": getCollectionItems,
+                "createNewCollection": createNewCollection,
+                "setCollectionTo": setCollectionTo,
+                "deleteCollectionAt": deleteCollectionAt,
+                "save": save
             }
 
+    /**
+     * persist to local storage
+     * @returns {undefined}
+     */        
+    function save()
+    {
+
+    }
+
+    /**
+     * 
+     * @param {type} idx
+     * @returns {undefined}
+     */
+    function deleteCollectionAt(idx)
+    {
+        collection.splice(idx, 1);
+        save();
+    }
+
+    /**
+     * set the new index into the collection
+     * @param {type} newIdx
+     * @returns {undefined}
+     */
+    function setCollectionTo(newIdx)
+    {
+        currentCollectionIdx = newIdx;
+    }
+
+    /**
+     * create a new collection and position the Idx to point to it
+     * @param {type} description
+     * @param {type} port
+     * @returns {undefined}
+     */
+    function createNewCollection(description, port)
+    {
+        var newCollection = {};
+
+        newCollection.port = port;
+        newCollection.description = description;
+        newCollection.imposters = [];
+
+        var newImposter = {};
+        newCollection.imposters.push(newImposter);
+        newImposter.responses =
+                [{
+                        "status": 200,
+                        "headers": [],
+                        "body": ""
+
+
+                    }];
+        newImposter.match =
+                {
+                    "path": "",
+                    "verb": "GET",
+                    "headers": [],
+                    "body_match":
+                            {
+                                "type": "equals",
+                                "body": "body"
+                            }
+                }
+
+        var newIdx = collection.length;
+        collection.push(newCollection);
+        currentCollectionIdx = newIdx;
+        save();
+    }
 
     /**
      * used to fill the select box on the home page
