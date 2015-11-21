@@ -5,14 +5,17 @@ angular.module('myApp')
         .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, collectionItems) {
             var vm = this;
             vm.errorMessage = "No errors";
-            vm.data = currentImposter;
+            vm.buffer = {};
+            vm.buffer.data   = currentImposter;
             vm.currentImposterIdx = 0; //the imposter 
             vm.currentResponseIdx = 0; //the current response for the imposter
             vm.collectionItems = collectionItems; //used for the select box
-            vm.currentCollectionIdx = vm.data.id; // the index into the collection array
-
-            vm.buffer = {};
-            vm.buffer.data = vm.data;
+            vm.currentCollectionIdx = vm.buffer.data.id; // the index into the collection array
+            vm.collectionSelectorIdx =  vm.currentCollectionIdx.toString() ;
+            
+            //$log.debug("currentcollection idx "
+             //       + vm.currentCollectionIdx);
+ 
             vm.displayData = "";
 
             vm.matchTypes = ['matches', 'equals', 'regex', 'startsWith', 'contains', 'endsWith'];
@@ -88,13 +91,15 @@ angular.module('myApp')
 
             }
 
-            vm.changeCollection()
+            vm.changeCollection = function()
             {
+              //  $log.debug("HIT CHANGE COLLECTION")
                 vm.currentImposterIdx = 0; //reset 
                 vm.currentResponseIdx = 0; //reset
                 
-                vm.currentCollectionIdx;  
+                vm.currentCollectionIdx = parseInt(vm.collectionSelectorIdx); 
                 ImpostersService.setCollectionTo( vm.currentCollectionIdx);
+                vm.buffer.data = ImpostersService.getCurrentImposter();
             }
 
 
@@ -131,13 +136,13 @@ angular.module('myApp')
             $scope.$watch(
                     function watchDisplayData(scope) {
                         // Return the "result" of the watch expression.
-                        return(vm.data);
+                        return(vm.buffer.data);
                     },
                     function handleDisplayChange(newValueStr, oldValueStr) {
                         try
                         {
 
-                            vm.displayData = angular.toJson(vm.data, true)
+                            vm.displayData = angular.toJson(vm.buffer.data, true)
 
                         }
                         catch (err)

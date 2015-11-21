@@ -27,20 +27,25 @@
     <div id="messageRow" class="row">
         <div>
             <span class="emphasis text-danger">{{home.errorMessage}}</span> 
+            
+           
+            
         </div>
-        <form>
+         
             <div class="form-group">
                 <div class="col-sm-2">
                     <label class="control-label internalTitle col-sm-2" for="status">Collection</h3>
                 </div>
                 <div class="col-sm-8">
-                    <select  ng-change="home.changeCollection()" ng-model="home.currentCollectionIdx" class="form-control" id="collectionSelector">
+                    <select  ng-change="home.changeCollection()" ng-model="home.collectionSelectorIdx" class="form-control" id="collectionSelector">
                         <option ng-repeat="item in home.collectionItems track by item.id" ng-selected="item.selected == true"     value="{{item.id}}">{{item.description}}</option>  
+               
+                    
                     </select>    
                 </div>
                  
             </div>
-        </form>
+         
     </div>
     <br>
     <div class="row">

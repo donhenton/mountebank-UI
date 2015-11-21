@@ -193,7 +193,7 @@ function impostersService($log, localStorageService, $rootScope)
 
     function getCurrentImposter()
     {
-        $log.debug("getCurrentImposter "+currentCollectionIdx)
+        //$log.debug("getCurrentImposter "+currentCollectionIdx)
         return collection[currentCollectionIdx];
     }
 
