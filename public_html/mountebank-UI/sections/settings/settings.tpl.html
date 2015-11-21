@@ -9,12 +9,12 @@
             <label class="control-label col-sm-1" for="name">Current</label> 
             <div class="col-sm-6">
                 <select class="form-control" id="collectionSelector">
-                    <option ng-repeat="item in settings.collectionItems track by item.port" ng-selected="item.selected == true"     value="{{item.id}}">{{item.description}}</option>  
+                    <option ng-repeat="item in settings.collectionItems track by item.id" ng-selected="item.selected == true"     value="{{item.id}}">{{item.description}}</option>  
                 </select>    
             </div>
 
             <div class="col-sm-1">
-                <button   ng-click="settings.addCollection()" class="center-block btn btn-primary btn-sm"><i  class="glyphicon glyphicon-plus-sign"></i> Add New</button>
+                <button   ng-click="settings.createNewCollection()" class="center-block btn btn-primary btn-sm"><i  class="glyphicon glyphicon-plus-sign"></i> Add New</button>
 
             </div>
             <div class="col-sm-1">

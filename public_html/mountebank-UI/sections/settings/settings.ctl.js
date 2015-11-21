@@ -14,6 +14,11 @@
             {
                 vm.collectionItems = ImpostersService.getCollectionItems();
             }
+            
+            vm.createNewCollection = function()
+            {
+                ImpostersService.createNewCollection();
+            }
     
         });
 

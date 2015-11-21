@@ -2,14 +2,15 @@
 
 angular.module('myApp')
 
-        .controller('HomeCtrl', function ($scope, $log, ImpostersService,currentImposter,collectionItems) {
+        .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, collectionItems) {
             var vm = this;
             vm.errorMessage = "No errors";
             vm.data = currentImposter;
             vm.currentImposterIdx = 0; //the imposter 
             vm.currentResponseIdx = 0; //the current response for the imposter
             vm.collectionItems = collectionItems; //used for the select box
-            
+            vm.currentCollectionIdx = vm.data.id; // the index into the collection array
+
             vm.buffer = {};
             vm.buffer.data = vm.data;
             vm.displayData = "";
@@ -31,11 +32,11 @@ angular.module('myApp')
                 var ref = null;
                 if (type == 'responseBody')
                 {
-                  ref =  vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx];
+                    ref = vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx];
                 }
                 else
                 {
-                  ref =  vm.buffer.data.imposters[vm.currentImposterIdx].match.body_match;  
+                    ref = vm.buffer.data.imposters[vm.currentImposterIdx].match.body_match;
                 }
 
 
@@ -55,7 +56,7 @@ angular.module('myApp')
                 }
 
 
-                
+
             }
 
 
@@ -86,6 +87,16 @@ angular.module('myApp')
                 vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].headers.push(newItem);
 
             }
+
+            vm.changeCollection()
+            {
+                vm.currentImposterIdx = 0; //reset 
+                vm.currentResponseIdx = 0; //reset
+                
+                vm.currentCollectionIdx;  
+                ImpostersService.setCollectionTo( vm.currentCollectionIdx);
+            }
+
 
             vm.changeImposter = function (idx)
             {

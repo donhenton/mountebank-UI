@@ -56,8 +56,9 @@ function impostersService($log, localStorageService, $rootScope)
     function createNewCollection()
     {
         var newCollection = {};
-
+        var newIdx = collection.length;
         newCollection.port = 9999;
+        newCollection.id = newIdx
         newCollection.description = "New Imposter Description";
         newCollection.imposters = [];
 
@@ -83,7 +84,7 @@ function impostersService($log, localStorageService, $rootScope)
                             }
                 }
 
-        var newIdx = collection.length;
+       
         collection.push(newCollection);
         currentCollectionIdx = newIdx;
         save();
@@ -114,17 +115,12 @@ function impostersService($log, localStorageService, $rootScope)
         return items;
     }
 
-
-    function getEmptyData()
-    {
-        //TODO implement this
-    }
-
-    //TODO if this function returns null, then return a new emptyData
+ 
 
     var collection =
             [{
                     "port": 3445,
+                    "id": 0,
                     "description": "Sample Imposter Collection",
                     "imposters":
                             [{
@@ -197,7 +193,8 @@ function impostersService($log, localStorageService, $rootScope)
 
     function getCurrentImposter()
     {
-        return collection[0];
+        $log.debug("getCurrentImposter "+currentCollectionIdx)
+        return collection[currentCollectionIdx];
     }
 
 
