@@ -6,7 +6,7 @@ angular.module('app.services').factory('ImpostersService', impostersService);
 function impostersService($log, localStorageService, $rootScope)
 {
     var currentCollectionIdx = 0;
-    
+
 
 
     var exports =
@@ -15,6 +15,7 @@ function impostersService($log, localStorageService, $rootScope)
                 "getCollectionItems": getCollectionItems,
                 "createNewCollection": createNewCollection,
                 "setCollectionTo": setCollectionTo,
+                "createNewImposter": createNewImposter,
                 "deleteCollectionAt": deleteCollectionAt,
                 "save": save
             }
@@ -22,7 +23,7 @@ function impostersService($log, localStorageService, $rootScope)
     /**
      * persist to local storage
      * @returns {undefined}
-     */        
+     */
     function save()
     {
 
@@ -35,9 +36,9 @@ function impostersService($log, localStorageService, $rootScope)
      */
     function deleteCollectionAt(idx)
     {
-       // $log.debug("splice at "+idx+" "+collection.length)
+        // $log.debug("splice at "+idx+" "+collection.length)
         collection.splice(idx, 1);
-       // $log.debug("collection now "+collection.length)
+        // $log.debug("collection now "+collection.length)
         save();
     }
 
@@ -61,11 +62,21 @@ function impostersService($log, localStorageService, $rootScope)
         var newIdx = collection.length;
         newCollection.port = 9999;
         newCollection.id = newIdx
-        newCollection.description = "New Imposter Description "+newIdx;
+        newCollection.description = "New Imposter Description " + newIdx;
         newCollection.imposters = [];
 
-        var newImposter = {};
+        var newImposter = createNewImposter();
         newCollection.imposters.push(newImposter);
+
+
+        collection.push(newCollection);
+        currentCollectionIdx = newIdx;
+        save();
+    }
+
+    function createNewImposter()
+    {
+        var newImposter = {};
         newImposter.responses =
                 [{
                         "status": 200,
@@ -86,11 +97,8 @@ function impostersService($log, localStorageService, $rootScope)
                             }
                 }
 
-       
-        collection.push(newCollection);
-        currentCollectionIdx = newIdx;
-        save();
     }
+
 
     /**
      * used to fill the select box on the home page
@@ -117,7 +125,7 @@ function impostersService($log, localStorageService, $rootScope)
         return items;
     }
 
- 
+
 
     var collection =
             [{

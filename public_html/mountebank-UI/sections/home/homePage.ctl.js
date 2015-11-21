@@ -111,6 +111,20 @@ angular.module('myApp')
 
 
             }
+            
+            vm.addImposter = function()
+            {
+                var newImposter = ImpostersService. createNewImposter();
+                vm.buffer.data.imposters.push(newImposter);
+                
+            }
+            
+            vm.deleteImposter = function()
+            {
+                vm.buffer.data.imposters.splice(vm.currentImposterIdx,1);
+                vm.currentImposterIdx = 0;
+                vm.currentResponseIdx = 0;
+            }
 
             /**
              * called when tabs are changed
