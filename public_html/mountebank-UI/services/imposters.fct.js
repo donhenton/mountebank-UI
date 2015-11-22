@@ -6,7 +6,18 @@ angular.module('app.services').factory('ImpostersService', impostersService);
 function impostersService($log, localStorageService, $rootScope)
 {
     var currentCollectionIdx = 0;
+    var collection = [];
+    var LS_KEY = "mountebank_collection";
 
+    var ls = localStorageService.get(LS_KEY);
+    if (ls !== null) {
+        collection = ls;
+    }
+    else
+    {
+        createNewCollection();
+        
+    }
 
 
     var exports =
@@ -26,8 +37,18 @@ function impostersService($log, localStorageService, $rootScope)
      */
     function save()
     {
-        //$log.debug("save called")
+         localStorageService.set(LS_KEY, collection);
     }
+
+    $rootScope.$watch(
+            function () {
+                return collection;
+            },
+            function () {
+                save()
+            },
+            true);
+
 
     /**
      * 
@@ -127,84 +148,6 @@ function impostersService($log, localStorageService, $rootScope)
 
         return items;
     }
-
-
-
-    var collection =
-            [{
-                    "port": 3445,
-                    "id": 0,
-                    "description": "Sample Imposter Collection",
-                    "imposters":
-                            [{
-                                    "responses": [
-                                        {
-                                            "status": 200,
-                                            "headers": [{key: "alpha", "value": 34}, {key: "beta", "value": 79}],
-                                            "body": "{ \"id\": 34, \"product\": \"ice cream\"}"
-
-
-                                        }],
-                                    "match":
-                                            {
-                                                "path_match":
-                                                        {"value": "products/1", "type": "contains"},
-                                                "verb": "POST",
-                                                "headers": [{key: "user", "value": "elmo00"}],
-                                                "body_match":
-                                                        {
-                                                            "type": "equals",
-                                                            "body": "{  \"search\": \"ice cream\"}"
-                                                        }
-                                            }
-                                }
-                                ,
-                                {
-                                    "responses": [
-                                        {
-                                            "status": 450,
-                                            "headers": [{key: "user", "value": "elmo200"}],
-                                            "body": "{ \"id\": 77, \"product\": \"coconuts\"}"
-                                        }],
-                                    "match":
-                                            {
-                                                "path_match":
-                                                        {"value": "products/55", "type": "equals"},
-                                                "verb": "POST",
-                                                "headers": [{key: "user1", "value": "elmo201"}, {key: "user2", "value": "elmo202"}, {key: "user3", "value": "elmo203"}],
-                                                "body_match":
-                                                        {
-                                                            "type": "not contains",
-                                                            "body": "*search1*"
-                                                        }
-                                            }
-                                }
-                                ,
-                                {
-                                    "responses":
-                                            [{
-                                                    "status": 404,
-                                                    "headers": [],
-                                                    "body": "{ \"id\": 77, \"product\": \"garbage\"}"
-                                                }],
-                                    "match":
-                                            {
-                                                "path_match":
-                                                        {"value": "products/655", "type": "matches"},
-                                                "verb": "GET",
-                                                "headers": [],
-                                                "body_match":
-                                                        {
-                                                            "type": "equals",
-                                                            "body": "*search2*"
-                                                        }
-                                            }
-                                }
-                            ]
-
-                }]
-
-
 
 
     function getCurrentImposter()

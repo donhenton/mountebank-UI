@@ -1,85 +1,73 @@
-{
-    "port":3445,
-    "imposters":
+   
             [{
-                    "response":
-                            {
-                                "status": 200,
-                                "headers": {
-                                    "user": "elmo"
-                                },
-                                "body": {
-                                    "id": 34,
-                                    "product": "ice cream"
-                                }
-                            },
-                    "match":
-                            {
-                                "path": "products/1",
-                                "verb": "POST",
-                                "headers": {
-                                    "user": "elmo"
-                                },
-                                "body_match":
+                    "port": 3445,
+                    "id": 0,
+                    "description": "Sample Imposter Collection",
+                    "imposters":
+                            [{
+                                    "responses": [
                                         {
-                                            "type": "equal",
-                                            "body": {
-                                                "search": "ice"
-                                            }
-                                        }
-                            }
-                }
-                ,
-                {
-                    "response":
-                            {
-                                "status": 200,
-                                "headers": {
-                                    "user": "elmo"
-                                },
-                                "body": {
-                                    "id": 34,
-                                    "product": "ice cream"
-                                }
-                            },
-                    "match":
-                            {
-                                "path": "products/1",
-                                "verb": "POST",
-                                "headers": {
-                                    "user": "elmo"
-                                },
-                                "body_match":
-                                        {
-                                            "type": "regex",
-                                            "regex": "*search*"
-                                        }
-                            }
-                }
-                ,
-                {
-                    "response":
-                            {
-                                "status": 404,
-                                "headers": {},
-                                "body": {
-                                    "id": 34,
-                                    "product": "ice cream"
-                                }
-                            },
-                    "match":
-                            {
-                                "path": "products?id=905&product_line=food",
-                                "verb": "GET",
-                                "headers": {},
-                                "body_match":
-                                        {
-                                            "type": "regex",
-                                            "regex": "*search*"
-                                        }
-                            }
-                }
-            ]
+                                            "status": 200,
+                                            "headers": [{"key": "alpha", "value": 34}, {"key": "beta", "value": 79}],
+                                            "body": "{ \"id\": 34, \"product\": \"ice cream\"}"
 
-}
-       
+
+                                        }],
+                                    "match":
+                                            {
+                                                "path_match":
+                                                        {"value": "products/1", "type": "contains"},
+                                                "verb": "POST",
+                                                "headers": [{"key": "user", "value": "elmo00"}],
+                                                "body_match":
+                                                        {
+                                                            "type": "equals",
+                                                            "body": "{  \"search\": \"ice cream\"}"
+                                                        }
+                                            }
+                                }
+                                ,
+                                {
+                                    "responses": [
+                                        {
+                                            "status": 450,
+                                            "headers": [{"key": "user", "value": "elmo200"}],
+                                            "body": "{ \"id\": 77, \"product\": \"coconuts\"}"
+                                        }],
+                                    "match":
+                                            {
+                                                "path_match":
+                                                        {"value": "products/55", "type": "equals"},
+                                                "verb": "POST",
+                                                "headers": [{"key": "user1", "value": "elmo201"}, {"key": "user2", "value": "elmo202"}, {"key": "user3", "value": "elmo203"}],
+                                                "body_match":
+                                                        {
+                                                            "type": "not contains",
+                                                            "body": "*search1*"
+                                                        }
+                                            }
+                                }
+                                ,
+                                {
+                                    "responses":
+                                            [{
+                                                    "status": 404,
+                                                    "headers": [],
+                                                    "body": "{ \"id\": 77, \"product\": \"garbage\"}"
+                                                }],
+                                    "match":
+                                            {
+                                                "path_match":
+                                                        {"value": "products/655", "type": "matches"},
+                                                "verb": "GET",
+                                                "headers": [],
+                                                "body_match":
+                                                        {
+                                                            "type": "equals",
+                                                            "body": "*search2*"
+                                                        }
+                                            }
+                                }
+                            ]
+
+                }]
