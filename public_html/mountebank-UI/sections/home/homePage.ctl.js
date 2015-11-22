@@ -147,29 +147,5 @@ angular.module('myApp')
                 //console.log(angular.toJson(item))
             }
 
-            $scope.$watch(
-                    function watchDisplayData(scope) {
-                        // Return the "result" of the watch expression.
-                        return(vm.buffer.data);
-                    },
-                    function handleDisplayChange(newValueStr, oldValueStr) {
-                        try
-                        {
-                            //$log.debug("home save")
-                            ImpostersService.save();
-
-
-                        }
-                        catch (err)
-                        {
-                            vm.errorMessage = err.message;
-                        }
-                    }, true
-                    );
-
-
-
-
-
 
         });
