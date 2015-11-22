@@ -1,13 +1,67 @@
 angular.module('app.services').factory('MountebankService', mountebankService);
 
 
-function mountebankService($log)
+function mountebankService($log,$http)
 {
 
     var exports =
             {
-                "translate": translate
+                "translate": translate,
+                "postToMountebank": postToMountebank,
+                "deleteFromMountebank": deleteFromMountebank
             }
+
+    function dataServiceError(errorResponse) {
+        $log.error('XHR Failed for MountebankService');
+        $log.error(errorResponse);
+        return errorResponse;
+    }
+
+    /**
+     * delete content from mountebank server at the given port
+     * @param {type} port
+     * @param {type} url
+     * @returns {unresolved}
+     */
+    function deleteFromMountebank(url,port)
+    {
+        url = url.trim();
+        var requestUrl = url + '/imposters/' + port;
+        return $http({
+            'url': requestUrl,
+            'method': 'DELETE'
+        }).then(function (response) {
+            return response;
+        });
+
+    }
+
+
+    /**
+     * will call the mountebank server at url 
+     * @param {type} url mountebank url
+     * @param {type} body the json to send
+     * @returns {unresolved} a promise which will return
+     * the WHOLE response
+     */
+    function postToMountebank(url,  body) {
+        url=url.trim();
+        var requestUrl = url + '/imposters';
+
+        return $http({
+            'url': requestUrl,
+            'method': 'POST',
+            'data': body,
+            'headers': {
+                'Content-Type': 'application/json'
+            },
+            'cache': false
+        }).then(function (response) {
+            return response;
+        }) ;
+    }
+
+
 
     function isInteger(x) {
         try {
@@ -171,40 +225,7 @@ function mountebankService($log)
     return exports;
 }
 
-/*
- newStub.predicates
- * 'matches', 'equals', 'contains','not equals','not contains'
- 
- "predicates": [
- {
- "and": [
- {
- "contains": {
- "path": "bozo"
- }
- },
- {
- "deepEquals": {
- "query": {"fred": 1}
- }
- },
- {
- "equals": {
- "method": "GET"
- }
- } 
- ]
- }
- ]
- 
- 
- * 
- * 'matches', 'equals', 'contains','not equals','not contains'
- and together each of path, body, mehhtod headers
- path optional  equals contains, matches
- body optional  equals, contains, matches
- method required
- headers if array is empty drop out
- http://www.mbtest.org/docs/api/predicates
- */
+
+// http://www.mbtest.org/docs/api/predicates
+
              

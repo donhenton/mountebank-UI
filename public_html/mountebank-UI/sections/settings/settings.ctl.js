@@ -5,7 +5,7 @@ angular.module('myApp')
             var vm = this;
 
             vm.currentImposter = currentImposter;
-            vm.mounteBankUrl = "http://localhost:4545";
+            
             vm.headerLocation = TPL_PATH + "partials/plainHeader.tpl.html"
             vm.currentCollectionIdx = vm.currentImposter.id; // the index into the collection array
             vm.collectionSelectorIdx = vm.currentCollectionIdx.toString();
