@@ -51,33 +51,33 @@
     <div class="row">
 
         <div id="itemSelectorColumn" class="col-sm-2">
-            
-                <div>
-                    <h3>Imposters</h3>
-                </div>
-                <div class="limitY">
 
-                    <div ng-repeat="item in home.buffer.data.imposters track by $index">
-                        <div>
+            <div>
+                <h3>Imposters</h3>
+            </div>
+            <div class="limitY">
+
+                <div ng-repeat="item in home.buffer.data.imposters track by $index">
+                    <div>
 
 
 
-                            <button class="btn btn-med btn-primary pull-right" 
-                                    style="margin: 5px"
-                                    ng-click="home.changeImposter($index)" id="imposter_{{$index}}">
-                                <i   ng-hide="$index != home.currentImposterIdx" class="glyphicon glyphicon-arrow-right"></i> Item {{$index + 1}}</button>
-                        </div>
+                        <button class="btn btn-med btn-primary pull-right" 
+                                style="margin: 5px"
+                                ng-click="home.changeImposter($index)" id="imposter_{{$index}}">
+                            <i   ng-hide="$index != home.currentImposterIdx" class="glyphicon glyphicon-arrow-right"></i> Item {{$index + 1}}</button>
                     </div>
-
                 </div>
-                <br>
-                <div class="row pull-left">
 
-                    <button  ng-click="home.addImposter()" class="btn btn-med btn-primary">Add New</button>
+            </div>
+            <br>
+            <div class="row pull-left">
 
-                    <button ng-disabled="home.buffer.data.imposters.length==1" ng-click="home.deleteImposter()"  class="btn btn-med btn-danger">Delete</button>
-                </div>
-            
+                <button  ng-click="home.addImposter()" class="btn btn-med btn-primary">Add New</button>
+
+                <button ng-disabled="home.buffer.data.imposters.length == 1" ng-click="home.deleteImposter()"  class="btn btn-med btn-danger">Delete</button>
+            </div>
+
         </div>
 
         <div id="formColumn" class="col-sm-10">
@@ -133,9 +133,18 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-1" for="path">Path</label> 
 
-                                <div class="col-sm-8">
-                                    <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_path" name="status" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.path" required>
+
+                                <div class="col-sm-2">
+                                    <select   class="form-control"   id="response_verb" name="verb" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.path_match.type" required>
+
+                                        <option ng-repeat="item in home.matchTypes" value="{{item}}">{{item}}</option>   
+
+                                    </select>
                                 </div>
+                                <div class="col-sm-6">
+                                    <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_path" name="status" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.path_match.value" required>
+                                </div>
+
 
                                 <label class="control-label col-sm-1" for="verb">Verb</label> 
 
@@ -149,30 +158,31 @@
                                     </select>
                                 </div>
                             </div>
+                    </div>
 
-                            <headers array="home.buffer.data.imposters[home.currentImposterIdx].match.headers"></headers>
+                    <headers array="home.buffer.data.imposters[home.currentImposterIdx].match.headers"></headers>
 
-                            <div class="form-group grouping-box">
+                    <div class="form-group grouping-box">
 
-                                <h4>Body</h4> 
+                        <h4>Body</h4> 
 
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2" for="path">Match Type</label> 
-                                    <div class="col-sm-3">
-                                        <select   class="form-control"   id="response_verb" name="verb" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.type" required>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="path">Match Type</label> 
+                            <div class="col-sm-3">
+                                <select   class="form-control"   id="response_verb" name="verb" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.type" required>
 
-                                            <option ng-repeat="item in home.matchTypes" value="{{item}}">{{item}}</option>   
+                                    <option ng-repeat="item in home.matchTypes" value="{{item}}">{{item}}</option>   
 
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:150px"></textarea>
+                                </select>
                             </div>
+                        </div>
+
+                        <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:150px"></textarea>
+                    </div>
 
 
 
-                        </form>
+                    </form>
                     </div>
 
 

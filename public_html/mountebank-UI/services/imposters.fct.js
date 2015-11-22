@@ -26,7 +26,7 @@ function impostersService($log, localStorageService, $rootScope)
      */
     function save()
     {
-       //$log.debug("save called")
+        //$log.debug("save called")
     }
 
     /**
@@ -82,12 +82,13 @@ function impostersService($log, localStorageService, $rootScope)
                         "status": 200,
                         "headers": [],
                         "body": ""
-
-
                     }];
         newImposter.match =
                 {
-                    "path": "",
+                    "path_match": {
+                        "type": "equals",
+                        "value": "path"
+                    },
                     "verb": "GET",
                     "headers": [],
                     "body_match":
@@ -95,8 +96,8 @@ function impostersService($log, localStorageService, $rootScope)
                                 "type": "equals",
                                 "body": "body"
                             }
-                }
-                
+                };
+
         return newImposter;
 
     }
@@ -146,7 +147,8 @@ function impostersService($log, localStorageService, $rootScope)
                                         }],
                                     "match":
                                             {
-                                                "path": "products/1",
+                                                "path_match":
+                                                        {"value": "products/1", "type": "contains"},
                                                 "verb": "POST",
                                                 "headers": [{key: "user", "value": "elmo00"}],
                                                 "body_match":
@@ -166,7 +168,8 @@ function impostersService($log, localStorageService, $rootScope)
                                         }],
                                     "match":
                                             {
-                                                "path": "products/55",
+                                                "path_match":
+                                                        {"value": "products/55", "type": "equals"},
                                                 "verb": "POST",
                                                 "headers": [{key: "user1", "value": "elmo201"}, {key: "user2", "value": "elmo202"}, {key: "user3", "value": "elmo203"}],
                                                 "body_match":
@@ -186,7 +189,8 @@ function impostersService($log, localStorageService, $rootScope)
                                                 }],
                                     "match":
                                             {
-                                                "path": "products?id=905&product_line=food",
+                                                "path_match":
+                                                        {"value": "products/655", "type": "matches"},
                                                 "verb": "GET",
                                                 "headers": [],
                                                 "body_match":

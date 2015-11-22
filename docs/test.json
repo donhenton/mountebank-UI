@@ -1,0 +1,32 @@
+{
+    "port": 4545,
+    "protocol": "http",
+    "stubs": [
+        {
+            "responses": [{
+                    "statusCode": 200,
+                    "headers":
+                            {
+                                "bonzo": "dog"
+                            },
+                    "body": "{\"answer\": \"get a job\"}"
+                }],
+            "predicates": [
+                {
+                    "and": [
+                        {
+                            "contains": {
+                                "path": "bozo"
+                            }
+                        },
+                        {
+                            "equals": {
+                                "method": "GET"
+                            }
+                        } 
+                    ]
+                }
+            ]
+        }
+    ]
+}

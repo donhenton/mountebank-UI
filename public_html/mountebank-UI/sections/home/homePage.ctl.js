@@ -14,8 +14,7 @@ angular.module('myApp')
             vm.collectionSelectorIdx = vm.currentCollectionIdx.toString();
 
 
-            vm.matchTypes = ['matches', 'equals', 'regex', 
-                'startsWith', 'contains', 'endsWith','deepEquals'];
+            vm.matchTypes = ['matches', 'equals', 'contains'];
 
 
             /**
