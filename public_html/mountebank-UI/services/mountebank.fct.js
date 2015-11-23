@@ -1,7 +1,7 @@
 angular.module('app.services').factory('MountebankService', mountebankService);
 
 
-function mountebankService($log,$http)
+function mountebankService($log, $http)
 {
 
     var exports =
@@ -23,7 +23,7 @@ function mountebankService($log,$http)
      * @param {type} url
      * @returns {unresolved}
      */
-    function deleteFromMountebank(url,port)
+    function deleteFromMountebank(url, port)
     {
         url = url.trim();
         var requestUrl = url + '/imposters/' + port;
@@ -44,8 +44,8 @@ function mountebankService($log,$http)
      * @returns {unresolved} a promise which will return
      * the WHOLE response
      */
-    function postToMountebank(url,  body) {
-        url=url.trim();
+    function postToMountebank(url, body) {
+        url = url.trim();
         var requestUrl = url + '/imposters';
 
         return $http({
@@ -58,7 +58,7 @@ function mountebankService($log,$http)
             'cache': false
         }).then(function (response) {
             return response;
-        }) ;
+        });
     }
 
 
@@ -66,7 +66,7 @@ function mountebankService($log,$http)
     function isInteger(x) {
         var y;
         try {
-          y = parseInt(x)
+            y = parseInt(x)
         } catch (e) {
             return false;
         }
@@ -138,6 +138,17 @@ function mountebankService($log,$http)
                 mainAnd.push(bodyPredicate);
             }
             //headers
+            var headerVar = processHeaders(imposter.match.headers);
+
+            if (headerVar !== null)
+            {
+                var headerMatch = {};
+                headerMatch["headers"] = headerVar;
+                mainAnd.push({"equals": headerMatch});
+            }
+
+            //query params
+
 
 
         });
