@@ -64,9 +64,11 @@ function mountebankService($log,$http)
 
 
     function isInteger(x) {
+        var y;
         try {
-            var y = parseInt(x)
+          y = parseInt(x)
         } catch (e) {
+            return false;
         }
         return (typeof y === 'number') && (y % 1 === 0);
     }

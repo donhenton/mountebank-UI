@@ -1,12 +1,12 @@
 angular.module('myApp')
 
-        .controller('SettingsCtrl', function ($scope, $log, TPL_PATH,
+        .controller('SettingsCtrl', function ($scope, $log, TPL_PATH,HEADER_LOCATION,
                 ImpostersService, currentImposter, collectionItems) {
             var vm = this;
 
             vm.currentImposter = currentImposter;
             
-            vm.headerLocation = TPL_PATH + "partials/plainHeader.tpl.html"
+            vm.headerLocation = HEADER_LOCATION;
             vm.currentCollectionIdx = vm.currentImposter.id; // the index into the collection array
             vm.collectionSelectorIdx = vm.currentCollectionIdx.toString();
             vm.collectionItems = collectionItems;

@@ -1,11 +1,11 @@
 angular.module('myApp')
 
-        .controller('JsonCtrl', function ($log, TPL_PATH, mounteBankDisplay, 
+        .controller('JsonCtrl', function ($log, TPL_PATH, mounteBankDisplay,HEADER_LOCATION ,
             currentImposter, MountebankService) {
             var vm = this;
             vm.mounteBankUrl = "http://localhost:2525";
             vm.currentImposter = currentImposter;
-            vm.headerLocation = TPL_PATH + "partials/plainHeader.tpl.html"
+            vm.headerLocation = HEADER_LOCATION;
             //vm.displayData = angular.toJson(vm.currentImposter,true);
             vm.displayData = mounteBankDisplay;
             vm.message = "";

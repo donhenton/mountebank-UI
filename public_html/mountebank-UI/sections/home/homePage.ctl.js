@@ -2,7 +2,7 @@
 
 angular.module('myApp')
 
-        .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, collectionItems) {
+        .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, collectionItems,HEADER_LOCATION) {
             var vm = this;
             vm.errorMessage = "No errors";
             vm.buffer = {};
@@ -12,7 +12,7 @@ angular.module('myApp')
             vm.collectionItems = collectionItems; //used for the select box
             vm.currentCollectionIdx = vm.buffer.data.id; // the index into the collection array
             vm.collectionSelectorIdx = vm.currentCollectionIdx.toString();
-
+            vm.headerLocation = HEADER_LOCATION;
 
             vm.matchTypes = ['matches', 'equals', 'contains','not equals','not contains'];
 
