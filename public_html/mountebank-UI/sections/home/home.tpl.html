@@ -1,5 +1,5 @@
 <ng-include src="home.headerLocation"></ng-include>  
- 
+
 
 <div>
     <div id="messageRow" class="row">
@@ -75,24 +75,26 @@
                                     <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_status" name="status" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].status" required>
                                 </div>
                             </div>
+                            <i>(Click on the section below)</i>
+                            <uib-accordion close-others="false">
+                                <uib-accordion-group heading="Headers">
+                                    <headers array="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].headers"></headers>
+                                </uib-accordion-group>
+                                <uib-accordion-group heading="Body">
+                                    <div class="form-group grouping-box">
+                                        <div class="internalHeaderRow">
 
-
-                            <headers array="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].headers"></headers>
-
-
-                            <div class="form-group grouping-box">
-                                <div class="internalHeaderRow">
-                                    <span class="internalHeader">Body</span> 
-                                    <span 
-                                        ng-if="home.isJsonString(home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body)"
-                                        class="pull-right">
-                                        <button ng-click="home.formatJson('responseBody', true)" class="btn btn-primary btn-xs">Pretty Print JSON</button>
-                                        <button ng-click="home.formatJson('responseBody', false)" class="btn btn-primary btn-xs">Unformat JSON</button>
-                                    </span>
-                                </div>
-                                <textarea ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body" style="width:98%;height:150px"></textarea>
-                            </div>
-
+                                            <span 
+                                                ng-if="home.isJsonString(home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body)"
+                                                >
+                                                <button ng-click="home.formatJson('responseBody', true)" class="btn btn-primary btn-xs">Pretty Print JSON</button>
+                                                <button ng-click="home.formatJson('responseBody', false)" class="btn btn-primary btn-xs">Unformat JSON</button>
+                                            </span>
+                                        </div>
+                                        <textarea ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body" style="width:98%;height:150px"></textarea>
+                                    </div>
+                                </uib-accordion-group>
+                            </uib-accordion>
                         </form>
                     </div>
 
@@ -137,28 +139,32 @@
                                 </div>
                             </div>
                     </div>
+                     <i>(Click on the section below)</i>
+                    <uib-accordion close-others="false">
+                        <uib-accordion-group heading="Headers">
+                            <headers array="home.buffer.data.imposters[home.currentImposterIdx].match.headers"></headers>
+                        </uib-accordion-group>
+                        <uib-accordion-group heading="Body">
 
-                    <headers array="home.buffer.data.imposters[home.currentImposterIdx].match.headers"></headers>
+                            <div class="form-group grouping-box">
 
-                    <div class="form-group grouping-box">
+                                <h4>Body</h4> 
 
-                        <h4>Body</h4> 
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="path">Match Type</label> 
+                                    <div class="col-sm-3">
+                                        <select   class="form-control"   id="response_verb" name="verb" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.type" required>
 
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="path">Match Type</label> 
-                            <div class="col-sm-3">
-                                <select   class="form-control"   id="response_verb" name="verb" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.type" required>
+                                            <option ng-repeat="item in home.matchTypes" value="{{item}}">{{item}}</option>   
 
-                                    <option ng-repeat="item in home.matchTypes" value="{{item}}">{{item}}</option>   
+                                        </select>
+                                    </div>
+                                </div>
 
-                                </select>
+                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:150px"></textarea>
                             </div>
-                        </div>
-
-                        <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:150px"></textarea>
-                    </div>
-
-
+                        </uib-accordion-group>
+                    </uib-accordion>
 
                     </form>
                     </div>
