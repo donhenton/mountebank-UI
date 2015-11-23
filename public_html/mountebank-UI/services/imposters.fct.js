@@ -16,7 +16,7 @@ function impostersService($log, localStorageService, $rootScope)
     else
     {
         createNewCollection();
-        
+
     }
 
 
@@ -28,6 +28,7 @@ function impostersService($log, localStorageService, $rootScope)
                 "setCollectionTo": setCollectionTo,
                 "createNewImposter": createNewImposter,
                 "deleteCollectionAt": deleteCollectionAt,
+                "getSampleResponse": getSampleResponse,
                 "save": save
             }
 
@@ -37,7 +38,7 @@ function impostersService($log, localStorageService, $rootScope)
      */
     function save()
     {
-         localStorageService.set(LS_KEY, collection);
+        localStorageService.set(LS_KEY, collection);
     }
 
     $rootScope.$watch(
@@ -95,16 +96,24 @@ function impostersService($log, localStorageService, $rootScope)
         currentCollectionIdx = newIdx;
         save();
     }
+    ;
+
+    function getSampleResponse()
+    {
+        return {
+            "status": 200,
+            "headers": [],
+            "body": ""
+        };
+    }
+    ;
 
     function createNewImposter()
     {
         var newImposter = {};
+        var newResponse = getSampleResponse();
         newImposter.responses =
-                [{
-                        "status": 200,
-                        "headers": [],
-                        "body": ""
-                    }];
+                [newResponse];
         newImposter.match =
                 {
                     "path_match": {
@@ -155,7 +164,7 @@ function impostersService($log, localStorageService, $rootScope)
     {
         //$log.debug("getCurrentImposter "+currentCollectionIdx)
         return collection[currentCollectionIdx];
-        
+
     }
 
 

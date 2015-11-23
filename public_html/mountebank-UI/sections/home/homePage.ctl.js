@@ -2,7 +2,7 @@
 
 angular.module('myApp')
 
-        .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, collectionItems,HEADER_LOCATION) {
+        .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, collectionItems, HEADER_LOCATION) {
             var vm = this;
             vm.errorMessage = "No errors";
             vm.buffer = {};
@@ -14,8 +14,42 @@ angular.module('myApp')
             vm.collectionSelectorIdx = vm.currentCollectionIdx.toString();
             vm.headerLocation = HEADER_LOCATION;
 
-            vm.matchTypes = ['matches', 'equals', 'contains','not equals','not contains'];
+            vm.matchTypes = ['matches', 'equals', 'contains', 'not equals', 'not contains'];
 
+
+           
+            vm.moveResponseTo = function(idx)
+            {
+                vm.currentResponseIdx =idx;
+            }
+
+            /**
+             * add a new response section
+             * @returns {undefined}
+             */
+            vm.addResponse = function ()
+            {
+                vm.buffer.data.imposters[vm.currentImposterIdx]
+                        .responses.push(
+                                ImpostersService.getSampleResponse());
+                vm.currentResponseIdx = vm.currentResponseIdx + 1;
+
+            }
+
+            /**
+             * delete the current response section
+             * @returns {undefined}
+             */
+            vm.deleteResponse = function ()
+            {
+                var doDelete = confirm("Delete this Response?");
+                if (doDelete)
+                {
+                    vm.buffer.data.imposters[vm.currentImposterIdx]
+                            .responses.splice(vm.currentResponseIdx, 1);
+                     vm.currentResponseIdx = 0;
+                }
+            }
 
             /**
              * take the type, find the ref

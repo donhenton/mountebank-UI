@@ -46,8 +46,13 @@ i.centerIcon{
      padding:  5px; 
 }
 
-#responsePaginatorTable .pagination
+span.responseSelection
 {
-     
-     margin-top:  5px; 
+    margin:5px;padding:5px;
+}
+
+span.responseSelection.selectedResponse
+{
+    background-color: blue;
+    color:white
 }
