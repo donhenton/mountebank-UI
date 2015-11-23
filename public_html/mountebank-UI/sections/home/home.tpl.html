@@ -68,11 +68,21 @@
 
                         <form name="home.responseForm" class="form-horizontal" novalidate>   
 
-                            <div class="form-group">
+                            <div   style="height:35px">
                                 <label class="control-label col-sm-1" for="status">Status</label> 
 
                                 <div class="col-sm-2">
                                     <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_status" name="status" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].status" required>
+                                </div>
+                                <div class="col-sm-9 paginatorBox">
+                                    <table id="responsePaginatorTable">
+                                        <tr><td><em>Selected Response</em></td>
+                                            <td><button ng-click="addResponseHeader()" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign"></i>Add Response</button></td>
+                                            <td><button ng-click="addResponseHeader()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus-sign"></i>Delete Current Response</button></td></tr>
+                                        <tr><td colspan="3">  <uib-pagination max-size="6" class="pagination-sm" direction-links="false" total-items="home.buffer.data.imposters[home.currentImposterIdx].responses" ng-model="home.currentResponseIdx" items-per-page="1"  ></uib-pagination>
+                                        </td></tr>
+                                    </table>
+
                                 </div>
                             </div>
                             <i>(Click on the section below)</i>
@@ -139,7 +149,7 @@
                                 </div>
                             </div>
                     </div>
-                     <i>(Click on the section below)</i>
+                    <i>(Click on the section below)</i>
                     <uib-accordion close-others="false">
                         <uib-accordion-group heading="Headers">
                             <headers array="home.buffer.data.imposters[home.currentImposterIdx].match.headers"></headers>

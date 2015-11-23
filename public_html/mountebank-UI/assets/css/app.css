@@ -12,7 +12,7 @@ div.limitY
 
 .internalTitle
 {
-     font-size: 22px;
+    font-size: 22px;
     font-weight: bold;
 }
 .internalHeader
@@ -26,9 +26,28 @@ div.limitY
 }
 
 i.centerIcon{
-    
+
     display:block;
     text-align:center;
+
+
+}
+.paginatorBox {
+
+    vertical-align: top;
+    border: thin solid #1b6d85;
+
+
+}
+
+#responsePaginatorTable td
+{
      
-    
+     padding:  5px; 
+}
+
+#responsePaginatorTable .pagination
+{
+     
+     margin-top:  5px; 
 }
