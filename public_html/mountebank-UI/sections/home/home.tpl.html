@@ -162,7 +162,7 @@
                     <i>(Click on the section below)</i>
                     <uib-accordion close-others="false">
                         <uib-accordion-group heading="Headers">
-                            <headers array="home.buffer.data.imposters[home.currentImposterIdx].match.headers"></headers>
+                            <headers  array="home.buffer.data.imposters[home.currentImposterIdx].match.headers"></headers>
                         </uib-accordion-group>
                         <uib-accordion-group heading="Body">
 
@@ -184,6 +184,12 @@
                                 <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:150px"></textarea>
                             </div>
                         </uib-accordion-group>
+
+                        <uib-accordion-group heading="Query Params">
+                             
+                            <headers customize="home.queryParamCustomizer" array="home.buffer.data.imposters[home.currentImposterIdx].match.query_params"></headers>
+                        </uib-accordion-group>  
+
                     </uib-accordion>
 
                     </form>

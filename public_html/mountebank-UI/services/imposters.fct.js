@@ -122,6 +122,7 @@ function impostersService($log, localStorageService, $rootScope)
                     },
                     "verb": "GET",
                     "headers": [],
+                    "query_params":[],
                     "body_match":
                             {
                                 "type": "equals",

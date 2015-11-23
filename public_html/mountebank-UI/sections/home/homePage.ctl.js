@@ -13,10 +13,11 @@ angular.module('myApp')
             vm.currentCollectionIdx = vm.buffer.data.id; // the index into the collection array
             vm.collectionSelectorIdx = vm.currentCollectionIdx.toString();
             vm.headerLocation = HEADER_LOCATION;
-
             vm.matchTypes = ['matches', 'equals', 'contains', 'not equals', 'not contains'];
-
-
+         
+            vm.queryParamCustomizer = {};
+            vm.queryParamCustomizer.keyLabel = "Field";
+            vm.queryParamCustomizer.headerText = "";
            
             vm.moveResponseTo = function(idx)
             {

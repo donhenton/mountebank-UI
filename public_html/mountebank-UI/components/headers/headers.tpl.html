@@ -1,6 +1,6 @@
 <div class="form-group grouping-box">
     <div class="internalHeaderRow">
-        <span class="internalHeader">Headers</span> 
+        <span class="internalHeader">{{customize.headerText}}</span> 
 
         <button ng-click="addResponseHeader()" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign"></i>Add</button>
 
@@ -11,7 +11,7 @@
 
             <div class="row">
 
-                <label class="control-label col-sm-1" for="status">Key</label> 
+                <label class="control-label col-sm-1" for="status">{{customize.keyLabel}}</label> 
 
                 <div class="col-sm-4">
                     <input ng-blur="inputChange(this, $event)" type="text" class="form-control input-sm"   id="response_key_{{$index}}" name="status" ng-model="header.key" required>
