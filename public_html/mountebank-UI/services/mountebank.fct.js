@@ -147,9 +147,25 @@ function mountebankService($log, $http)
                 mainAnd.push({"equals": headerMatch});
             }
 
-            //query params
+            if (imposter.match.query_params.length > 0)
+            {
+                //query params
+                var queryVar = {"query":{}};
+                var deepEqualsVar = {"deepEquals": queryVar};
+                mainAnd.push(deepEqualsVar);
+                
+               
+                angular.forEach(imposter.match.query_params, function (parm, idx)
+                {
+                    var key = parm.key;
+                    if (key !== null && key.trim().length > 0)
+                    {
+                        queryVar.query[parm.key] = parm.value;
+                    }
 
+                });
 
+            }
 
         });
 
