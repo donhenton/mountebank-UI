@@ -40,7 +40,7 @@ module.exports = function (grunt) {
                     "public_html/mountebank-UI/sections/help/help.ctl.js",
                     "public_html/mountebank-UI/components/headers/headers.drct.js"],
                 // the location of the resulting JS file
-                dest: 'build/<%= pkg.name %>/<%= pkg.name %>.js'
+                dest: 'build/<%= pkg.name %>/assets/js/<%= pkg.name %>.js'
             }
         },
         uglify: {
@@ -51,14 +51,14 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    'build/<%= pkg.name %>/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                    'build/<%= pkg.name %>/assets/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
                 }
             }
         },
         cssmin: {
             build: {
                 files: {
-                    'build/<%= pkg.name %>/assets/<%= pkg.name %>.min.css':
+                    'build/<%= pkg.name %>/assets/css/<%= pkg.name %>.min.css':
                             ['public_html/mountebank-UI/assets/css/app.css',
                                 'public_html/mountebank-UI/assets/js/bootstrap/dist/css/bootstrap.min.css'
                             ]
@@ -82,6 +82,14 @@ module.exports = function (grunt) {
                 ],
                 dest: 'build/',
                 flatten: false
+            },
+            fonts: {
+                expand: true,
+                cwd: 'public_html/mounteBank-UI/assets/js/bootstrap/dist',
+                flatten:true,
+                src: 'fonts/*',
+                dest: 'build/<%= pkg.name %>/assets/fonts/'
+                
             },
             main: {
                 expand: true,
@@ -122,6 +130,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-karma');
     grunt.registerTask('run-all-tests', ['karma:unit_tests']);
-    grunt.registerTask('copy-test', ['clean', 'copy'])
     grunt.registerTask('build', ['clean', 'copy', 'concat', 'uglify','cssmin'])
 }
