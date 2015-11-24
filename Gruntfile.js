@@ -1,6 +1,7 @@
 'use strict';
 module.exports = function (grunt) {
 //http://gruntjs.com/sample-gruntfile
+//http://g00glen00b.be/angular-grunt/
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
@@ -25,7 +26,7 @@ module.exports = function (grunt) {
                     "public_html/mountebank-UI/assets/js/angular-animate/angular-animate.js",
                     "public_html/mountebank-UI/assets/js/angular-local-storage/dist/angular-local-storage.js",
                     "public_html/mountebank-UI/assets/js/angular-ui-sortable/sortable.js",
-                    "public_html/mountebank-UI/assets/js/angular-bootstrap/ui-bootstrap-tpls.min.js", 
+                    "public_html/mountebank-UI/assets/js/angular-bootstrap/ui-bootstrap-tpls.min.js",
                     "public_html/mountebank-UI/assets/js/angular-messages/angular-messages.js",
                     "public_html/mountebank-UI/app/app.js",
                     "public_html/mountebank-UI/app/app.routes.js",
@@ -39,27 +40,69 @@ module.exports = function (grunt) {
                     "public_html/mountebank-UI/sections/help/help.ctl.js",
                     "public_html/mountebank-UI/components/headers/headers.drct.js"],
                 // the location of the resulting JS file
-                dest: 'build/<%= pkg.name %>.js'
+                dest: 'build/<%= pkg.name %>/<%= pkg.name %>.js'
             }
         },
         uglify: {
             options: {
                 // the banner is inserted at the top of the output
-                banner: '<%= banner %>'
+                banner: '<%= banner %>',
+                mangle: false
             },
             dist: {
                 files: {
-                    'build/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                    'build/<%= pkg.name %>/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                }
+            }
+        },
+        cssmin: {
+            build: {
+                files: {
+                    'build/<%= pkg.name %>/assets/<%= pkg.name %>.min.css':
+                            ['public_html/mountebank-UI/assets/css/app.css',
+                                'public_html/mountebank-UI/assets/js/bootstrap/dist/css/bootstrap.min.css'
+                            ]
+
+
+
                 }
             }
         },
         copy: {
-            build: {
+            html: {
+                expand: true,
                 cwd: 'public_html',
-                src: ['components/**,partials,sections,services'],
-                dest: 'build',
-                expand: true
+                src: ['mountebank-UI/components/headers/*.html',
+                    'mountebank-UI/partials/*.html',
+                    'mountebank-UI/sections/home/*.html',
+                    'mountebank-UI/sections/help/*.html',
+                    'mountebank-UI/sections/json/*.html',
+                    'mountebank-UI/sections/settings/*.html',
+                    '*.ico'
+                ],
+                dest: 'build/',
+                flatten: false
             },
+            main: {
+                expand: true,
+                cwd: 'public_html',
+                src: 'build.tpl.html',
+                dest: 'build/',
+                flatten: true,
+                rename: function (dest, src)
+                {
+                    return dest + 'index.html';
+                }
+                /*  options: {
+                 flatten: true,
+                 process: function (content, srcpath)
+                 {
+                 console.log(srcpath);
+                 return content;
+                 }
+                 }
+                 */
+            }
         },
         karma: {
             unit_tests: {
@@ -76,7 +119,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-karma');
     grunt.registerTask('run-all-tests', ['karma:unit_tests']);
-    grunt.registerTask('build', ['clean','copy', 'concat', 'uglify'])
+    grunt.registerTask('copy-test', ['clean', 'copy'])
+    grunt.registerTask('build', ['clean', 'copy', 'concat', 'uglify','cssmin'])
 }

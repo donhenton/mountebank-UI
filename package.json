@@ -4,7 +4,10 @@
   "description": "Mountebank UI appliation",
   "main": "nosuchfile.js",
   "version": "0.0.1",
-  "author":{"name":"dhenton","email":"donhenton@gmail.com"},
+  "author": {
+    "name": "dhenton",
+    "email": "donhenton@gmail.com"
+  },
   "engines": {
     "node": ">=0.10.0"
   },
@@ -18,10 +21,11 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-jshint": "^0.11.1",
     "grunt-autoprefixer": "^0.2.x",
-    "grunt-contrib-copy": "^0.4.x",
+    "grunt-contrib-copy": "^0.8.x",
     "grunt-contrib-cssmin": "^0.6.x",
     "grunt-contrib-stylus": "^0.8.x",
     "grunt-contrib-concat": "^0.5.x",
+    "grunt-contrib-cssmin": "^0.14.0",
     "grunt-contrib-uglify": "^0.7.0",
     "grunt-karma": "^0.10.1",
     "http-server": "^0.6.1",
@@ -38,9 +42,12 @@
     "karma-ng-html2js-preprocessor": "^0.2.0",
     "karma-phantomjs-launcher": "~0.1.4",
     "karma-qunit": "~0.1.1",
-    "shelljs": "^0.2.6" 
+    "shelljs": "^0.2.6"
   },
   "scripts": {
     "test": "node_modules/.bin/karma start my.conf.js"
+  },
+  "dependencies": {
+    
   }
 }
