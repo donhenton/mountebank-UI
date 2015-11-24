@@ -1,10 +1,8 @@
 {
   "name": "mountebank-UI",
-  "version":"0.0.1",
+  "version": "0.0.1",
   "dependencies": {
     "jquery": "~2.0.3",
-     
-         
     "angular": "~1.4.7",
     "angular-route": "~1.4.7",
     "angular-bootstrap": "~0.14.2",
@@ -12,9 +10,7 @@
     "angular-animate": "~1.4.7",
     "angular-local-storage": "~0.2.3",
     "angular-messages": "~1.4.7",
-   
-    "angular-mocks": "~1.4.7"
-    
-    
+    "angular-mocks": "~1.4.7",
+    "angular-ui-sortable": "~0.13.4"
   }
 }

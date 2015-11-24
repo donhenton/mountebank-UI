@@ -1,6 +1,1 @@
-http://www.mbtest.org/docs/api/contracts
-
-responses are round robined used to give 'multiple responses for a predicate'
- 
-
-the matches sec
+https://github.com/angular-ui/ui-sortable
