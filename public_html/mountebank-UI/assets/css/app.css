@@ -68,3 +68,9 @@ span.responseSelection.selectedResponse
     alignment-adjust: middle
 }
 
+div.helpHeader
+{
+    font-size: 22px;
+    text-decoration: underline
+}
+

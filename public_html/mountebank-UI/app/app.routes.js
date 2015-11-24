@@ -7,14 +7,12 @@ angular.module('app.routes', ['ngRoute', 'app.constants'])
                 controller: 'HomeCtrl',
                 controllerAs: 'home',
                 templateUrl: TPL_PATH + 'sections/home/home.tpl.html',
-                
                 resolve: {
-                    currentImposter: function ($route,$log,ImpostersService) {
-                         
-                         return ImpostersService.getCurrentImposter();
+                    currentImposter: function ($route, $log, ImpostersService) {
+
+                        return ImpostersService.getCurrentImposter();
                     },
-                    
-                    collectionItems: function($log,ImpostersService)
+                    collectionItems: function ($log, ImpostersService)
                     {
                         return ImpostersService.getCollectionItems();
                     }
@@ -22,45 +20,46 @@ angular.module('app.routes', ['ngRoute', 'app.constants'])
                 }
 
             })
-            .when('/settings', {
-                controller: 'SettingsCtrl',
-                controllerAs: 'settings',
-                templateUrl: TPL_PATH + 'sections/settings/settings.tpl.html' ,
-                
-                resolve: {
-                    currentImposter: function ($route,$log,ImpostersService) {
-                         
-                         return ImpostersService.getCurrentImposter();
-                    },
-                    
-                    collectionItems: function($log,ImpostersService)
-                    {
-                        return ImpostersService.getCollectionItems();
-                    }
+                    .when('/settings', {
+                        controller: 'SettingsCtrl',
+                        controllerAs: 'settings',
+                        templateUrl: TPL_PATH + 'sections/settings/settings.tpl.html',
+                        resolve: {
+                            currentImposter: function ($route, $log, ImpostersService) {
 
-                }
-            })
-            .when('/json', {
-                controller: 'JsonCtrl',
-                controllerAs: 'json',
-                templateUrl: TPL_PATH + 'sections/json/json.tpl.html',
-                
-                resolve: {
-                    currentImposter: function ($route,$log,ImpostersService) {
-                         
-                         return ImpostersService.getCurrentImposter();
-                    },
-                    mounteBankDisplay: function($log,ImpostersService,MountebankService)
-                    {
-                        var currentImposter = ImpostersService.getCurrentImposter();
-                        return MountebankService.translate(currentImposter);
-                    }
+                                return ImpostersService.getCurrentImposter();
+                            },
+                            collectionItems: function ($log, ImpostersService)
+                            {
+                                return ImpostersService.getCollectionItems();
+                            }
 
-                } 
-            })
+                        }
+                    })
+                    .when('/json', {
+                        controller: 'JsonCtrl',
+                        controllerAs: 'json',
+                        templateUrl: TPL_PATH + 'sections/json/json.tpl.html',
+                        resolve: {
+                            currentImposter: function ($route, $log, ImpostersService) {
 
-            .otherwise({
-                redirectTo: '/'
-            });
+                                return ImpostersService.getCurrentImposter();
+                            },
+                            mounteBankDisplay: function ($log, ImpostersService, MountebankService)
+                            {
+                                var currentImposter = ImpostersService.getCurrentImposter();
+                                return MountebankService.translate(currentImposter);
+                            }
+
+                        }
+                    })
+                    .when('/help', {
+                        controller: 'HelpCtrl',
+                        controllerAs: 'help',
+                        templateUrl: TPL_PATH + 'sections/help/help.tpl.html' 
+                    })
+                    .otherwise({
+                        redirectTo: '/'
+                    });
 
         });

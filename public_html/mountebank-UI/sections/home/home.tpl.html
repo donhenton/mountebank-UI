@@ -168,7 +168,7 @@
 
                             <div class="form-group grouping-box">
 
-                                <h4>Body</h4> 
+                               
 
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="path">Match Type</label> 
@@ -179,14 +179,17 @@
 
                                         </select>
                                     </div>
+                                    <br/>
                                 </div>
-
-                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:150px"></textarea>
+                                <br>    
+                                <div class="form-group">
+                                    <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:150px"></textarea>
+                                </div>
                             </div>
                         </uib-accordion-group>
 
                         <uib-accordion-group heading="Query Params">
-                             
+
                             <headers customize="home.queryParamCustomizer" array="home.buffer.data.imposters[home.currentImposterIdx].match.query_params"></headers>
                         </uib-accordion-group>  
 

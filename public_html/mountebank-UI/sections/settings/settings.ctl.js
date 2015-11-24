@@ -45,9 +45,9 @@ angular.module('myApp')
 
             vm.deleteCollection = function ()
             {
-                if (vm.currentCollectionIdx == 0)
+                if (ImpostersService.getCollectionItems().length == 1)
                 {
-                    vm.errorMessage = "Cannot delete last item in collection";
+                    alert("Cannot delete last item in collection");
                     return;
                 }
                 var desc = vm.currentImposter.description;

@@ -146,7 +146,7 @@ function mountebankService($log, $http)
                 headerMatch["headers"] = headerVar;
                 mainAnd.push({"equals": headerMatch});
             }
-
+           // imposter.match.query_params=[];
             if (imposter.match.query_params.length > 0)
             {
                 //query params

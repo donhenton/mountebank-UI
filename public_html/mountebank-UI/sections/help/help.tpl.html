@@ -1,0 +1,70 @@
+<ng-include src="help.headerLocation"></ng-include>  
+<h3>Help</h3>
+<div class="container">
+    <div class="row">
+        <div class="helpHeader">Summary</div>   
+        Mountebank UI is a test double generator for
+        the <a  target='_new' href="http://www.mbtest.org">Mountebank</a> server. This program helps
+        the user formulate the various sections of the JSON that is used with 
+        Mountebanks API to create a test double.
+
+
+    </div>
+
+    <div class="row">
+        <div class='helpHeader'>The Home Page</div>   
+        This is the page where one can set the response or multiple responses, 
+        and the required criteria. This page works on the current <em>Imposter
+            Collection</em> which is all the imposters for a given port. An imposter
+        is a given response/match pair. New imposters can be added or deleted
+        on this page as well.
+
+
+        <p><h5>Notes</h5></p>
+        <ul>
+            <li>For any element in Response or Match, if left blank it will not be 
+                included in the mountebank json.</li>
+            <li>Query elements in match criteria use only deepEquals</li>
+            <li>Method is not optional</li>
+            <li>The match logic is each group (body, query parameters, headers)
+                are AND'd together. Complex logic using OR is not currently 
+                available</li>
+
+
+        </ul>
+
+
+
+    </div>
+
+    <div class="row">
+        <div class='helpHeader'>Collection Maintenance Page</div>   
+        This is the page where one can delete and add collections, as well as
+        modify the properties
+        associated with a collection, currently the description and the port.
+
+
+    </div>
+
+    <div class="row">
+        <div class='helpHeader'>Mountebank JSON Page</div>   
+        This page provides a read only display of the JSON that can be posted to 
+        Mountebank's imposters endpoint. Additionally one can post directly 
+        mountebank via a form. Provide the base url to mountebank, and choose the
+        action, either post or delete. Note that Mountebank will need the '--allowCORS'
+        option for this to work.
+
+
+    </div>
+    <div class="row">
+        <div class='helpHeader'>Persistence</div>   
+        All data is persisted to local storage. If accessing this application
+        for the first time, an initial collection will be created. Currently, there
+        is no facility for downloading or reloading data. The persisted data is in a format
+        which allows the creation of the Mountebank data, it is not in the 
+        Mountebank format.
+
+
+    </div>
+
+</div>
