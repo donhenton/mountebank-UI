@@ -1,6 +1,6 @@
 module.exports = function (config) {
     config.set({
-        // base path that will be used to resolve all patterns (eg. files, exclude) to the root of the netbeans app
+// base path that will be used to resolve all patterns (eg. files, exclude) to the root of the netbeans app
         basePath: '../..',
         autoWatch: false,
         // frameworks to use
@@ -8,19 +8,32 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
         // list of files / patterns to load in the browser
         files: [
-             
-             
-             
-             
-            'public_html/mountebank-UI/assets/js/jquery/jquery.min.js',
-            'public_html/mountebank-UI/assets/js/bootstrap/dist/js/bootstrap.min.js',
-            'public_html/mountebank-UI/assets/js/angular/angular.min.js',
-            'public_html/mountebank-UI/assets/js/angular-route/angular-route.min.js',
+            "public_html/mountebank-UI/assets/js/jquery/jquery.min.js",
+            "public_html/mountebank-UI/assets/js/jquery-ui/jquery-ui.min.js",
+            "public_html/mountebank-UI/assets/js/bootstrap/dist/js/bootstrap.min.js",
+            "public_html/mountebank-UI/assets/js/angular/angular.js",
             'public_html/mountebank-UI/assets/js/angular-mocks/angular-mocks.js',
-            'public_html/mountebank-UI/sections/homePage.ctl.js',
-            'public_html/mountebank-UI/app/app.js',
+            "public_html/mountebank-UI/assets/js/angular-route/angular-route.js",
+            "public_html/mountebank-UI/assets/js/angular-animate/angular-animate.js",
+            "public_html/mountebank-UI/assets/js/angular-local-storage/dist/angular-local-storage.js",
+            "public_html/mountebank-UI/assets/js/angular-ui-sortable/sortable.js",
+            "public_html/mountebank-UI/assets/js/angular-bootstrap/ui-bootstrap-tpls.min.js",
+            "public_html/mountebank-UI/assets/js/angular-messages/angular-messages.js",
             
-   
+            
+            "public_html/mountebank-UI/app/app.js",
+            "public_html/mountebank-UI/app/app.routes.js",
+            "public_html/mountebank-UI/app/app.constants.js",
+            "public_html/mountebank-UI/app/app.services.js",
+            "public_html/mountebank-UI/services/mountebank.fct.js",
+            "public_html/mountebank-UI/services/imposters.fct.js",
+            "public_html/mountebank-UI/sections/settings/settings.ctl.js",
+            "public_html/mountebank-UI/sections/home/homePage.ctl.js",
+            "public_html/mountebank-UI/sections/import/import.ctl.js",
+            "public_html/mountebank-UI/sections/home/sorter.ctl.js",
+            "public_html/mountebank-UI/sections/json/json.ctl.js",
+            "public_html/mountebank-UI/sections/help/help.ctl.js",
+            "public_html/mountebank-UI/components/headers/headers.drct.js",
             '**/*.tpl.html',
             'test/unit_tests/**/*_tests.js'
 
@@ -41,10 +54,9 @@ module.exports = function (config) {
 
         },
         ngHtml2JsPreprocessor: {
-            
-             moduleName: 'myTemplates'
-            
-            
+            moduleName: 'myTemplates'
+
+
         },
         junitReporter: {
             outputFile: 'reports/junit/karma-test-results.xml',
@@ -83,7 +95,7 @@ module.exports = function (config) {
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
         browsers: ['PhantomJS'],
-      //  browsers: ['Chrome'],
+        //  browsers: ['Chrome'],
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
         singleRun: true

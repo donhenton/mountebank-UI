@@ -1,12 +1,12 @@
 describe('Home Pages', function () {
 
-    beforeEach(module('app.homePages'));
+    beforeEach(module('myApp'));
 
     it('should test the homePages controller', inject(function ($controller, $rootScope) {
 
         var parentScope = $rootScope.$new();
         var scope = parentScope.$new();
-         
+        scope.currentImposter = {}; 
 
         var ctrl = $controller('HomeCtrl as home', {
             $scope: scope
