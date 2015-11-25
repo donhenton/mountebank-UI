@@ -37,6 +37,7 @@ module.exports = function (grunt) {
                     "public_html/mountebank-UI/services/imposters.fct.js",
                     "public_html/mountebank-UI/sections/settings/settings.ctl.js",
                     "public_html/mountebank-UI/sections/home/homePage.ctl.js",
+                    "public_html/mountebank-UI/sections/import/import.ctl.js",
                     "public_html/mountebank-UI/sections/home/sorter.ctl.js",
                     "public_html/mountebank-UI/sections/json/json.ctl.js",
                     "public_html/mountebank-UI/sections/help/help.ctl.js",

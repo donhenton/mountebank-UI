@@ -29,6 +29,8 @@ function impostersService($log, localStorageService, $rootScope)
                 "createNewImposter": createNewImposter,
                 "deleteCollectionAt": deleteCollectionAt,
                 "getSampleResponse": getSampleResponse,
+                "exportCollection": exportCollection,
+                "importCollection": importCollection,
                 "save": save
             }
 
@@ -83,8 +85,7 @@ function impostersService($log, localStorageService, $rootScope)
         var newCollection = {};
         var newIdx = collection.length;
         newCollection.port = 9999;
-        newCollection.successlySubmitted = false;
-        newCollection.id = newIdx
+        newCollection.id = newIdx;
         newCollection.description = "New Imposter Description " + newIdx;
         newCollection.imposters = [];
 
@@ -169,8 +170,16 @@ function impostersService($log, localStorageService, $rootScope)
     }
 
 
+    function exportCollection()
+    {
+        return angular.toJson(angular.copy(collection),true);
+    }
 
-
+    function importCollection(collectionAsString)
+    {
+        collection = angular.fromJson(collectionAsString);
+        //save should occur through the watch
+    }
 
 
     return exports;

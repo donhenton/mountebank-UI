@@ -58,6 +58,11 @@ angular.module('app.routes', ['ngRoute', 'app.constants'])
                         controllerAs: 'help',
                         templateUrl: TPL_PATH + 'sections/help/help.tpl.html' 
                     })
+                     .when('/import', {
+                        controller: 'ImportCtrl',
+                        controllerAs: 'import',
+                        templateUrl: TPL_PATH + 'sections/import/import.tpl.html' 
+                    })
                     .otherwise({
                         redirectTo: '/'
                     });
