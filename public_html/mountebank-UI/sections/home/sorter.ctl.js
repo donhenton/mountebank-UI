@@ -19,6 +19,7 @@ angular.module('myApp')
                 },
                 stop: function (e, ui) {
                      
+                     //http://codepen.io/thgreasi/pen/jlkhr
                 }
             };
 

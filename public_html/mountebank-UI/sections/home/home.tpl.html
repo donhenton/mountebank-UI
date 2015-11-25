@@ -55,7 +55,7 @@
 
                 <button ng-disabled="home.buffer.data.imposters.length == 1" ng-click="home.deleteImposter()"  class="btn btn-med btn-danger">Delete</button>
                  
-                <button style="margin-top:5px" ng-disabled="home.buffer.data.imposters.length == 1" ng-click="home.sortImposters()"  class="btn btn-med btn-primary">Sort</button>
+                <button style="margin-top:5px" ng-disabled="home.buffer.data.imposters.length == 1" ng-click="home.sortImposters()"  class="btn btn-med btn-primary">Sort Imposters</button>
             </div>
 
         </div>
@@ -79,8 +79,8 @@
                                 <div class="col-sm-9 paginatorBox">
                                     <table id="responsePaginatorTable">
                                         <tr><td><em>Selected Response</em> </td>
-                                            <td><button ng-click="home.addResponse()" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign"></i>Add Response</button></td>
-                                            <td><button ng-disabled="home.buffer.data.imposters[home.currentImposterIdx].responses.length == 1" ng-click="home.deleteResponse()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus-sign"></i>Delete Current Response</button></td></tr>
+                                            <td><button ng-click="home.addResponse()" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign"></i> Add Response</button></td>
+                                            <td><button ng-disabled="home.buffer.data.imposters[home.currentImposterIdx].responses.length == 1" ng-click="home.deleteResponse()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus-sign"></i> Delete Current Response</button></td></tr>
                                         <tr><td colspan="3"> 
                                                 <span ng-repeat="item in home.buffer.data.imposters[home.currentImposterIdx].responses track by $index">
                                                     <span ng-if="$index === home.currentResponseIdx" class="responseSelection selectedResponse">

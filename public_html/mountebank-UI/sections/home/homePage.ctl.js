@@ -2,7 +2,7 @@
 
 angular.module('myApp')
 
-        .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, collectionItems, $uibModal,TPL_PATH,HEADER_LOCATION) {
+        .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, collectionItems, $uibModal, TPL_PATH, HEADER_LOCATION) {
             var vm = this;
             vm.errorMessage = "No errors";
             vm.buffer = {};
@@ -25,6 +25,34 @@ angular.module('myApp')
             }
 
             /**
+             * display the sorting dialog
+             * @returns {$uibModal@call;open.result}
+             */
+            showSortDialog = function ()
+            {
+
+                var sortItems = [];
+                angular.forEach(vm.buffer.data.imposters, function (data, idx) {
+
+                    sortItems.push({"value": idx, "ref": angular.copy(data), "text": "Item " + idx+1});
+                });
+
+                var modalInstance =
+                        $uibModal.open({
+                            templateUrl: TPL_PATH + 'sections/home/sorter_content.tpl.html',
+                            controller: 'SortCtrl',
+                            windowClass: 'app-modal-window',
+                            resolve: {
+                                sortItems: function () {
+                                    return angular.copy(sortItems);
+                                }
+                            }
+                        });
+                return modalInstance.result;
+            };
+
+
+            /**
              * sort imposters as the order of evaluation is important
              * imposters and their match criteria use short circuit logic:
              * first match is what you go with.
@@ -33,32 +61,25 @@ angular.module('myApp')
              */
             vm.sortImposters = function ()
             {
-                var sortItems = [];
-                angular.forEach(vm.buffer.data.imposters,function(data,idx){
-                   
-                    sortItems.push({"oldIdx":idx,"newIdx":-1});
-                });
+                var sortResult = showSortDialog();
+                sortResult.then(function (result) {
+                    if (result !== 'cancel')
+                    {
 
-                var modalInstance =
-                        $uibModal.open({
-                           
-                            templateUrl: TPL_PATH + 'sections/home/sorter_content.tpl.html',
-                            controller: 'SortCtrl',
-                            windowClass: 'app-modal-window',
-                           
-                            resolve: {
-                                sortItems: function () {
-                                    return angular.copy(sortItems);
-                                }
-                            }
+
+//                        var rr = newSortItems.map(function (i) {
+//                            return i.value;
+//                        }).join(', ');
+                        vm.buffer.data.imposters = [];
+                        angular.forEach(result, function (data, idx)
+                        {
+                            vm.buffer.data.imposters.push(data.ref);
+
                         });
 
-                 if (modalInstance.result !== 'cancel')   
-                 {
-                     var newSortItems = modalInstance.result;
-                     //TODO resort the imposters
-                 }
-                
+
+                    }
+                });
 
 
             }
