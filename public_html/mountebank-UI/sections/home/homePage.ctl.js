@@ -4,7 +4,7 @@ angular.module('myApp')
 
         .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, collectionItems, $uibModal, TPL_PATH, HEADER_LOCATION) {
             var vm = this;
-            vm.errorMessage = "No errors";
+            vm.errorMessage = "";
             vm.buffer = {};
             vm.buffer.data = currentImposter;
             vm.currentImposterIdx = 0; //the imposter 
