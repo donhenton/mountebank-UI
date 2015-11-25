@@ -2,7 +2,7 @@
 
 angular.module('myApp')
 
-        .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, collectionItems, HEADER_LOCATION) {
+        .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, collectionItems, $uibModal,TPL_PATH,HEADER_LOCATION) {
             var vm = this;
             vm.errorMessage = "No errors";
             vm.buffer = {};
@@ -14,14 +14,53 @@ angular.module('myApp')
             vm.collectionSelectorIdx = vm.currentCollectionIdx.toString();
             vm.headerLocation = HEADER_LOCATION;
             vm.matchTypes = ['matches', 'equals', 'contains', 'not equals', 'not contains'];
-         
+
             vm.queryParamCustomizer = {};
             vm.queryParamCustomizer.keyLabel = "Field";
             vm.queryParamCustomizer.headerText = "";
-           
-            vm.moveResponseTo = function(idx)
+
+            vm.moveResponseTo = function (idx)
             {
-                vm.currentResponseIdx =idx;
+                vm.currentResponseIdx = idx;
+            }
+
+            /**
+             * sort imposters as the order of evaluation is important
+             * imposters and their match criteria use short circuit logic:
+             * first match is what you go with.
+             * 
+             * @returns {undefined}
+             */
+            vm.sortImposters = function ()
+            {
+                var sortItems = [];
+                angular.forEach(vm.buffer.data.imposters,function(data,idx){
+                   
+                    sortItems.push({"oldIdx":idx,"newIdx":-1});
+                });
+
+                var modalInstance =
+                        $uibModal.open({
+                           
+                            templateUrl: TPL_PATH + 'sections/home/sorter_content.tpl.html',
+                            controller: 'SortCtrl',
+                            windowClass: 'app-modal-window',
+                           
+                            resolve: {
+                                sortItems: function () {
+                                    return angular.copy(sortItems);
+                                }
+                            }
+                        });
+
+                 if (modalInstance.result !== 'cancel')   
+                 {
+                     var newSortItems = modalInstance.result;
+                     //TODO resort the imposters
+                 }
+                
+
+
             }
 
             /**
@@ -48,7 +87,7 @@ angular.module('myApp')
                 {
                     vm.buffer.data.imposters[vm.currentImposterIdx]
                             .responses.splice(vm.currentResponseIdx, 1);
-                     vm.currentResponseIdx = 0;
+                    vm.currentResponseIdx = 0;
                 }
             }
 

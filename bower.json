@@ -11,6 +11,7 @@
     "angular-local-storage": "~0.2.3",
     "angular-messages": "~1.4.7",
     "angular-mocks": "~1.4.7",
-    "angular-ui-sortable": "~0.13.4"
+    "angular-ui-sortable": "~0.13.4",
+    "jquery-ui": "~1.11.4"
   }
 }

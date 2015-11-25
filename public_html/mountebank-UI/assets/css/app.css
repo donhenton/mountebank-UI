@@ -53,7 +53,7 @@ span.responseSelection
 
 span.responseSelection.selectedResponse
 {
- 
+
     font-weight: bold;
     color: #FFF7F5 !important;
     font-size: 14px;
@@ -74,3 +74,54 @@ div.helpHeader
     text-decoration: underline
 }
 
+.app-modal-window .modal-dialog {
+    width: 320px;
+    /*
+    height: 450px;
+    border: 3px solid black;
+    */
+}
+
+
+.modal-content .sortContainer
+{
+    /* position: absolute; */
+     
+    height: 445px;
+}
+
+.sortContainer .sortHolder
+{ 
+    overflow-y:auto;
+    overflow-x: hidden;
+    width:280px;
+    margin-bottom:10px;
+    height: 320px;
+    border: #1b6d85 ridge;  
+    
+}
+
+
+
+.sortContainer  .list {
+    list-style: none outside none;
+    margin: 10px 0 30px;
+    text-align:center;
+}
+
+
+.sortContainer  .item {
+    width: 250px;
+    padding: 5px 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    border: 2px solid #444;
+    border-radius: 5px;
+    background-color: #1b6d85;
+    color:white;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    cursor: move;
+}

@@ -54,6 +54,8 @@
                 <button  ng-click="home.addImposter()" class="btn btn-med btn-primary">Add New</button>
 
                 <button ng-disabled="home.buffer.data.imposters.length == 1" ng-click="home.deleteImposter()"  class="btn btn-med btn-danger">Delete</button>
+                 
+                <button style="margin-top:5px" ng-disabled="home.buffer.data.imposters.length == 1" ng-click="home.sortImposters()"  class="btn btn-med btn-primary">Sort</button>
             </div>
 
         </div>
