@@ -4,6 +4,8 @@
 The url for this application is 
 [http://donhenton.github.io/mountebank-UI/public_html/index.html](http://donhenton.github.io/mountebank-UI/public_html/index.html)
 
+## Source Code
+[https://github.com/donhenton/mountebank-UI](https://github.com/donhenton/mountebank-UI)
 
 ## Summary
 
@@ -17,7 +19,8 @@ This is the page where one can set the response or multiple responses,
 and the required criteria. This page works on the current **Imposter
     Collection** which is all the imposters for a given port. An imposter
 is a given response/match pair. New imposters can be added or deleted
-on this page as well.
+on this page as well. Additionally, imposters can be sorted, to allow for
+handling short-circuit matching logic.
 
 > ### Notes 
 > * Http protocol only
