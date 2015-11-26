@@ -47,7 +47,8 @@ option for this to work.
 
 ## Persistence 
 All data is persisted to local storage. If accessing this application
-for the first time, an initial collection will be created. Currently, there
-is no facility for downloading or reloading data. The persisted data is in a format
+for the first time, an initial collection will be created. The data can 
+be export and imported using the menu item **Import/Export**.  
+The persisted data is in a format
 which allows the creation of the Mountebank data, it is not in the 
 Mountebank format.
