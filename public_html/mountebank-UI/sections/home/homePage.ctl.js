@@ -34,7 +34,7 @@ angular.module('myApp')
                 var sortItems = [];
                 angular.forEach(vm.buffer.data.imposters, function (data, idx) {
 
-                    sortItems.push({"value": idx, "ref": angular.copy(data), "text": "Item " + idx+1});
+                    sortItems.push({"value": idx, "ref": angular.copy(data), "text": "Item " + (idx+1)});
                 });
 
                 var modalInstance =

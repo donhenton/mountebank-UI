@@ -1,9 +1,11 @@
 <div class="sortContainer">
-    <div class="container">
+    <div>
         <h4>Sort Imposters</h4>
+        <div><em><i>Drag and Drop Items to establish new sort order</i></em></div>
+        <br>
         <div class="sortHolder">
 
-            <div ui-sortable="sortCallbacks" ng-model="sortItems" class="center-block list">
+            <div ui-sortable="sortCallbacks" ng-model="sortItems" class="list">
                 <div ng-repeat="item in sortItems" class="item">
                     
                    {{item.text}}
@@ -12,18 +14,11 @@
 
 
         </div>
-
-
-
-
-
-
-        <div class="row"> 
-            <div class="center-block">
-                <div class="col col-sm-offset-1 col-sm-1">
+        <div> 
+            <div>
+                <div style="margin-top: 5px">
                     <button type="submit"   ng-click="ok()" class="btn btn-primary">Submit</button>
-                </div>
-                <div class="col col-sm-1">
+                 
                     <button type="submit"  ng-click="cancel()" class="btn btn-danger">Cancel</button>
                 </div>
             </div>
