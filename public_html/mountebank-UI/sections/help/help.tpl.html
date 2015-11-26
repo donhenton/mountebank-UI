@@ -3,12 +3,10 @@
 <div class="container">
     <div class="row">
         <div class="helpHeader">Summary</div>   
-        Mountebank UI is a test double generator for
+        Mountebank UI is a code generator for
         the <a  target='_new' href="http://www.mbtest.org">Mountebank</a> server. This program helps
         the user formulate the various sections of the JSON that is used with 
-        Mountebanks API to create a test double.
-
-
+        Mountebank's API to create a test double.
     </div>
 
     <div class="row">
@@ -17,11 +15,13 @@
         and the required criteria. This page works on the current <em>Imposter
             Collection</em> which is all the imposters for a given port. An imposter
         is a given response/match pair. New imposters can be added or deleted
-        on this page as well.
-
+        on this page as well. Additionally, one can change the sort order of 
+        imposters, as Mountebank apparently uses short-circuit matching logic.
 
         <p><h5>Notes</h5></p>
         <ul>
+            <li>Currently on the http protocol is supported. The use case is test
+                doubles for REST services</li>
             <li>For any element in Response or Match, if left blank it will not be 
                 included in the mountebank json.</li>
             <li>Query elements in match criteria use only deepEquals</li>
@@ -29,12 +29,7 @@
             <li>The match logic is each group (body, query parameters, headers)
                 are AND'd together. Complex logic using OR is not currently 
                 available</li>
-
-
         </ul>
-
-
-
     </div>
 
     <div class="row">
@@ -42,14 +37,12 @@
         This is the page where one can delete and add collections, as well as
         modify the properties
         associated with a collection, currently the description and the port.
-
-
     </div>
 
     <div class="row">
         <div class='helpHeader'>Mountebank JSON Page</div>   
         This page provides a read only display of the JSON that can be posted to 
-        Mountebank's imposters endpoint. Additionally one can post directly 
+        Mountebank's imposter's endpoint. Additionally one can post directly 
         mountebank via a form. Provide the base url to mountebank, and choose the
         action, either post or delete. Note that Mountebank will need the '--allowCORS'
         option for this to work.

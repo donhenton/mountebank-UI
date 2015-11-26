@@ -43,7 +43,7 @@ module.exports = function (grunt) {
                     "public_html/mountebank-UI/sections/help/help.ctl.js",
                     "public_html/mountebank-UI/components/headers/headers.drct.js"],
                 // the location of the resulting JS file
-                dest: 'build/<%= pkg.name %>/assets/js/<%= pkg.name %>.js'
+                dest: 'build/public_html/<%= pkg.name %>/assets/js/<%= pkg.name %>.js'
             }
         },
         uglify: {
@@ -54,14 +54,14 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    'build/<%= pkg.name %>/assets/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+                    'build/public_html/<%= pkg.name %>/assets/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
                 }
             }
         },
         cssmin: {
             build: {
                 files: {
-                    'build/<%= pkg.name %>/assets/css/<%= pkg.name %>.min.css':
+                    'build/public_html/<%= pkg.name %>/assets/css/<%= pkg.name %>.min.css':
                             ['public_html/mountebank-UI/assets/css/app.css',
                                 'public_html/mountebank-UI/assets/js/bootstrap/dist/css/bootstrap.min.css'
                             ]
@@ -78,12 +78,13 @@ module.exports = function (grunt) {
                 src: ['mountebank-UI/components/headers/*.html',
                     'mountebank-UI/partials/*.html',
                     'mountebank-UI/sections/home/*.html',
+                    'mountebank-UI/sections/import/*.html',
                     'mountebank-UI/sections/help/*.html',
                     'mountebank-UI/sections/json/*.html',
                     'mountebank-UI/sections/settings/*.html',
                     '*.ico'
                 ],
-                dest: 'build/',
+                dest: 'build/public_html/',
                 flatten: false
             },
             fonts: {
@@ -91,14 +92,14 @@ module.exports = function (grunt) {
                 cwd: 'public_html/mounteBank-UI/assets/js/bootstrap/dist',
                 flatten:true,
                 src: 'fonts/*',
-                dest: 'build/<%= pkg.name %>/assets/fonts/'
+                dest: 'build/public_html/<%= pkg.name %>/assets/fonts/'
                 
             },
             main: {
                 expand: true,
                 cwd: 'public_html',
                 src: 'build.tpl.html',
-                dest: 'build/',
+                dest: 'build/public_html/',
                 flatten: true,
                 rename: function (dest, src)
                 {
@@ -113,6 +114,14 @@ module.exports = function (grunt) {
                  }
                  }
                  */
+            },
+            readme: {
+                expand: true,
+                
+                src: 'README*',
+                dest: 'build/',
+                flatten: true 
+                
             }
         },
         karma: {
