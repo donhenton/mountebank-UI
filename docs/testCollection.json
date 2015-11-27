@@ -1,0 +1,28 @@
+{
+    "port": 9999,
+    "id": 1,
+    "description": "Test Collection",
+    "imposters": [
+      {
+        "responses": [
+          {
+            "status": 200,
+            "headers": [],
+            "body": "bonzo"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "path"
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": "body"
+          }
+        }
+      }]
+}
