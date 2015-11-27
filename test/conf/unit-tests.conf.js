@@ -45,10 +45,10 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'public_html/mountebank-UI/components/*.js': ['coverage'],
-            'public_html/mountebank-UI/sections/*.js': ['coverage'],
-            'public_html/mountebank-UI/services/*.js': ['coverage'],
-            'public_html/mountebank-UI/app/*.js': ['coverage'],
+            'public_html/mountebank-UI/components/**/*.js': ['coverage'],
+            'public_html/mountebank-UI/sections/**/*.js': ['coverage'],
+            'public_html/mountebank-UI/services/**/*.js': ['coverage'],
+            'public_html/mountebank-UI/app/**/*.js': ['coverage'],
             '**/*.tpl.html': ['ng-html2js']
 
 

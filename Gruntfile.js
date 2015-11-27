@@ -141,6 +141,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-karma');
-    grunt.registerTask('run-all-tests', ['karma:unit_tests']);
+    grunt.registerTask('run-all-tests', ['clean','karma:unit_tests']);
     grunt.registerTask('build', ['clean', 'copy', 'concat', 'uglify','cssmin'])
 }
