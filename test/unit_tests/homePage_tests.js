@@ -195,7 +195,7 @@ describe('Home Pages', function () {
         });
         scope.home.sortImposters();
         scope.$root.$digest();
-        
+
         expect(currentImposter.imposters[0].responses[0].body).toEqual("imposter 1");
 
     }));
@@ -233,6 +233,25 @@ describe('Home Pages', function () {
     }));
 
 
+    it('test isJson', inject(function ($controller,
+            currentImposter, collectionItems, $rootScope, TPL_PATH,
+            ImpostersService, HEADER_LOCATION, $uibModal, $q) {
+
+
+        var parentScope = $rootScope.$new();
+        var scope = parentScope.$new();
+        headerLocation = HEADER_LOCATION;
+
+        $controller('HomeCtrl as home', {
+            $scope: scope,
+            collectionItems: collectionItems,
+            currentImposter: currentImposter
+        });
+
+       expect(scope.home.isJsonString("{}")).toBeTruthy();
+       expect(scope.home.isJsonString("fred")).toBeFalsy();
+
+    }));
 
 
 });
