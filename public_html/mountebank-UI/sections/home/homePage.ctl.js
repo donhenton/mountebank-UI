@@ -199,6 +199,7 @@ angular.module('myApp')
 
                 // $log.debug(idx);
                 vm.currentImposterIdx = idx;
+                vm.currentResponseIdx = 0;
 
 
             }

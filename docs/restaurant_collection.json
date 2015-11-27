@@ -1,0 +1,159 @@
+[
+  {
+    "port": "9000",
+    "id": 0,
+    "description": "Restaurant Service on port 9000",
+    "imposters": [
+      {
+        "responses": [
+          {
+            "status": 200,
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n  \"_id\": \"1\",\n  \"name\": \"A1 Ocean Cafe #55522\",\n  \"city\": \"San Francisco\",\n  \"state\": \"CA\",\n  \"version\": 1,\n  \"zipCode\": \"94104\",\n  \"reviews\": [\n    {\n      \"starRating\": 4,\n      \"reviewListing\": \"not much here\",\n      \"_id\": \"54df207d0364e887d06ca57d\"\n    },\n    {\n      \"starRating\": 4,\n      \"reviewListing\": \"bonzo dog band liked it!!\",\n      \"_id\": \"54df207d0364e887d06ca57e\"\n    },\n    {\n      \"_id\": \"55f2d2070a83c4030001f833\",\n      \"parentRestaurantId\": \"54df207d0364e887d06ca57f\",\n      \"reviewListing\": \"nice service\",\n      \"stampDate\": 1441976824579,\n      \"starRating\": \"7\",\n      \"isEditing\": false\n    }\n  ]\n}"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant/1"
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n        \"_id\": \"2\",\n        \"name\": \"Angies Angle Inn Eatery\",\n        \"zipCode\": \"90027\",\n        \"city\": \"Los Feliz\",\n        \"state\": \"CA\",\n        \"version\": \"3\",\n        \"is_current\": false,\n        \"reviews\": [{\n                \"_id\": \"553bc33a55cabe03005b7446\",\n                \"parentRestaurantId\": \"553bc30655cabe03005b7445\",\n                \"reviewListing\": \"worst mistake in my life!!!\",\n                \"stampDate\": 1429979948416,\n                \"starRating\": \"4\",\n                \"isEditing\": false\n            }]\n    }"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant/2"
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "[{\n        \"_id\": \"1\",\n        \"name\": \"A1 Ocean Cafe #22\",\n        \"city\": \"San Francisco\",\n        \"state\": \"CA\",\n        \"version\": 1,\n        \"zipCode\": \"94104\",\n        \"reviews\": [{\n                \"starRating\": 4,\n                \"reviewListing\": \"not much here\",\n                \"_id\": \"54df207d0364e887d06ca57d\"\n            }, {\n                \"starRating\": 4,\n                \"reviewListing\": \"bonzo dog band liked it!!\",\n                \"_id\": \"54df207d0364e887d06ca57e\"\n            }, {\n                \"_id\": \"55f2d2070a83c4030001f833\",\n                \"parentRestaurantId\": \"54df207d0364e887d06ca57f\",\n                \"reviewListing\": \"nice service\",\n                \"stampDate\": 1441976824579,\n                \"starRating\": \"7\",\n                \"isEditing\": false\n            }]\n    }, {\n        \"_id\": \"2\",\n        \"name\": \"Angies Angle Inn Eatery\",\n        \"zipCode\": \"90027\",\n        \"city\": \"Los Feliz\",\n        \"state\": \"CA\",\n        \"version\": \"3\",\n        \"is_current\": false,\n        \"reviews\": [{\n                \"_id\": \"553bc33a55cabe03005b7446\",\n                \"parentRestaurantId\": \"553bc30655cabe03005b7445\",\n                \"reviewListing\": \"worst mistake in my life!!!\",\n                \"stampDate\": 1429979948416,\n                \"starRating\": \"4\",\n                \"isEditing\": false\n            }]\n    }, {\n        \"_id\": \"3\",\n        \"name\": \"Arby's\",\n        \"city\": \"Indianapolis\",\n        \"state\": \"IN\",\n        \"version\": 1,\n        \"zipCode\": \"46268\",\n        \"reviews\": [{\n                \"_id\": \"54e61c7658052f03007447c4\",\n                \"parentRestaurantId\": \"54df207d0364e887d06ca583\",\n                \"reviewListing\": \"Nice burgers!!\",\n                \"stampDate\": 1424366695306,\n                \"starRating\": \"7\",\n                \"isEditing\": false\n            }, {\n                \"_id\": \"55500308bac23a03002eedfb\",\n                \"parentRestaurantId\": \"54df207d0364e887d06ca583\",\n                \"reviewListing\": \"what a crock\",\n                \"stampDate\": 1431307005379,\n                \"starRating\": \"9\",\n                \"isEditing\": false\n            }]\n    }\n\n]"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant"
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n        \"_id\": \"1\",\n        \"name\": \"Arby's\",\n        \"city\": \"Indianapolis\",\n        \"state\": \"IN\",\n        \"version\": 1,\n        \"zipCode\": \"46268\",\n        \"reviews\": [{\n                \"_id\": \"54e61c7658052f03007447c4\",\n                \"parentRestaurantId\": \"54df207d0364e887d06ca583\",\n                \"reviewListing\": \"Nice burgers!!\",\n                \"stampDate\": 1424366695306,\n                \"starRating\": \"7\",\n                \"isEditing\": false\n            }, {\n                \"_id\": \"55500308bac23a03002eedfb\",\n                \"parentRestaurantId\": \"54df207d0364e887d06ca583\",\n                \"reviewListing\": \"what a crock\",\n                \"stampDate\": 1431307005379,\n                \"starRating\": \"9\",\n                \"isEditing\": false\n            }]\n    }"
+          },
+          {
+            "status": 200,
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n        \"_id\": \"2\",\n        \"name\": \"Angies Angle Inn Eatery\",\n        \"zipCode\": \"90027\",\n        \"city\": \"Los Feliz\",\n        \"state\": \"CA\",\n        \"version\": \"3\",\n        \"is_current\": false,\n        \"reviews\": [{\n                \"_id\": \"553bc33a55cabe03005b7446\",\n                \"parentRestaurantId\": \"553bc30655cabe03005b7445\",\n                \"reviewListing\": \"worst mistake in my life!!!\",\n                \"stampDate\": 1429979948416,\n                \"starRating\": \"4\",\n                \"isEditing\": false\n            }]\n    }"
+          },
+          {
+            "status": 200,
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n        \"_id\": \"3\",\n        \"name\": \"A1 Ocean Cafe #22\",\n        \"city\": \"San Francisco\",\n        \"state\": \"CA\",\n        \"version\": 1,\n        \"zipCode\": \"94104\",\n        \"reviews\": [{\n                \"starRating\": 4,\n                \"reviewListing\": \"not much here\",\n                \"_id\": \"54df207d0364e887d06ca57d\"\n            }, {\n                \"starRating\": 4,\n                \"reviewListing\": \"bonzo dog band liked it!!\",\n                \"_id\": \"54df207d0364e887d06ca57e\"\n            }, {\n                \"_id\": \"55f2d2070a83c4030001f833\",\n                \"parentRestaurantId\": \"54df207d0364e887d06ca57f\",\n                \"reviewListing\": \"nice service\",\n                \"stampDate\": 1441976824579,\n                \"starRating\": \"7\",\n                \"isEditing\": false\n            }]\n    }"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "contains",
+            "value": "/restaurant/rotate"
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": "404",
+            "headers": [],
+            "body": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "not contains",
+            "value": "quonset-hut"
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      }
+    ]
+  }
+]
