@@ -45,10 +45,10 @@ mountebank via a form. Provide the base url to mountebank, and choose the
 action, either post or delete. Note that Mountebank will need the '--allowCORS'
 option for this to work.
 
-## Persistence 
+## Persistence (Import/Export)
 All data is persisted to local storage. If accessing this application
 for the first time, an initial collection will be created. The data can 
-be export and imported using the menu item **Import/Export**.  
+be exported and imported using the menu item **Import/Export**.  
 The persisted data is in a format
 which allows the creation of the Mountebank data, it is not in the 
 Mountebank format.
