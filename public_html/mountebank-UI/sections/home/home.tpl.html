@@ -96,16 +96,16 @@
                                 </div>
                             </div>
 
-                             <div class="row">
-                                <input id="injectionUseForResponse" name="injectionUseForResponse" type="checkbox"  ng-click="home.swapInjectionForResponse()"  ng-model="vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use">  
+                             <div class="row">                                                                                                                             
+                                <input id="injectionUseForResponse" name="injectionUseForResponse" type="checkbox"  ng-click="home.swapInjectionForResponse()"  ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use">  
 
-                                <label  ng-if="!vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use" for="injectionUseForResponse"><em style="padding:5px">Use Injection <span class="label label-danger"> All other criteria will be lost</span></em></label> 
+                                <label  ng-if="!home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use" for="injectionUseForResponse"><em style="padding:5px">Use Injection <span class="label label-danger"> All other criteria will be lost</span></em></label> 
 
-                                <label  ng-if="vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use"  for="injectionUseForResponse"><em style="padding:5px">Use Standard <span class="label label-danger"> Injection criteria will be lost</span></em></label> 
+                                <label  ng-if="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use"  for="injectionUseForResponse"><em style="padding:5px">Use Standard <span class="label label-danger"> Injection criteria will be lost</span></em></label> 
 
                             </div>
 
-                            <div ng-if="!vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use">
+                            <div ng-if="!home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use">
                                 <div class="row">
                                     <div class="form-group">
                                         <label class="control-label col-sm-1" for="status">Status</label> 
@@ -139,8 +139,10 @@
                                     </uib-accordion-group>
                                 </uib-accordion>
                             </div> <!-- end ng-if not using inject response -->
-                            <div ng-if="vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use">
-                                fred
+                            <div class="form-group" ng-if="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use">
+                                  
+                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:350px"></textarea>
+                            
                             </div><!-- end ng-if   using inject response -->
                         </form>
                     </div>

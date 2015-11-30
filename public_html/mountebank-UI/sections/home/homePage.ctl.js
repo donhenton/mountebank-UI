@@ -1,5 +1,7 @@
 
 
+/* global angular */
+
 angular.module('myApp')
 
         .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, 
@@ -26,6 +28,7 @@ angular.module('myApp')
              */
             vm.swapInjectionForResponse = function ()
             {
+                //$log.debug(" x "+vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use)
 
                 if (vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use)
                 {
@@ -35,7 +38,7 @@ angular.module('myApp')
                     vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use = true;
 
                 }
-            }
+            };
 
             /**
              * called when swapping to injection for the match section
@@ -56,7 +59,7 @@ angular.module('myApp')
                 }
 
 
-            }
+            };
 
             vm.moveResponseTo = function (idx)
             {
@@ -64,7 +67,7 @@ angular.module('myApp')
 
                 // vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection = {"use":false,"body":""}
 
-            }
+            };
 
             /**
              * display the sorting dialog
@@ -124,7 +127,7 @@ angular.module('myApp')
                 });
 
 
-            }
+            };
 
             /**
              * add a new response section
@@ -137,7 +140,7 @@ angular.module('myApp')
                                 ImpostersService.getSampleResponse());
                 vm.currentResponseIdx = vm.currentResponseIdx + 1;
 
-            }
+            };
 
             /**
              * delete the current response section
@@ -152,7 +155,7 @@ angular.module('myApp')
                             .responses.splice(vm.currentResponseIdx, 1);
                     vm.currentResponseIdx = 0;
                 }
-            }
+            };
 
             /**
              * take the type, find the ref
@@ -193,7 +196,7 @@ angular.module('myApp')
 
 
 
-            }
+            };
 
 
 
@@ -209,20 +212,20 @@ angular.module('myApp')
                     return false;
                 }
                 return true;
-            }
+            };
 
 
             vm.deleteResponseHeader = function (idx)
             {
                 vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].headers.splice(idx, 1);
-            }
+            };
             vm.addResponseHeader = function ()
 
             {
                 var newItem = {"key": "", "value": ""};
                 vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].headers.push(newItem);
 
-            }
+            };
 
             vm.changeCollection = function ()
             {
@@ -233,7 +236,7 @@ angular.module('myApp')
                 vm.currentCollectionIdx = parseInt(vm.collectionSelectorIdx);
                 ImpostersService.setCollectionTo(vm.currentCollectionIdx);
                 vm.buffer.data = ImpostersService.getCurrentImposter();
-            }
+            };
 
 
             vm.changeImposter = function (idx)
@@ -245,14 +248,14 @@ angular.module('myApp')
 
 
 
-            }
+            };
 
             vm.addImposter = function ()
             {
                 var newImposter = ImpostersService.createNewImposter();
                 vm.buffer.data.imposters.push(newImposter);
 
-            }
+            };
 
             vm.deleteImposter = function ()
             {
@@ -263,7 +266,7 @@ angular.module('myApp')
                     vm.currentImposterIdx = 0;
                     vm.currentResponseIdx = 0;
                 }
-            }
+            };
 
             /**
              * called when tabs are changed
@@ -274,7 +277,7 @@ angular.module('myApp')
             {
                 // $log.debug("tab " + x);
 
-            }
+            };
             /**
              * method for onblur event of form input items
              * @param {type} item
@@ -284,7 +287,7 @@ angular.module('myApp')
             vm.inputChange = function (item, event)
             {
                 //console.log(angular.toJson(item))
-            }
+            };
 
 
         });
