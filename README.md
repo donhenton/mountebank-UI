@@ -10,7 +10,7 @@ The url for this application is
 ## Summary
 
 Mountebank UI is a test double generator for
-the  [Mountebank](href="http://www.mbtest.org) server. This program helps
+the  [Mountebank](http://www.mbtest.org) server. This program helps
 the user formulate the various sections of the JSON that is used with 
 Mountebank's API to create a test double.
 
