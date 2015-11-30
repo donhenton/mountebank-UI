@@ -54,7 +54,7 @@
                 <button  ng-click="home.addImposter()" class="btn btn-med btn-primary">Add New</button>
 
                 <button ng-disabled="home.buffer.data.imposters.length == 1" ng-click="home.deleteImposter()"  class="btn btn-med btn-danger">Delete</button>
-                 
+
                 <button style="margin-top:5px" ng-disabled="home.buffer.data.imposters.length == 1" ng-click="home.sortImposters()"  class="btn btn-med btn-primary">Sort Imposters</button>
             </div>
 
@@ -97,7 +97,11 @@
 
                                 </div>
                             </div>
-                            <i>(Click on the section below)</i>
+
+
+
+
+                            <i>(Click on the section below)</i> 
                             <uib-accordion close-others="false">
                                 <uib-accordion-group heading="Headers">
                                     <headers array="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].headers"></headers>
@@ -126,9 +130,16 @@
 
                 <uib-tab heading="Match Criteria" select="home.tabSelect('Criteria')"> 
 
+                    <div>
+                        <input id="injectionUse" name="injectionUse" type="checkbox"  ng-click="home.swapInjection()"  ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use">  
 
+                        <label  ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" for="injectionUse"><em style="padding:5px">Use Injection <span class="label label-danger"> All other criteria will be lost</span></em></label> 
+
+                        <label  ng-if="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use"  for="injectionUse"><em style="padding:5px">Use Standard <span class="label label-danger"> Injection criteria will be lost</span></em></label> 
+
+                    </div>
                     <br>
-                    <div class="row">
+                    <div ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" class="row">
 
                         <form name="home.criteriaForm" class="form-horizontal" novalidate>   
 
@@ -161,16 +172,23 @@
                                 </div>
                             </div>
                     </div>
+
+
+
                     <i>(Click on the section below)</i>
-                    <uib-accordion close-others="false">
+                    <uib-accordion  ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" close-others="false">
+
+
+
+
                         <uib-accordion-group heading="Headers">
                             <headers  array="home.buffer.data.imposters[home.currentImposterIdx].match.headers"></headers>
                         </uib-accordion-group>
-                        <uib-accordion-group heading="Body">
+                        <uib-accordion-group   heading="Body">
 
                             <div class="form-group grouping-box">
 
-                               
+
 
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="path">Match Type</label> 
@@ -185,7 +203,7 @@
                                 </div>
                                 <br>    
                                 <div class="form-group">
-                                    <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:150px"></textarea>
+                                    <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.injection.body" style="width:98%;height:150px"></textarea>
                                 </div>
                             </div>
                         </uib-accordion-group>
@@ -194,8 +212,24 @@
 
                             <headers customize="home.queryParamCustomizer" array="home.buffer.data.imposters[home.currentImposterIdx].match.query_params"></headers>
                         </uib-accordion-group>  
-
                     </uib-accordion>
+
+
+                    <div ng-if="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" heading="Injection">
+
+                        <div class="form-group grouping-box">
+
+
+
+
+                            <div class="form-group">
+                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:400px"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+
 
                     </form>
                     </div>

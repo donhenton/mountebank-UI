@@ -19,9 +19,37 @@ angular.module('myApp')
             vm.queryParamCustomizer.keyLabel = "Field";
             vm.queryParamCustomizer.headerText = "";
 
+            /**
+             * called when swapping to injection
+             * 
+             * @returns {undefined}
+             */
+            vm.swapInjection = function ()
+            {
+
+                // $log.debug("hit swap "+vm.buffer.data.imposters[vm.currentImposterIdx].match.injection.use);
+                //get a copy of the response section of the imposter
+                //get a new imposter this blanks out everything
+                //restore the response section
+                if (vm.buffer.data.imposters[vm.currentImposterIdx].match.injection.use)
+                {
+                    var responseCopy = angular.copy(vm.buffer.data.imposters[vm.currentImposterIdx].responses);
+                    vm.buffer.data.imposters[vm.currentImposterIdx] =
+                            ImpostersService.createNewImposter();
+
+                    vm.buffer.data.imposters[vm.currentImposterIdx].responses = responseCopy;
+                    vm.buffer.data.imposters[vm.currentImposterIdx].match.injection.use = true;
+                }
+
+
+            }
+
             vm.moveResponseTo = function (idx)
             {
                 vm.currentResponseIdx = idx;
+
+                // vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection = {"use":false,"body":""}
+
             }
 
             /**
@@ -34,7 +62,7 @@ angular.module('myApp')
                 var sortItems = [];
                 angular.forEach(vm.buffer.data.imposters, function (data, idx) {
 
-                    sortItems.push({"value": idx, "ref": angular.copy(data), "text": "Item " + (idx+1)});
+                    sortItems.push({"value": idx, "ref": angular.copy(data), "text": "Item " + (idx + 1)});
                 });
 
                 var modalInstance =
@@ -200,6 +228,7 @@ angular.module('myApp')
                 // $log.debug(idx);
                 vm.currentImposterIdx = idx;
                 vm.currentResponseIdx = 0;
+
 
 
             }
