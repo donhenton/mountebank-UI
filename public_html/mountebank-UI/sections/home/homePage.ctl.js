@@ -2,7 +2,8 @@
 
 angular.module('myApp')
 
-        .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, collectionItems, $uibModal, TPL_PATH, HEADER_LOCATION) {
+        .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, 
+                collectionItems, $uibModal, TPL_PATH, HEADER_LOCATION) {
             var vm = this;
             vm.errorMessage = "";
             vm.buffer = {};
@@ -20,17 +21,30 @@ angular.module('myApp')
             vm.queryParamCustomizer.headerText = "";
 
             /**
-             * called when swapping to injection
+             * called when swapping to injection for the current response section
+             * @returns {undefined}
+             */
+            vm.swapInjectionForResponse = function ()
+            {
+
+                if (vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use)
+                {
+                    //blank out the current response
+                    vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx] =
+                            ImpostersService.getSampleResponse();
+                    vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use = true;
+
+                }
+            }
+
+            /**
+             * called when swapping to injection for the match section
              * 
              * @returns {undefined}
              */
-            vm.swapInjection = function ()
+            vm.swapInjectionForMatch = function ()
             {
 
-                // $log.debug("hit swap "+vm.buffer.data.imposters[vm.currentImposterIdx].match.injection.use);
-                //get a copy of the response section of the imposter
-                //get a new imposter this blanks out everything
-                //restore the response section
                 if (vm.buffer.data.imposters[vm.currentImposterIdx].match.injection.use)
                 {
                     var responseCopy = angular.copy(vm.buffer.data.imposters[vm.currentImposterIdx].responses);

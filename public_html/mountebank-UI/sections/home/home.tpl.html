@@ -70,13 +70,11 @@
 
                         <form name="home.responseForm" class="form-horizontal" novalidate>   
 
-                            <div   style="height:35px">
-                                <label class="control-label col-sm-1" for="status">Status</label> 
 
-                                <div class="col-sm-2">
-                                    <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_status" name="status" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].status" required>
-                                </div>
-                                <div class="col-sm-9 paginatorBox">
+                           
+
+                            <div class="row">
+                                <div class="form-group paginatorBox">
                                     <table id="responsePaginatorTable">
                                         <tr><td><em>Selected Response</em> </td>
                                             <td><button ng-click="home.addResponse()" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign"></i> Add Response</button></td>
@@ -98,29 +96,52 @@
                                 </div>
                             </div>
 
+                             <div class="row">
+                                <input id="injectionUseForResponse" name="injectionUseForResponse" type="checkbox"  ng-click="home.swapInjectionForResponse()"  ng-model="vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use">  
 
+                                <label  ng-if="!vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use" for="injectionUseForResponse"><em style="padding:5px">Use Injection <span class="label label-danger"> All other criteria will be lost</span></em></label> 
 
+                                <label  ng-if="vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use"  for="injectionUseForResponse"><em style="padding:5px">Use Standard <span class="label label-danger"> Injection criteria will be lost</span></em></label> 
 
-                            <i>(Click on the section below)</i> 
-                            <uib-accordion close-others="false">
-                                <uib-accordion-group heading="Headers">
-                                    <headers array="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].headers"></headers>
-                                </uib-accordion-group>
-                                <uib-accordion-group heading="Body">
-                                    <div class="form-group grouping-box">
-                                        <div class="internalHeaderRow">
+                            </div>
 
-                                            <span 
-                                                ng-if="home.isJsonString(home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body)"
-                                                >
-                                                <button ng-click="home.formatJson('responseBody', true)" class="btn btn-primary btn-xs">Pretty Print JSON</button>
-                                                <button ng-click="home.formatJson('responseBody', false)" class="btn btn-primary btn-xs">Unformat JSON</button>
-                                            </span>
+                            <div ng-if="!vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-1" for="status">Status</label> 
+                                        <div class="col-sm-2">
+                                            <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_status" name="status" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].status" required>
                                         </div>
-                                        <textarea ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body" style="width:98%;height:150px"></textarea>
                                     </div>
-                                </uib-accordion-group>
-                            </uib-accordion>
+                                </div>
+
+
+
+
+                                <i>(Click on the section below)</i> 
+                                <uib-accordion close-others="false">
+                                    <uib-accordion-group heading="Headers">
+                                        <headers array="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].headers"></headers>
+                                    </uib-accordion-group>
+                                    <uib-accordion-group heading="Body">
+                                        <div class="form-group grouping-box">
+                                            <div class="internalHeaderRow">
+
+                                                <span 
+                                                    ng-if="home.isJsonString(home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body)"
+                                                    >
+                                                    <button ng-click="home.formatJson('responseBody', true)" class="btn btn-primary btn-xs">Pretty Print JSON</button>
+                                                    <button ng-click="home.formatJson('responseBody', false)" class="btn btn-primary btn-xs">Unformat JSON</button>
+                                                </span>
+                                            </div>
+                                            <textarea ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body" style="width:98%;height:150px"></textarea>
+                                        </div>
+                                    </uib-accordion-group>
+                                </uib-accordion>
+                            </div> <!-- end ng-if not using inject response -->
+                            <div ng-if="vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use">
+                                fred
+                            </div><!-- end ng-if   using inject response -->
                         </form>
                     </div>
 
@@ -129,9 +150,9 @@
                 </uib-tab>
 
                 <uib-tab heading="Match Criteria" select="home.tabSelect('Criteria')"> 
-
+                    <br>
                     <div>
-                        <input id="injectionUse" name="injectionUse" type="checkbox"  ng-click="home.swapInjection()"  ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use">  
+                        <input id="injectionUse" name="injectionUse" type="checkbox"  ng-click="home.swapInjectionForMatch()"  ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use">  
 
                         <label  ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" for="injectionUse"><em style="padding:5px">Use Injection <span class="label label-danger"> All other criteria will be lost</span></em></label> 
 
@@ -223,7 +244,7 @@
 
 
                             <div class="form-group">
-                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:400px"></textarea>
+                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:350px"></textarea>
                             </div>
                         </div>
                     </div>
