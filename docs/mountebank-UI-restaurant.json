@@ -1,0 +1,344 @@
+[
+  {
+    "port": "9000",
+    "id": 0,
+    "description": "Restaurant Collection",
+    "imposters": [
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "[\n  {\n    \"name\": \"Huddle House\",\n    \"zipCode\": \"30701\",\n    \"city\": \"Calhoun\",\n    \"state\": \"GA\",\n    \"version\": 1,\n    \"id\": 1,\n    \"reviewDTOs\": [\n      {\n        \"starRating\": 3,\n        \"reviewListing\": \"A real gas\",\n        \"stampDate\": 1422964478318,\n        \"id\": 10\n      },\n      {\n        \"starRating\": 4,\n        \"reviewListing\": \"Can you say \\\"gastric bypass\\\"?\",\n        \"stampDate\": 1422964478318,\n        \"id\": 11\n      }\n    ]\n  },\n  {\n    \"name\": \"John Browne's Pub & Eatery\",\n    \"zipCode\": \"46235\",\n    \"city\": \"Indianapolis\",\n    \"state\": \"IN\",\n    \"version\": 1,\n    \"id\": 3,\n    \"reviewDTOs\": [\n      {\n        \"starRating\": 2,\n        \"reviewListing\": \"Impeccable service!\",\n        \"stampDate\": 1422964478318,\n        \"id\": 12\n      }\n    ]\n  },\n  {\n    \"name\": \"Ling's Express\",\n    \"zipCode\": \"53217\",\n    \"city\": \"Milwaukee\",\n    \"state\": \"WI\",\n    \"version\": 1,\n    \"id\": 2,\n    \"reviewDTOs\": [\n      {\n        \"starRating\": 6,\n        \"reviewListing\": \"Consider suicide first\",\n        \"stampDate\": 1422964478318,\n        \"id\": 14\n      },\n      {\n        \"starRating\": 1,\n        \"reviewListing\": \"Impeccable service!\",\n        \"stampDate\": 1422964478318,\n        \"id\": 13\n      },\n      {\n        \"starRating\": 4,\n        \"reviewListing\": \"A root canal would be better\",\n        \"stampDate\": 1422964478318,\n        \"id\": 15\n      }\n    ]\n  }\n]"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n        \"name\": \"Huddle House\",\n        \"zipCode\": \"30701\",\n        \"city\": \"Calhoun\",\n        \"state\": \"GA\",\n        \"version\": 1,\n        \"id\": 1,\n        \"reviewDTOs\": [{\n                \"starRating\": 3,\n                \"reviewListing\": \"A real gas\",\n                \"stampDate\": 1422964478318,\n                \"id\": 10\n            }, {\n                \"starRating\": 4,\n                \"reviewListing\": \"Can you say \\\"gastric bypass\\\"?\",\n                \"stampDate\": 1422964478318,\n                \"id\": 11\n            }]\n    }"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant/1"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n        \"name\": \"John Browne's Pub & Eatery\",\n        \"zipCode\": \"46235\",\n        \"city\": \"Indianapolis\",\n        \"state\": \"IN\",\n        \"version\": 1,\n        \"id\": 3,\n        \"reviewDTOs\": [{\n                \"starRating\": 2,\n                \"reviewListing\": \"Impeccable service!\",\n                \"stampDate\": 1422964478318,\n                \"id\": 12\n            }]\n    }"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant/2"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": "404",
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\"error\": \"Item not found\"}"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "contains",
+            "value": "/restaurant/"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "body": "{\n  \"id\": 52\n}"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "POST",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": "{\"name\":\"martins mania\",\"zipCode\":\"53217\",\"city\":\"Bonaroo\",\"state\":\"WI\",\"version\":1}"
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": "500",
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": "{\n  \"message\": \"restaurant add failed\",\n  \"errorClass\": \"com.dhenton9000.spring.mvc.controllers.ResourceException\"\n}"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "POST",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "not equals",
+            "body": "{\"name\":\"martins mania\",\"zipCode\":\"53217\",\"city\":\"Bonaroo\",\"state\":\"WI\",\"version\":1}"
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "body": "{\n  \"message\": \"cannot find restaurant with given key\",\n  \"errorClass\": \"com.dhenton9000.spring.mvc.controllers.ResourceNotFoundException\"\n}"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "not equals",
+            "value": "/restaurant/1"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "DELETE",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant/1"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "DELETE",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": "{\"message\": \"successful update\"}"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant/1"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "PUT",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "contains",
+            "body": "{\"name\":\"martins mania\",\"zipCode\":\"53217\",\"city\":\"Bonaroo\",\"state\":\"WI\",\"version\":1}"
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": "500",
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": "{\n  \"message\": \"update failed\",\n  \"errorClass\": \"com.dhenton9000.spring.mvc.controllers.ResourceException\"\n}"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "not equals",
+            "value": "/restraurant/1"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "PUT",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      }
+    ]
+  }
+]
