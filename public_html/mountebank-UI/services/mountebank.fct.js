@@ -97,7 +97,7 @@ function mountebankService($log, $http)
             {
                 if (response.injection.use) {
 
-                    newStub.response.push({"inject": response.injection.body});
+                    newStub.responses.push({"inject": response.injection.body});
                 }
                 else
                 {
