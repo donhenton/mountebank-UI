@@ -130,7 +130,7 @@ function impostersService($log, localStorageService, $rootScope)
                     "body_match":
                             {
                                 "type": "equals",
-                                "body": "body"
+                                "body": ""
                             }
                 };
 
