@@ -19,8 +19,17 @@
         is a given response/match pair. New imposters can be added or deleted
         on this page as well. Additionally, one can change the sort order of 
         imposters, as Mountebank apparently uses short-circuit matching logic.
+        
+         <h5>Support for Injection</h5> 
+        
+         <p>Injection of predicates and responses is supported in Mountebank UI. To use
+            it, beware that it is either Injection OR Standard, and using one will wipe
+            out any work for the other. Select the work areas via the toggle checkbox.
+            <a target="_new" href="http://www.mbtest.org/docs/api/injection">Mountebank Injection Documentation</a>.
+         </p>
+        
 
-        <p><h5>Notes</h5></p>
+         <h5>Notes</h5> 
         <ul>
             <li>Currently on the http protocol is supported. The use case is test
                 doubles for REST services</li>
