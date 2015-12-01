@@ -140,14 +140,15 @@
                                 </uib-accordion>
                             </div> <!-- end ng-if not using inject response -->
 
-                            <div class="form-group" ng-if="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use">
-                                <div class="form-group">
-                                    <div class="form-group">
+                            <div ng-if="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use">
+                                <div class="injectionContainer">
+                                    <div>
                                         <button class="btn btn-small" ng-click="home.formatInjection(home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection)"   href="">Format</button>
                                         <a  ng-click="$event.preventDefault(); home.doHelpDisplay('response')" class="pull-right" href="">Response Injection Help</a>
                                     </div>
-                                    <div class="form-group">
-                                        <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.body" style="width:98%;height:350px"></textarea>
+                                    <br>
+                                    <div>
+                                        <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.body" style="width:100%;height:350px"></textarea>
                                     </div>
                                 </div>
                             </div><!-- end ng-if   using inject response -->
@@ -160,6 +161,7 @@
 
                 <uib-tab heading="Match Criteria" select="home.tabSelect('Criteria')"> 
                     <br>
+                     <form name="home.criteriaForm" class="form-horizontal" novalidate>  
                     <div>
                         <input id="injectionUse" name="injectionUse" type="checkbox"  ng-click="home.swapInjectionForMatch()"  ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use">  
 
@@ -171,7 +173,7 @@
                     <br>
                     <div ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" class="row">
 
-                        <form name="home.criteriaForm" class="form-horizontal" novalidate>   
+                        
 
                             <div class="form-group">
                                 <label class="control-label col-sm-1" for="path">Path</label> 
@@ -247,16 +249,16 @@
 
                     <div ng-if="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use">
 
-                        <div class="form-group grouping-box">
+                        <div class="injectionContainer">
 
-                            <div class="form-group">
+                            <div>
                                 <button class="btn btn-small" ng-click="home.formatInjection(home.buffer.data.imposters[home.currentImposterIdx].match.injection)"   href="">Format</button>
 
                                 <a  ng-click="$event.preventDefault(); home.doHelpDisplay('predicate')" class="pull-right" href="">Match Injection Help</a>
                             </div>
-
-                            <div class="form-group">
-                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.injection.body" style="width:98%;height:350px"></textarea>
+                            <br>
+                            <div>
+                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.injection.body" style="width:100%;height:350px"></textarea>
                             </div>
                         </div>
                     </div>
@@ -265,7 +267,7 @@
 
 
                     </form>
-                    </div>
+                    
 
 
 
@@ -281,7 +283,7 @@
 
 
 
-</div>
+ 
 
 
 

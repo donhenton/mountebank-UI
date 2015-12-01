@@ -142,3 +142,8 @@ div.helpContainer
     margin:20px;
     padding: 20px
 }
+
+div.injectionContainer
+{
+     border: #1b6d85 ridge; width:90%; padding:10px 
+}
