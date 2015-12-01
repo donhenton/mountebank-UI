@@ -36,7 +36,7 @@ For more see the [Mountebank Injection Documentation](href="http://www.mbtest.or
 > * Method is not optional 
 > * The match logic is each group (body, query parameters, headers)
 >     are AND'd together. Complex logic using OR is not currently 
->     available 
+>     available. You can use Injection instead. 
 
 
 ## Collection Maintenance Page  
