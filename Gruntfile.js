@@ -19,7 +19,8 @@ module.exports = function (grunt) {
             },
             dist: {
                 // the files to concatenate
-                src: ["public_html/mountebank-UI/assets/js/jquery/jquery.min.js",
+                src: ["public_html/mountebank-UI/assets/js/js-beautify/js/lib/beautify.js",
+                    "public_html/mountebank-UI/assets/js/jquery/jquery.min.js",
                     "public_html/mountebank-UI/assets/js/jquery-ui/jquery-ui.min.js",
                     "public_html/mountebank-UI/assets/js/bootstrap/dist/js/bootstrap.min.js",
                     "public_html/mountebank-UI/assets/js/angular/angular.js",

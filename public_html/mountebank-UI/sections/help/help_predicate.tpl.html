@@ -4,20 +4,13 @@
     
     <div class="row">
         <div><em>Sample function</em></div>
-        <code> <pre>
         
-function (request, logger) {
+ <pre><code>function (request, logger) {
   //request object see below
   //optional logger
   //should return true or false
     
-}
-
-            </pre>
-        </code>
-
-
-    </div>
+}</code></pre></div>
 
 
     <div class="row">
@@ -63,6 +56,12 @@ function (request, logger) {
     <div class="row">
 
         <button  ng-click="cancel()" style="margin:auto" class="btn btn-primary">Close</button>
+    </div>
+    <br>
+    <div class="row">
+
+        <em>Note that the Mountebank server must run with the --allowInjection flag</em>.
+        <a href="http://www.mbtest.org/docs/api/injection">Mountebank Injection documentation</a>
     </div>
 
 </div>

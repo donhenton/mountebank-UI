@@ -142,10 +142,14 @@
 
                             <div class="form-group" ng-if="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use">
                                 <div class="form-group">
-                                    <a  ng-click="$event.preventDefault(); home.doHelpDisplay('response')" class="pull-right" href="">Response Injection Help</a>
+                                    <div class="form-group">
+                                        <button class="btn btn-small" ng-click="home.formatInjection(home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection)"   href="">Format</button>
+                                        <a  ng-click="$event.preventDefault(); home.doHelpDisplay('response')" class="pull-right" href="">Response Injection Help</a>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.body" style="width:98%;height:350px"></textarea>
+                                    </div>
                                 </div>
-                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.body" style="width:98%;height:350px"></textarea>
-
                             </div><!-- end ng-if   using inject response -->
                         </form>
                     </div>
@@ -241,12 +245,13 @@
                     </uib-accordion>
 
 
-                    <div ng-if="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" heading="Injection">
+                    <div ng-if="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use">
 
                         <div class="form-group grouping-box">
 
-
                             <div class="form-group">
+                                <button class="btn btn-small" ng-click="home.formatInjection(home.buffer.data.imposters[home.currentImposterIdx].match.injection)"   href="">Format</button>
+
                                 <a  ng-click="$event.preventDefault(); home.doHelpDisplay('predicate')" class="pull-right" href="">Match Injection Help</a>
                             </div>
 

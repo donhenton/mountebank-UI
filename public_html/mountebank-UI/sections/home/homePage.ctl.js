@@ -29,7 +29,8 @@ angular.module('myApp')
             vm.swapInjectionForResponse = function ()
             {
                 //$log.debug(" x "+vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use)
-
+ 
+ 
                 if (vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use)
                 {
                     //blank out the current response
@@ -61,13 +62,16 @@ angular.module('myApp')
 
             };
 
+            /**
+             * called when moving through the responses
+             * @param {type} idx
+             * @returns {undefined}
+             */
             vm.moveResponseTo = function (idx)
             {
                 vm.currentResponseIdx = idx;
 
-                // vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection = {"use":false,"body":""}
-
-            };
+             };
 
             /**
              * display the sorting dialog
@@ -301,6 +305,17 @@ angular.module('myApp')
                              
                         });
                 
+            }
+            /**
+             * format the javascript 
+             * @param {type} injectionSourceParent either
+             *  vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection 
+                or vm.buffer.data.imposters[vm.currentImposterIdx].match.injection
+             * @returns  
+             */
+            vm.formatInjection = function(injectionSourceParent)
+            {
+                injectionSourceParent.body = js_beautify(injectionSourceParent.body);
             }
 
             

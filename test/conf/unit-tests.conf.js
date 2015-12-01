@@ -8,6 +8,7 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
         // list of files / patterns to load in the browser
         files: [
+            "public_html/mountebank-UI/assets/js/js-beautify/js/lib/beautify.js",
             "public_html/mountebank-UI/assets/js/jquery/jquery.min.js",
             "public_html/mountebank-UI/assets/js/jquery-ui/jquery-ui.min.js",
             "public_html/mountebank-UI/assets/js/bootstrap/dist/js/bootstrap.min.js",
