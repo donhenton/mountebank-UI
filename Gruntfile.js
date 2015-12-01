@@ -19,7 +19,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 // the files to concatenate
-                src: ["public_html/mountebank-UI/assets/js/js-beautify/js/lib/beautify.js",
+                src: [
                     "public_html/mountebank-UI/assets/js/jquery/jquery.min.js",
                     "public_html/mountebank-UI/assets/js/jquery-ui/jquery-ui.min.js",
                     "public_html/mountebank-UI/assets/js/bootstrap/dist/js/bootstrap.min.js",
@@ -123,6 +123,13 @@ module.exports = function (grunt) {
                 src: 'README*',
                 dest: 'build/',
                 flatten: true 
+                
+            },
+            js_beautify:{
+                expand: true,
+                cwd: 'public_html/mountebank-UI/assets/js/js-beautify/js/lib',
+                src: "beautify.js",
+                dest: 'build/public_html/mountebank-UI/assets/js/'
                 
             }
         },
