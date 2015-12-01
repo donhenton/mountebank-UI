@@ -33,6 +33,7 @@ module.exports = function (config) {
             "public_html/mountebank-UI/sections/home/sorter.ctl.js",
             "public_html/mountebank-UI/sections/json/json.ctl.js",
             "public_html/mountebank-UI/sections/help/help.ctl.js",
+            "public_html/mountebank-UI/sections/help/main_help.ctl.js",
             "public_html/mountebank-UI/components/headers/headers.drct.js",
             '**/*.tpl.html',
             'test/unit_tests/**/*_tests.js'

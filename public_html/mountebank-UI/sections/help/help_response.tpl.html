@@ -1,0 +1,47 @@
+<div class="helpContainer">
+    <h3>Help for Response Injection</h3>
+
+    <div class="row">
+        Fields for response. See <a href="http://www.mbtest.org/docs/api/injection">
+            http://www.mbtest.org/docs/api/injection
+        </a> for more information on using requests and state.
+        
+    </div>
+
+    <div class="row">
+        <table class="table table-bordered">
+           
+                <tbody><tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                    </tr>
+                    <tr>
+                        <td><code>statusCode</code></td>
+                        <td>int</td>
+                        <td><code>200</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>headers</code></td>
+                        <td>object</td>
+                        <td><code>{ "Connection": "close" }</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>body</code></td>
+                        <td>string</td>
+                        <td><code>""</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>_mode</code></td>
+                        <td>string - <code>binary</code> or <code>text</code></td>
+                        <td><code>text</code></td>
+                    </tr>
+                </tbody></table>
+    </div>
+
+    <div class="row">
+
+        <button  ng-click="cancel()" style="margin:auto" class="btn btn-primary">Close</button>
+    </div>
+
+</div>

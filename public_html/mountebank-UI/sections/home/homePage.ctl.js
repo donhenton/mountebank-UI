@@ -290,4 +290,18 @@ angular.module('myApp')
             };
 
 
+            vm.doHelpDisplay = function(type)
+            {
+                //type is predicate or response
+                $uibModal.open({
+                            templateUrl: TPL_PATH + 'sections/help/help_'+
+                                    type+'.tpl.html',
+                            controller: 'HelpCtrl' ,
+                            "size":"med"
+                             
+                        });
+                
+            }
+
+            
         });

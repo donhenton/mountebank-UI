@@ -54,9 +54,9 @@ angular.module('app.routes', ['ngRoute', 'app.constants'])
                         }
                     })
                     .when('/help', {
-                        controller: 'HelpCtrl',
+                        controller: 'MainHelpCtrl',
                         controllerAs: 'help',
-                        templateUrl: TPL_PATH + 'sections/help/help.tpl.html' 
+                        templateUrl: TPL_PATH + 'sections/help/main_help.tpl.html' 
                     })
                      .when('/import', {
                         controller: 'ImportCtrl',
