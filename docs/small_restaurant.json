@@ -1,0 +1,55 @@
+[{
+        "name": "Huddle House",
+        "zipCode": "30701",
+        "city": "Calhoun",
+        "state": "GA",
+        "version": 1,
+        "id": 1,
+        "reviewDTOs": [{
+                "starRating": 3,
+                "reviewListing": "A real gas",
+                "stampDate": 1422964478318,
+                "id": 10
+            }, {
+                "starRating": 4,
+                "reviewListing": "Can you say \"gastric bypass\"?",
+                "stampDate": 1422964478318,
+                "id": 11
+            }]
+    }, {
+        "name": "John Browne's Pub & Eatery",
+        "zipCode": "46235",
+        "city": "Indianapolis",
+        "state": "IN",
+        "version": 1,
+        "id": 3,
+        "reviewDTOs": [{
+                "starRating": 2,
+                "reviewListing": "Impeccable service!",
+                "stampDate": 1422964478318,
+                "id": 12
+            }]
+    }, {
+        "name": "Ling's Express",
+        "zipCode": "53217",
+        "city": "Milwaukee",
+        "state": "WI",
+        "version": 1,
+        "id": 2,
+        "reviewDTOs": [{
+                "starRating": 6,
+                "reviewListing": "Consider suicide first",
+                "stampDate": 1422964478318,
+                "id": 14
+            }, {
+                "starRating": 1,
+                "reviewListing": "Impeccable service!",
+                "stampDate": 1422964478318,
+                "id": 13
+            }, {
+                "starRating": 4,
+                "reviewListing": "A root canal would be better",
+                "stampDate": 1422964478318,
+                "id": 15
+            }]
+    }]

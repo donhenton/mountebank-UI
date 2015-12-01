@@ -40,10 +40,10 @@
 
 
 
-                        <button class="btn btn-med btn-primary pull-right" 
+                        <button class="btn btn-sm  btn-primary pull-right" 
                                 style="margin: 5px"
                                 ng-click="home.changeImposter($index)" id="imposter_{{$index}}">
-                            <i   ng-hide="$index != home.currentImposterIdx" class="glyphicon glyphicon-arrow-right"></i> Item {{$index + 1}}</button>
+                            <i   ng-hide="$index != home.currentImposterIdx" class="glyphicon glyphicon-arrow-right"></i> {{home.composeImposterAlias($index)}}</button>
                     </div>
                 </div>
 

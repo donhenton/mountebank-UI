@@ -83,7 +83,7 @@ angular.module('myApp')
                 var sortItems = [];
                 angular.forEach(vm.buffer.data.imposters, function (data, idx) {
 
-                    sortItems.push({"value": idx, "ref": angular.copy(data), "text": "Item " + (idx + 1)});
+                    sortItems.push({"value": idx, "ref": angular.copy(data), "text": vm.composeImposterAlias(idx)});
                 });
 
                 var modalInstance =
@@ -316,6 +316,19 @@ angular.module('myApp')
             vm.formatInjection = function(injectionSourceParent)
             {
                 injectionSourceParent.body = js_beautify(injectionSourceParent.body);
+            }
+            
+            /**
+             * compose the display for the buttons that switch imposters or sort
+             * imposters
+             * @param {type} idx 0 based value passed in
+             * @returns {undefined}
+             */
+            vm.composeImposterAlias = function(idx)
+            {
+                var verb = vm.buffer.data.imposters[idx].match.verb;
+                
+                return "Item "+(idx+1) +" (" +verb+")";
             }
 
             
