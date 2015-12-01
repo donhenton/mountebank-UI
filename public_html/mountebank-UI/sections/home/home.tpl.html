@@ -161,19 +161,19 @@
 
                 <uib-tab heading="Match Criteria" select="home.tabSelect('Criteria')"> 
                     <br>
-                     <form name="home.criteriaForm" class="form-horizontal" novalidate>  
-                    <div>
-                        <input id="injectionUse" name="injectionUse" type="checkbox"  ng-click="home.swapInjectionForMatch()"  ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use">  
+                    <form name="home.criteriaForm" class="form-horizontal" novalidate>  
+                        <div>
+                            <input id="injectionUse" name="injectionUse" type="checkbox"  ng-click="home.swapInjectionForMatch()"  ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use">  
 
-                        <label  ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" for="injectionUse"><em style="padding:5px">Click To Use Injection <span class="label label-danger"> All other criteria will be lost</span></em></label> 
+                            <label  ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" for="injectionUse"><em style="padding:5px">Click To Use Injection <span class="label label-danger"> All other criteria will be lost</span></em></label> 
 
-                        <label  ng-if="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use"  for="injectionUse"><em style="padding:5px">Click To Use Standard <span class="label label-danger"> Injection criteria will be lost</span></em></label> 
+                            <label  ng-if="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use"  for="injectionUse"><em style="padding:5px">Click To Use Standard <span class="label label-danger"> Injection criteria will be lost</span></em></label> 
 
-                    </div>
-                    <br>
-                    <div ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" class="row">
+                        </div>
+                        <br>
+                        <div ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" class="row">
 
-                        
+
 
                             <div class="form-group">
                                 <label class="control-label col-sm-1" for="path">Path</label> 
@@ -203,71 +203,80 @@
                                     </select>
                                 </div>
                             </div>
-                    </div>
+                        </div>
 
 
 
-                    <i ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" >(Click on the section below)</i>
-                    <uib-accordion  ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" close-others="false">
+                        <i ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" >(Click on the section below)</i>
+                        <uib-accordion  ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" close-others="false">
 
 
 
 
-                        <uib-accordion-group heading="Headers">
-                            <headers  array="home.buffer.data.imposters[home.currentImposterIdx].match.headers"></headers>
-                        </uib-accordion-group>
-                        <uib-accordion-group   heading="Body">
+                            <uib-accordion-group heading="Headers">
+                                <headers  array="home.buffer.data.imposters[home.currentImposterIdx].match.headers"></headers>
+                            </uib-accordion-group>
+                            <uib-accordion-group   heading="Body">
 
-                            <div class="form-group grouping-box">
+                                <div class="form-group grouping-box">
 
 
 
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2" for="path">Match Type</label> 
-                                    <div class="col-sm-3">
-                                        <select   class="form-control"   id="response_verb" name="verb" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.type" required>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="path">Match Type</label> 
+                                        <div class="col-sm-3">
+                                            <select   class="form-control"   id="response_verb" name="verb" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.type" required>
 
-                                            <option ng-repeat="item in home.matchTypes" value="{{item}}">{{item}}</option>   
+                                                <option ng-repeat="item in home.matchTypes" value="{{item}}">{{item}}</option>   
 
-                                        </select>
+                                            </select>
+                                        </div>
+                                        <br/>
                                     </div>
-                                    <br/>
+                                    <div class="internalHeaderRow">
+
+                                        <span 
+                                            ng-if="home.isJsonString(home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body)"
+                                            >
+                                            <button ng-click="home.formatJson('matchBody', true)" class="btn btn-primary btn-xs">Pretty Print JSON</button>
+                                            <button ng-click="home.formatJson('matchBody', false)" class="btn btn-primary btn-xs">Unformat JSON</button>
+                                        </span>
+                                    </div>
+                                    <br>    
+                                    <div>
+                                        <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:150px"></textarea>
+                                    </div>
                                 </div>
-                                <br>    
+                            </uib-accordion-group>
+
+                            <uib-accordion-group heading="Query Params">
+
+                                <headers customize="home.queryParamCustomizer" array="home.buffer.data.imposters[home.currentImposterIdx].match.query_params"></headers>
+                            </uib-accordion-group>  
+                        </uib-accordion>
+
+
+                        <div ng-if="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use">
+
+                            <div class="injectionContainer">
+
                                 <div>
-                                    <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:150px"></textarea>
+                                    <button class="btn btn-small" ng-click="home.formatInjection(home.buffer.data.imposters[home.currentImposterIdx].match.injection)"   href="">Format</button>
+
+                                    <a  ng-click="$event.preventDefault(); home.doHelpDisplay('predicate')" class="pull-right" href="">Match Injection Help</a>
                                 </div>
-                            </div>
-                        </uib-accordion-group>
-
-                        <uib-accordion-group heading="Query Params">
-
-                            <headers customize="home.queryParamCustomizer" array="home.buffer.data.imposters[home.currentImposterIdx].match.query_params"></headers>
-                        </uib-accordion-group>  
-                    </uib-accordion>
-
-
-                    <div ng-if="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use">
-
-                        <div class="injectionContainer">
-
-                            <div>
-                                <button class="btn btn-small" ng-click="home.formatInjection(home.buffer.data.imposters[home.currentImposterIdx].match.injection)"   href="">Format</button>
-
-                                <a  ng-click="$event.preventDefault(); home.doHelpDisplay('predicate')" class="pull-right" href="">Match Injection Help</a>
-                            </div>
-                            <br>
-                            <div>
-                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.injection.body" style="width:100%;height:350px"></textarea>
+                                <br>
+                                <div>
+                                    <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.injection.body" style="width:100%;height:350px"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
 
 
 
                     </form>
-                    
+
 
 
 
@@ -283,7 +292,7 @@
 
 
 
- 
+
 
 
 
