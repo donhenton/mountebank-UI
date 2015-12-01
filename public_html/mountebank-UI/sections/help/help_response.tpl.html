@@ -5,38 +5,53 @@
         Fields for response. See <a href="http://www.mbtest.org/docs/api/injection">
             http://www.mbtest.org/docs/api/injection
         </a> for more information on using requests and state.
-        
+
     </div>
 
     <div class="row">
-        <table class="table table-bordered">
-           
-                <tbody><tr>
-                        <th>Field</th>
-                        <th>Type</th>
-                        <th>Default</th>
-                    </tr>
-                    <tr>
-                        <td><code>statusCode</code></td>
-                        <td>int</td>
-                        <td><code>200</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>headers</code></td>
-                        <td>object</td>
-                        <td><code>{ "Connection": "close" }</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>body</code></td>
-                        <td>string</td>
-                        <td><code>""</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>_mode</code></td>
-                        <td>string - <code>binary</code> or <code>text</code></td>
-                        <td><code>text</code></td>
-                    </tr>
-                </tbody></table>
+        <div><em>Sample function</em></div>
+        <code> <pre>
+    function (request, state, logger) {
+    logger.info('origin called');
+    state.requests = state.requests || 0;
+    state.requests += 1;
+    return {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ count: state.requests })
+    };
+}</pre></code></div>
+
+    <div class="row">
+        <table class="table table-striped table-bordered">
+
+            <tbody><tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                </tr>
+                <tr>
+                    <td><code>statusCode</code></td>
+                    <td>int</td>
+                    <td><code>200</code></td>
+                </tr>
+                <tr>
+                    <td><code>headers</code></td>
+                    <td>object</td>
+                    <td><code>{ "Connection": "close" }</code></td>
+                </tr>
+                <tr>
+                    <td><code>body</code></td>
+                    <td>string</td>
+                    <td><code>""</code></td>
+                </tr>
+                <tr>
+                    <td><code>_mode</code></td>
+                    <td>string - <code>binary</code> or <code>text</code></td>
+                    <td><code>text</code></td>
+                </tr>
+            </tbody></table>
     </div>
 
     <div class="row">
