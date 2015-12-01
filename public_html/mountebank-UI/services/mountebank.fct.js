@@ -236,12 +236,18 @@ function mountebankService($log, $http)
         if (predicateType === 'path')
         {
             value = matchInfo.value;
+
         }
         else
         {
             value = matchInfo.body;
 
         }
+        if (!value)
+        {
+            value = null;
+        }
+
         if (value === null || value.trim().length === 0)
         {
             return null;

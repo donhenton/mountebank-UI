@@ -217,6 +217,35 @@
       {
         "responses": [
           {
+            "status": "500",
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": "{\n  \"message\": \"for restaurant posting only\",\n  \"errorClass\": \"com.dhenton9000.spring.mvc.controllers.ResourceException\"\n}"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "POST",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      },
+      {
+        "responses": [
+          {
             "status": 200,
             "injection": {
               "use": false,
