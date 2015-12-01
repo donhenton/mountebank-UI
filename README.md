@@ -22,6 +22,12 @@ is a given response/match pair. New imposters can be added or deleted
 on this page as well. Additionally, imposters can be sorted, to allow for
 handling short-circuit matching logic.
 
+### Support for Injection 
+Injection of predicates and responses is supported in Mountebank UI. To use
+it, beware that it is either Injection OR Standard, and using one will wipe
+out any work for the other. Select the work areas via the toggle checkbox.
+For more see the [Mountebank Injection Documentation](href="http://www.mbtest.org/docs/api/injection").
+
 > ### Notes 
 > * Http protocol only
 > * For any element in Response or Match, if left blank it will not be 
