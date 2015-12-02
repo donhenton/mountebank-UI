@@ -305,7 +305,7 @@ angular.module('myApp')
                              
                         });
                 
-            }
+            };
             /**
              * format the javascript 
              * @param {type} injectionSourceParent either
@@ -316,7 +316,7 @@ angular.module('myApp')
             vm.formatInjection = function(injectionSourceParent)
             {
                 injectionSourceParent.body = js_beautify(injectionSourceParent.body);
-            }
+            };
             
             /**
              * compose the display for the buttons that switch imposters or sort
@@ -333,7 +333,7 @@ angular.module('myApp')
                 }
                 
                 return "Item "+(idx+1) +" (" +verb+")";
-            }
+            };
 
             
         });
