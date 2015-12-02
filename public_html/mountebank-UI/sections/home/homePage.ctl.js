@@ -327,6 +327,10 @@ angular.module('myApp')
             vm.composeImposterAlias = function(idx)
             {
                 var verb = vm.buffer.data.imposters[idx].match.verb;
+                if (vm.buffer.data.imposters[idx].match.injection.use)
+                {
+                    verb = "INJ";
+                }
                 
                 return "Item "+(idx+1) +" (" +verb+")";
             }
