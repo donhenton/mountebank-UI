@@ -91,81 +91,95 @@ function mountebankService($log, $http)
             var newStub = {"responses": [], "predicates": []}
             translated.stubs.push(newStub);
             //responses
+
+
             angular.forEach(imposter.responses, function (response, idx)
             {
-                var headerVar = processHeaders(response.headers);
-                var isResponse = {};
-                if (headerVar !== null)
-                {
-                    isResponse["headers"] = headerVar;
+                if (response.injection.use) {
+
+                    newStub.responses.push({"inject": response.injection.body});
                 }
-                if (isInteger(response.status))
+                else
                 {
-                    isResponse["statusCode"] = response.status;
-                }
-                if (response.body.trim().length > 1)
-                {
-                    isResponse["body"] = response.body;
-                }
-                var newResponse = {
-                    "is": isResponse
-                };
-                newStub.responses.push(newResponse);
+                    var headerVar = processHeaders(response.headers);
+                    var isResponse = {};
+                    if (headerVar !== null)
+                    {
+                        isResponse["headers"] = headerVar;
+                    }
+                    if (isInteger(response.status))
+                    {
+                        isResponse["statusCode"] = response.status;
+                    }
+                    if (response.body.trim().length > 1)
+                    {
+                        isResponse["body"] = response.body;
+                    }
+                    var newResponse = {
+                        "is": isResponse
+                    };
+                    newStub.responses.push(newResponse);
+                }// end if not using injection for response
             })
 
             // predicates
+            if (imposter.match.injection.use)
+            {
+                newStub.predicates.push({"inject": imposter.match.injection.body});
 
-            newStub.predicates.push({"and": []});
-            var mainAnd = newStub.predicates[0].and;
-            //method
-            var methodPredicate = {
-                "equals": {
-                    "method": imposter.match.verb
-                }
-            };
-            mainAnd.push(methodPredicate);
-            //path
-            var pathPredicate = createPredicate("path", imposter.match.path_match);
-            if (pathPredicate !== null)
-            {
-                mainAnd.push(pathPredicate);
-            }
-
-            //body
-            var bodyPredicate = createPredicate("body", imposter.match.body_match);
-            if (bodyPredicate !== null)
-            {
-                mainAnd.push(bodyPredicate);
-            }
-            //headers
-            var headerVar = processHeaders(imposter.match.headers);
-
-            if (headerVar !== null)
-            {
-                var headerMatch = {};
-                headerMatch["headers"] = headerVar;
-                mainAnd.push({"equals": headerMatch});
-            }
-           // imposter.match.query_params=[];
-            if (imposter.match.query_params.length > 0)
-            {
-                //query params
-                var queryVar = {"query":{}};
-                var deepEqualsVar = {"deepEquals": queryVar};
-                mainAnd.push(deepEqualsVar);
-                
-               
-                angular.forEach(imposter.match.query_params, function (parm, idx)
-                {
-                    var key = parm.key;
-                    if (key !== null && key.trim().length > 0)
-                    {
-                        queryVar.query[parm.key] = parm.value;
+            } else {
+                newStub.predicates.push({"and": []});
+                var mainAnd = newStub.predicates[0].and;
+                //method
+                var methodPredicate = {
+                    "equals": {
+                        "method": imposter.match.verb
                     }
+                };
+                mainAnd.push(methodPredicate);
+                //path
+                var pathPredicate = createPredicate("path", imposter.match.path_match);
+                if (pathPredicate !== null)
+                {
+                    mainAnd.push(pathPredicate);
+                }
 
-                });
+                //body
+                var bodyPredicate = createPredicate("body", imposter.match.body_match);
+                if (bodyPredicate !== null)
+                {
+                    mainAnd.push(bodyPredicate);
+                }
+                //headers
+                var headerVar = processHeaders(imposter.match.headers);
 
-            }
+                if (headerVar !== null)
+                {
+                    var headerMatch = {};
+                    headerMatch["headers"] = headerVar;
+                    mainAnd.push({"equals": headerMatch});
+                }
+                // imposter.match.query_params=[];
+                if (imposter.match.query_params.length > 0)
+                {
+                    //query params
+                    var queryVar = {"query": {}};
+                    var deepEqualsVar = {"deepEquals": queryVar};
+                    mainAnd.push(deepEqualsVar);
+
+
+                    angular.forEach(imposter.match.query_params, function (parm, idx)
+                    {
+                        var key = parm.key;
+                        if (key !== null && key.trim().length > 0)
+                        {
+                            queryVar.query[parm.key] = parm.value;
+                        }
+
+                    });
+
+                }
+            }//end if no injection for predicates
 
         });
 
@@ -222,12 +236,18 @@ function mountebankService($log, $http)
         if (predicateType === 'path')
         {
             value = matchInfo.value;
+
         }
         else
         {
             value = matchInfo.body;
 
         }
+        if (!value)
+        {
+            value = null;
+        }
+
         if (value === null || value.trim().length === 0)
         {
             return null;

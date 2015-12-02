@@ -1,9 +1,11 @@
 angular.module('myApp')
 
-        .controller('HelpCtrl', function ($scope, $log,HEADER_LOCATION) {
-         var vm = this;   
-         vm.headerLocation = HEADER_LOCATION;   
-            
-            
-});
-       
+        .controller('HelpCtrl', function ($scope, $log, $uibModalInstance, HEADER_LOCATION) {
+            var vm = this;
+             
+
+            $scope.cancel = function () {
+                $uibModalInstance.dismiss('cancel');
+            };
+        });
+

@@ -103,8 +103,10 @@ function impostersService($log, localStorageService, $rootScope)
     {
         return {
             "status": 200,
+            "injection": { "use": false, "body": ""} ,
             "headers": [],
-            "body": ""
+            "body": "" 
+            
         };
     }
     ;
@@ -121,13 +123,14 @@ function impostersService($log, localStorageService, $rootScope)
                         "type": "equals",
                         "value": "path"
                     },
+                    "injection": { "use": false, "body": ""},
                     "verb": "GET",
                     "headers": [],
                     "query_params":[],
                     "body_match":
                             {
                                 "type": "equals",
-                                "body": "body"
+                                "body": ""
                             }
                 };
 

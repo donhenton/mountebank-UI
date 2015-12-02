@@ -1,8 +1,11 @@
 
 
+/* global angular */
+
 angular.module('myApp')
 
-        .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, collectionItems, $uibModal, TPL_PATH, HEADER_LOCATION) {
+        .controller('HomeCtrl', function ($scope, $log, ImpostersService, currentImposter, 
+                collectionItems, $uibModal, TPL_PATH, HEADER_LOCATION) {
             var vm = this;
             vm.errorMessage = "";
             vm.buffer = {};
@@ -19,10 +22,56 @@ angular.module('myApp')
             vm.queryParamCustomizer.keyLabel = "Field";
             vm.queryParamCustomizer.headerText = "";
 
+            /**
+             * called when swapping to injection for the current response section
+             * @returns {undefined}
+             */
+            vm.swapInjectionForResponse = function ()
+            {
+                //$log.debug(" x "+vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use)
+ 
+ 
+                if (vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use)
+                {
+                    //blank out the current response
+                    vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx] =
+                            ImpostersService.getSampleResponse();
+                    vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection.use = true;
+
+                }
+            };
+
+            /**
+             * called when swapping to injection for the match section
+             * 
+             * @returns {undefined}
+             */
+            vm.swapInjectionForMatch = function ()
+            {
+
+                if (vm.buffer.data.imposters[vm.currentImposterIdx].match.injection.use)
+                {
+                    var responseCopy = angular.copy(vm.buffer.data.imposters[vm.currentImposterIdx].responses);
+                    vm.buffer.data.imposters[vm.currentImposterIdx] =
+                            ImpostersService.createNewImposter();
+
+                    vm.buffer.data.imposters[vm.currentImposterIdx].responses = responseCopy;
+                    vm.buffer.data.imposters[vm.currentImposterIdx].match.injection.use = true;
+                }
+
+
+            };
+
+            /**
+             * called when moving through the responses
+             * @param {type} idx
+             * @returns {undefined}
+             */
             vm.moveResponseTo = function (idx)
             {
                 vm.currentResponseIdx = idx;
-            }
+
+             };
 
             /**
              * display the sorting dialog
@@ -34,7 +83,7 @@ angular.module('myApp')
                 var sortItems = [];
                 angular.forEach(vm.buffer.data.imposters, function (data, idx) {
 
-                    sortItems.push({"value": idx, "ref": angular.copy(data), "text": "Item " + (idx+1)});
+                    sortItems.push({"value": idx, "ref": angular.copy(data), "text": vm.composeImposterAlias(idx)});
                 });
 
                 var modalInstance =
@@ -82,7 +131,7 @@ angular.module('myApp')
                 });
 
 
-            }
+            };
 
             /**
              * add a new response section
@@ -95,7 +144,7 @@ angular.module('myApp')
                                 ImpostersService.getSampleResponse());
                 vm.currentResponseIdx = vm.currentResponseIdx + 1;
 
-            }
+            };
 
             /**
              * delete the current response section
@@ -110,7 +159,7 @@ angular.module('myApp')
                             .responses.splice(vm.currentResponseIdx, 1);
                     vm.currentResponseIdx = 0;
                 }
-            }
+            };
 
             /**
              * take the type, find the ref
@@ -151,7 +200,7 @@ angular.module('myApp')
 
 
 
-            }
+            };
 
 
 
@@ -167,20 +216,20 @@ angular.module('myApp')
                     return false;
                 }
                 return true;
-            }
+            };
 
 
             vm.deleteResponseHeader = function (idx)
             {
                 vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].headers.splice(idx, 1);
-            }
+            };
             vm.addResponseHeader = function ()
 
             {
                 var newItem = {"key": "", "value": ""};
                 vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].headers.push(newItem);
 
-            }
+            };
 
             vm.changeCollection = function ()
             {
@@ -191,7 +240,7 @@ angular.module('myApp')
                 vm.currentCollectionIdx = parseInt(vm.collectionSelectorIdx);
                 ImpostersService.setCollectionTo(vm.currentCollectionIdx);
                 vm.buffer.data = ImpostersService.getCurrentImposter();
-            }
+            };
 
 
             vm.changeImposter = function (idx)
@@ -202,14 +251,15 @@ angular.module('myApp')
                 vm.currentResponseIdx = 0;
 
 
-            }
+
+            };
 
             vm.addImposter = function ()
             {
                 var newImposter = ImpostersService.createNewImposter();
                 vm.buffer.data.imposters.push(newImposter);
 
-            }
+            };
 
             vm.deleteImposter = function ()
             {
@@ -220,7 +270,7 @@ angular.module('myApp')
                     vm.currentImposterIdx = 0;
                     vm.currentResponseIdx = 0;
                 }
-            }
+            };
 
             /**
              * called when tabs are changed
@@ -231,7 +281,7 @@ angular.module('myApp')
             {
                 // $log.debug("tab " + x);
 
-            }
+            };
             /**
              * method for onblur event of form input items
              * @param {type} item
@@ -241,7 +291,49 @@ angular.module('myApp')
             vm.inputChange = function (item, event)
             {
                 //console.log(angular.toJson(item))
-            }
+            };
 
 
+            vm.doHelpDisplay = function(type)
+            {
+                //type is predicate or response
+                $uibModal.open({
+                            templateUrl: TPL_PATH + 'sections/help/help_'+
+                                    type+'.tpl.html',
+                            controller: 'HelpCtrl' ,
+                            "size":"med"
+                             
+                        });
+                
+            };
+            /**
+             * format the javascript 
+             * @param {type} injectionSourceParent either
+             *  vm.buffer.data.imposters[vm.currentImposterIdx].responses[vm.currentResponseIdx].injection 
+                or vm.buffer.data.imposters[vm.currentImposterIdx].match.injection
+             * @returns  
+             */
+            vm.formatInjection = function(injectionSourceParent)
+            {
+                injectionSourceParent.body = js_beautify(injectionSourceParent.body);
+            };
+            
+            /**
+             * compose the display for the buttons that switch imposters or sort
+             * imposters
+             * @param {type} idx 0 based value passed in
+             * @returns {undefined}
+             */
+            vm.composeImposterAlias = function(idx)
+            {
+                var verb = vm.buffer.data.imposters[idx].match.verb;
+                if (vm.buffer.data.imposters[idx].match.injection.use)
+                {
+                    verb = "INJ";
+                }
+                
+                return "Item "+(idx+1) +" (" +verb+")";
+            };
+
+            
         });
