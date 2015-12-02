@@ -281,7 +281,7 @@
       {
         "responses": [
           {
-            "status": 200,
+            "status": "404",
             "injection": {
               "use": false,
               "body": ""
