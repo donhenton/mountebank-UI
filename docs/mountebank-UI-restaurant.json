@@ -2,8 +2,43 @@
   {
     "port": "9000",
     "id": 0,
-    "description": "Restaurant Collection",
+    "description": "Restaurant Collection (9000)",
     "imposters": [
+      {
+        "responses": [
+          {
+            "status": "500",
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "text/html"
+              }
+            ],
+            "body": "<h1>Server Error</h3>\n\n<p><em>Cannot use this endpoint for anything except restaurant queries</em></p>"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "path"
+          },
+          "injection": {
+            "use": true,
+            "body": "function(request, logger) {\n    var isNotRestaurant = false;\n    if (request.path.indexOf('/restaurant') !== 0) {\n        isNotRestaurant = true;\n    }\n    return isNotRestaurant;\n}"
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      },
       {
         "responses": [
           {
@@ -373,7 +408,7 @@
   {
     "port": "9500",
     "id": 1,
-    "description": "Imposters Using Injection",
+    "description": "Imposters Using Injection (9500)",
     "imposters": [
       {
         "responses": [
@@ -381,7 +416,7 @@
             "status": 200,
             "injection": {
               "use": true,
-              "body": "function processRequest(request, state, logger) {\n\n\n    var handlebars = require('handlebars');\n    var JSON = require(\"JSON3\")\n    var sentIn = JSON.stringify(request, null);\n    logger.info('sentIn ' + sentIn);\n    var source = '{\"book\": \"{{title}}\",\"publication\": {{year}}, \"ISBN\": \"{{random}}\" }';\n    var ran = Math.floor(1053 + Math.random() * 124 + .5) + \"-ADGJK-\" + Math.floor(1057 + Math.random() * 124 + .5)\n\n    var data = {\n        \"title\": \"Anne of Green Gables\",\n        \"year\": 1985,\n        \"random\": ran\n    };\n\n    var template = handlebars.compile(source);\n    var textJSON = template(data);\n\n    return {\n        headers: {\n            'Content-Type': 'application/json'\n        },\n        body: textJSON,\n        statusCode: 200\n    };\n}"
+              "body": "function processRequest(request, state, logger) {\n\n\n    var handlebars = require('handlebars');\n    var JSON = require(\"JSON3\")\n    var sentIn = JSON.stringify(request, null);\n    // logger.info('sentIn ' + sentIn);\n    var source = '{\"book\": \"{{title}}\",\"publication\": {{year}}, \"ISBN\": \"{{random}}\" }';\n    var ran = Math.floor(1053 + Math.random() * 124 + .5) + \"-ADGJK-\" + Math.floor(1057 + Math.random() * 124 + .5)\n\n    var data = {\n        \"title\": \"Anne of Green Gables\",\n        \"year\": 1985,\n        \"random\": ran\n    };\n\n    var template = handlebars.compile(source);\n    var textJSON = template(data);\n\n    return {\n        headers: {\n            'Content-Type': 'application/json'\n        },\n        body: textJSON,\n        statusCode: 200\n    };\n}"
             },
             "headers": [],
             "body": ""
@@ -390,7 +425,7 @@
             "status": 200,
             "injection": {
               "use": true,
-              "body": "function processRequest(request, state, logger) {\n\n\n    var handlebars = require('handlebars');\n    var JSON = require(\"JSON3\")\n    var sentIn = JSON.stringify(request, null);\n    logger.info('sentIn ' + sentIn);\n    var source = '{\"book\": \"{{title}}\",\"publication\": {{year}}, \"ISBN\": \"{{random}}\" }';\n    var ran = Math.floor(1053 + Math.random() * 124 + .5) + \"-BONZO-\" + Math.floor(1057 + Math.random() * 124 + .5)\n\n    var data = {\n        \"title\": \"Jabberwocky\",\n        \"year\": 1888,\n        \"random\": ran\n    };\n\n    var template = handlebars.compile(source);\n    var textJSON = template(data);\n\n    return {\n        headers: {\n            'Content-Type': 'application/json'\n        },\n        body: textJSON,\n        statusCode: 200\n    };\n}"
+              "body": "function processRequest(request, state, logger) {\n\n\n    var handlebars = require('handlebars');\n    var JSON = require(\"JSON3\")\n    var sentIn = JSON.stringify(request, null);\n    //logger.info('sentIn ' + sentIn);\n    var source = '{\"book\": \"{{title}}\",\"publication\": {{year}}, \"ISBN\": \"{{random}}\" }';\n    var ran = Math.floor(1053 + Math.random() * 124 + .5) + \"-BONZO-\" + Math.floor(1057 + Math.random() * 124 + .5)\n\n    var data = {\n        \"title\": \"Jabberwocky\",\n        \"year\": 1888,\n        \"random\": ran\n    };\n\n    var template = handlebars.compile(source);\n    var textJSON = template(data);\n\n    return {\n        headers: {\n            'Content-Type': 'application/json'\n        },\n        body: textJSON,\n        statusCode: 200\n    };\n}"
             },
             "headers": [],
             "body": ""
