@@ -67,7 +67,7 @@ describe('imposterImport_tests.js -- Imposters Service', function () {
                 expect(collection.length).toEqual(1);
 
                 var currentImposter = ImpostersService.getCurrentImposter();
-                expect(currentImposter).toBeUnDefined();
+                expect(currentImposter).toBeUndefined();
             
 
 
