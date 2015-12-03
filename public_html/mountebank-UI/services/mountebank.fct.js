@@ -11,11 +11,11 @@ function mountebankService($log, $http)
                 "deleteFromMountebank": deleteFromMountebank
             }
 
-    function dataServiceError(errorResponse) {
-        $log.error('XHR Failed for MountebankService');
-        $log.error(errorResponse);
-        return errorResponse;
-    }
+//    function dataServiceError(errorResponse) {
+//        $log.error('XHR Failed for MountebankService');
+//        $log.error(errorResponse);
+//        return errorResponse;
+//    }
 
     /**
      * delete content from mountebank server at the given port

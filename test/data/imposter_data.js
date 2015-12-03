@@ -876,4 +876,46 @@ harness.expected.push(
 );// end push expected[1]
 
 
+harness.imposterTest ={"newCollection":{}};
+harness.imposterTest.newCollection = [
+  {
+    "port": 9999,
+    "id": 0,
+    "description": "New Imposter Description 0",
+    "imposters": [
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "path"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      }
+    ]
+  }
+]
+
+
 
