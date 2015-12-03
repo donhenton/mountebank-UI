@@ -25,7 +25,7 @@ describe('imposterService_tests.js -- Imposters Service', function () {
 
 
         module('myApp', function (localStorageServiceProvider) {
-            //  localStorageServiceProvider.setPrefix('testing');
+            localStorageServiceProvider.setPrefix('testing1');
             localStorageServiceProvider.setStorageType('sessionStorage');
 
         });

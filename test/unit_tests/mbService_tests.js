@@ -1,6 +1,6 @@
 /* global harness */
 
-describe('mbServiced_tests.js -- Mountebank Service', function () {
+describe('mbService_tests.js -- Mountebank Service', function () {
 
     /* 
      * 
