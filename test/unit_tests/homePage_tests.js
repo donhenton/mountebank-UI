@@ -1,7 +1,7 @@
 /* global expect */
 //http://jasmine.github.io/2.2/introduction.html
 // promise mocking http://jsfiddle.net/lavinjj/zWkzP/light/
-describe('Home Pages', function () {
+describe('homePage_tests.js -- Home Pages', function () {
 
     var sampleCollectionItem = {
         "port": 9999,
@@ -21,6 +21,10 @@ describe('Home Pages', function () {
                         "type": "equals",
                         "value": "path"
                     },
+                    "injection":
+                            {
+                                "use": false, "body": ""
+                            },
                     "verb": "GET",
                     "headers": [],
                     "query_params": [],
@@ -38,6 +42,10 @@ describe('Home Pages', function () {
                     }
                 ],
                 "match": {
+                    "injection":
+                            {
+                                "use": false, "body": ""
+                            },
                     "path_match": {
                         "type": "equals",
                         "value": "path"
@@ -248,8 +256,8 @@ describe('Home Pages', function () {
             currentImposter: currentImposter
         });
 
-       expect(scope.home.isJsonString("{}")).toBeTruthy();
-       expect(scope.home.isJsonString("fred")).toBeFalsy();
+        expect(scope.home.isJsonString("{}")).toBeTruthy();
+        expect(scope.home.isJsonString("fred")).toBeFalsy();
 
     }));
 

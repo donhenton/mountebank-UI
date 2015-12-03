@@ -20,7 +20,7 @@ module.exports = function (config) {
             "public_html/mountebank-UI/assets/js/angular-ui-sortable/sortable.js",
             "public_html/mountebank-UI/assets/js/angular-bootstrap/ui-bootstrap-tpls.min.js",
             "public_html/mountebank-UI/assets/js/angular-messages/angular-messages.js",
-            
+            "test/data/imposter_data.js", "test/data/levenshtein.js",
             
             "public_html/mountebank-UI/app/app.js",
             "public_html/mountebank-UI/app/app.routes.js",
