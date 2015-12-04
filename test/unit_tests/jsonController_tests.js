@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-describe('jsonController_tests.js -- Settings', function () {
+describe('jsonController_tests.js -- Json', function () {
 
     var collection;
 
