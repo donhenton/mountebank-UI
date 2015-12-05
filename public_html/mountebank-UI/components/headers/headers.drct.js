@@ -35,6 +35,7 @@ angular.module('myApp').directive('headers',
                             $scope.customize.keyLabel = "Key";
                             $scope.customize.headerText = "";
                         }
+                         
 
                     };
 

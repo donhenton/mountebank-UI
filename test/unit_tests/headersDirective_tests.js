@@ -1,9 +1,8 @@
 describe('headersDirective_tests.js -- headers', function () {
 
-    //http://jsfiddle.net/biomassives/z3mv7wgj/
-    //http://busypeoples.github.io/post/testing-angularjs-hierarchical-directives/
-    //https://gist.github.com/trodrigues/7414091
-    //http://www.sitepoint.com/angular-testing-tips-testing-directives/
+  // http://thejsguy.com/2015/02/12/unit-testing-angular-directives.html
+    
+    
     var container;
     var rootScope;
     var scope;
@@ -14,31 +13,90 @@ describe('headersDirective_tests.js -- headers', function () {
         module('myApp');
         angular.mock.module('templates');
 
-        inject(function ($rootScope, $compile,$httpBackend)
-        {
-          // console.log(typeof  $httpBackend.whenGET('http://localhost:9876/mountebank-UI/components/headers/headers.tpl.html'))  ;
-            container = angular.element('<div><headers customize="fred" array="alpha"></headers></div>')
-            scope = $rootScope.$new();
-           // $httpBackend.whenGET(/^\/headers\//).passThrough();
-           
-            scope.fred = 'Get a job';
-            scope.alpha = {'key': 'ted', 'value': 100}
-            $compile(container)(scope);
-            scope.$digest();
+        module(function ($provide) {
+
+            $provide.constant('TPL_PATH', 'public_html/mountebank-UI/');
+
+
         });
+
+
 
     });
 
-    it('should test header direct', inject(function ($controller, $rootScope ) {
+    it('testLoadingWithScope', inject(function ($compile, $rootScope) {
+
+        container = angular.element('<div><headers customize="customizeTest" array="array"></headers></div>')
+        scope = $rootScope.$new();
 
 
-
-        expect(3).toEqual(3);
+        scope.customizeTest = {keyLabel: 'keyLabel', headerText: 'text'};
+        scope.array = [{'key': 'ted', 'value': '100'},{'key': 'fred', 'value': '200'}];
+        $compile(container)(scope);
+        scope.$digest();
+        //console.log(container.html())
+         var findKey = container.html().indexOf("keyLabel");
+         expect(findKey > 0).toEqual(true);
 
     }));
 
+    it('testLoadingWithOutScope', inject(function ($compile, $rootScope) {
+
+        container = angular.element('<div><headers customize="customize" array="testArray"></headers></div>')
+        scope = $rootScope.$new();
+        
+        scope.testArray = [{'key': 'ted', 'value': '100'},{'key': 'fred', 'value': '200'}];
+        $compile(container)(scope);
+        scope.$digest();
+
+         var findKey = container.html().indexOf("Key");
+         expect(findKey >0).toEqual(true);
 
 
+    }));
+    
+    it('testAddResponseHeader', inject(function ($compile, $rootScope) {
+
+        container = angular.element('<headers customize="customize" array="testArray"></headers>')
+        scope = $rootScope.$new();
+        
+        scope.testArray = [{'key': 'ted', 'value': '100'},{'key': 'fred', 'value': '200'}];
+        var element = $compile(container)(scope);
+         
+        scope.$digest();
+        expect(typeof element.isolateScope()).toEqual('object');
+        var isolatedScope = element.isolateScope();
+        isolatedScope.addResponseHeader();
+        expect(isolatedScope.array.length).toEqual(3);
+        
+        spyOn(window,'confirm').and.returnValue(false);
+        
+        //window confirm defaults to false here
+        isolatedScope.deleteResponseHeader();
+        expect(isolatedScope.array.length).toEqual(3);
+
+    }));
+    
+     it('testDeleteResponseHeader', inject(function ($compile, $rootScope) {
+
+        container = angular.element('<headers customize="customize" array="testArray"></headers>')
+        scope = $rootScope.$new();
+        
+        scope.testArray = [{'key': 'ted', 'value': '100'},{'key': 'fred', 'value': '200'}];
+        var element = $compile(container)(scope);
+         
+        scope.$digest();
+        expect(typeof element.isolateScope()).toEqual('object');
+        var isolatedScope = element.isolateScope();
+        isolatedScope.addResponseHeader();
+        expect(isolatedScope.array.length).toEqual(3);
+          spyOn(window,'confirm').and.returnValue(true);
+        isolatedScope.deleteResponseHeader();
+        expect(isolatedScope.array.length).toEqual(2);
+
+    }));
+    
+    
 });
 
  
