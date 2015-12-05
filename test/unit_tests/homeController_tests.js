@@ -333,7 +333,7 @@ describe('settingsController_tests.js -- Settings', function () {
 
     }));
 
-it('testChangeImposter', inject(function ($controller, ImpostersService,
+    it('testChangeImposter', inject(function ($controller, ImpostersService,
             currentImposter, collectionItems, $rootScope) {
 
         var parentScope = $rootScope.$new();
@@ -354,9 +354,9 @@ it('testChangeImposter', inject(function ($controller, ImpostersService,
 
         scope.home.currentImposterIdx = 1;
         scope.home.currentResponseIdx = 1;
-         
+
         scope.home.changeImposter(55);
-        
+
         expect(scope.home.currentImposterIdx).toEqual(55);
         expect(scope.home.currentResponseIdx).toEqual(0);
 
@@ -364,7 +364,7 @@ it('testChangeImposter', inject(function ($controller, ImpostersService,
 
     }));
 
-it('testChangeCollection', inject(function ($controller, ImpostersService,
+    it('testChangeCollection', inject(function ($controller, ImpostersService,
             currentImposter, collectionItems, $rootScope) {
 
         var parentScope = $rootScope.$new();
@@ -377,13 +377,13 @@ it('testChangeCollection', inject(function ($controller, ImpostersService,
             currentImposter: currentImposter
         });
 
-       // expect(harness.imposterTest.newCollection.length).toEqual(2);
+        // expect(harness.imposterTest.newCollection.length).toEqual(2);
 
         scope.home.currentImposterIdx = 1;
         scope.home.currentResponseIdx = 1;
         scope.home.collectionSelectorIdx = 1;
         scope.home.changeCollection();
-        
+
         expect(scope.home.currentImposterIdx).toEqual(0);
         expect(scope.home.currentResponseIdx).toEqual(0);
 
@@ -391,7 +391,57 @@ it('testChangeCollection', inject(function ($controller, ImpostersService,
 
     }));
 
+    it('testFormatInjection', inject(function ($controller, ImpostersService,
+            currentImposter, collectionItems, $rootScope) {
 
+        var parentScope = $rootScope.$new();
+        var scope = parentScope.$new();
+        spyOn(window,'js_beautify').and.callThrough();
+
+        var ctrl = $controller('HomeCtrl as home', {
+            $scope: scope,
+            collectionItems: collectionItems,
+            currentImposter: currentImposter
+        });
+
+        // expect(harness.imposterTest.newCollection.length).toEqual(2);
+        var item = {"body": "var x = {'ted':100}"};
+        
+         
+        scope.home.formatInjection(item);
+        //console.log("body "+item.body)
+        expect(item.body.indexOf("\n") > 0).toBeTruthy();
+
+
+
+
+    }));
+
+it('testDoHelpDisplay', inject(function ($controller, ImpostersService,
+            currentImposter, collectionItems,$uibModal, $rootScope) {
+
+        var parentScope = $rootScope.$new();
+        var scope = parentScope.$new();
+        spyOn($uibModal,'open') ;
+
+        var ctrl = $controller('HomeCtrl as home', {
+            $scope: scope,
+            collectionItems: collectionItems,
+            currentImposter: currentImposter
+        });
+
+         
+        //http://tobyho.com/2011/12/15/jasmine-spy-cheatsheet/
+         
+        scope.home.doHelpDisplay('fred');
+        //obj.method.mostRecentCall.args
+        var calledWith = angular.toJson($uibModal.open.calls.mostRecent().args)
+        expect(calledWith.indexOf("fred") > 0).toBeTruthy();
+
+
+
+
+    }));
 
 });
 
