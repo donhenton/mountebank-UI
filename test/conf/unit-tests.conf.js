@@ -56,7 +56,7 @@ module.exports = function (config) {
 
         },
         ngHtml2JsPreprocessor: {
-            moduleName: 'myTemplates'
+            moduleName: 'templates'
 
 
         },
