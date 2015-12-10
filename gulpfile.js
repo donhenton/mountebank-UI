@@ -130,7 +130,7 @@ gulp.task('prepare-index-html', function () {
             .pipe(
             replace({
                 swap_css: 'mountebank-UI/assets/css/mountebank-UI.min.css',
-                swap_js: 'mountebank-UI/assets/js/mountebank-UI.min.js'
+                swap_js: ['mountebank-UI/assets/js/beautify.js','mountebank-UI/assets/js/mountebank-UI.min.js']
             }))
             .pipe(gulp.dest('build/public_html/'));
 
