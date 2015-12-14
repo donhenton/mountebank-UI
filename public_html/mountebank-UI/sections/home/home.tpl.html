@@ -137,6 +137,21 @@
                                             <textarea ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body" style="width:98%;height:150px"></textarea>
                                         </div>
                                     </uib-accordion-group>
+                                    <uib-accordion-group heading="Decorate">
+                                        <div class="injectionContainer">
+                                            <div>
+                                                <button class="btn btn-small" ng-click="home.formatInjection(home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].decorate)"   href="">Format</button>
+                                                <a  ng-click="$event.preventDefault(); home.doHelpDisplay('decorate')" class="pull-right" href="">Decoration Help</a>
+                                            </div>
+                                            <br>
+                                            <div>
+                                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].decorate" style="width:100%;height:350px"></textarea>
+                                            </div>
+                                        </div>
+                                    </uib-accordion-group>
+
+
+
                                 </uib-accordion>
                             </div> <!-- end ng-if not using inject response -->
 
