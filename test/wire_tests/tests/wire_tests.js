@@ -60,7 +60,12 @@ describe('wire_tests.js', function () {
      }, 5000);
     
 
-    
+    /**
+     * crossOrigin = true will cause a preflight options request
+     * 
+     * @param {type} done
+     * @returns {undefined}
+     */
     
     it('testTalkingToMb', function (done)
     {
@@ -71,7 +76,7 @@ describe('wire_tests.js', function () {
                     data: JSON3.stringify({alpha: 25}),
 
                     contentType: 'application/json',
-                    crossOrigin: true,
+                   // crossOrigin: true,  
                     error: error,
                     complete: complete,
                     success: success

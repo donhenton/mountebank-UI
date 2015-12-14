@@ -65,6 +65,11 @@ var simpleTest = {
             },
             {
               "equals": {
+                "body": "{\"alpha\":25}"
+              }
+            },
+            {
+              "equals": {
                 "path": "/decorate"
               }
             }
