@@ -9,6 +9,12 @@ module.exports = function (grunt) {
                 '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
                 '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
                 ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+        mb: {
+             
+            start: ['--port', 2525, '--allowInjection',  '--debug', '--pidfile', 'mb-grunt.pid'],
+            restart: ['--port', 2525, '--allowInjection', '--debug', '--pidfile', 'mb-grunt.pid'],
+            stop: ['--pidfile', 'mb-grunt.pid']
+        },
         clean: {
             reports: ['reports', 'build']
         },
@@ -92,10 +98,10 @@ module.exports = function (grunt) {
             fonts: {
                 expand: true,
                 cwd: 'public_html/mounteBank-UI/assets/js/bootstrap/dist',
-                flatten:true,
+                flatten: true,
                 src: 'fonts/*',
                 dest: 'build/public_html/<%= pkg.name %>/assets/fonts/'
-                
+
             },
             main: {
                 expand: true,
@@ -119,23 +125,26 @@ module.exports = function (grunt) {
             },
             readme: {
                 expand: true,
-                
                 src: 'README*',
                 dest: 'build/',
-                flatten: true 
-                
+                flatten: true
+
             },
-            js_beautify:{
+            js_beautify: {
                 expand: true,
                 cwd: 'public_html/mountebank-UI/assets/js/js-beautify/js/lib',
                 src: "beautify.js",
                 dest: 'build/public_html/mountebank-UI/assets/js/'
-                
+
             }
         },
         karma: {
             unit_tests: {
                 configFile: 'test/conf/unit-tests.conf.js',
+                singleRun: true
+            },
+            wire_tests: {
+                configFile: 'test/conf/wire-tests.conf.js',
                 singleRun: true
             }
 
@@ -149,7 +158,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-mountebank');
     grunt.loadNpmTasks('grunt-karma');
-    grunt.registerTask('run-all-tests', ['clean','karma:unit_tests']);
-    grunt.registerTask('build', ['clean', 'copy', 'concat', 'uglify','cssmin'])
+    grunt.registerTask('wire-tests', [  'karma:wire_tests' ]);
+    //grunt.registerTask('wire-test', ['mb:start', 'try', 'karma:wire_tests', 'finally', 'mb:stop', 'checkForErrors']);
+    grunt.registerTask('run-all-tests', ['clean', 'karma:unit_tests']);
+    grunt.registerTask('build', ['clean', 'copy', 'concat', 'uglify', 'cssmin'])
 }

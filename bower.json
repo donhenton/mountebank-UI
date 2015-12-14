@@ -14,5 +14,8 @@
     "angular-ui-sortable": "~0.13.4",
     "jquery-ui": "~1.11.4",
     "js-beautify": "~1.5.10"
+  },
+  "devDependencies": {
+    "json3": "3.3.2"
   }
 }

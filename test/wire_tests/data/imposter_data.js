@@ -1,0 +1,45 @@
+var simpleTest = {
+    "port": 7777,
+    "protocol": "http",
+    "stubs": [{
+            "responses": [
+                {
+                    "is": {
+                        "statusCode": 200,
+                        "headers":
+                                {
+                                    "bonzo": "dog"
+                                },
+                        "body": "{\"answer\": \"get a job\"}"
+
+
+                    }
+                },
+                {
+                    "is": {
+                        "statusCode": 200,
+                        "headers":
+                                {
+                                    "bonzo": "dog"
+                                },
+                        "body": "{\"answer\": \"get another job\"}"
+
+
+                    }
+                }
+            ],
+            "predicates": [{
+                    
+                            "equals": {
+                                "path": "/test",
+                                "body":"{\"alpha\": 25}",
+                                "method": "POST",
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                }
+                            }
+                         
+                    
+                }]
+        }]
+}

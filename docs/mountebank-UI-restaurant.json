@@ -463,7 +463,7 @@
     ]
   },
   {
-    "port": "8000",
+    "port": "7777",
     "id": 2,
     "description": "decoration testing",
     "imposters": [
@@ -477,8 +477,51 @@
             },
             "headers": [
               {
+                "key": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "key": "Access-Control-Allow-Headers",
+                "value": "Content-Type"
+              }
+            ],
+            "body": "",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "OPTIONS",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
                 "key": "Content-type",
                 "value": "text/html"
+              },
+              {
+                "key": "Access-Control-Allow-Origin",
+                "value": "*"
               }
             ],
             "body": "alpha The time is ${TIME}",
@@ -494,6 +537,10 @@
               {
                 "key": "Content-Type",
                 "value": "text/html"
+              },
+              {
+                "key": "Access-Control-Allow-Origin",
+                "value": "*"
               }
             ],
             "body": "beta alpha The time is ${TIME}",
@@ -509,7 +556,7 @@
             "use": false,
             "body": ""
           },
-          "verb": "GET",
+          "verb": "POST",
           "headers": [],
           "query_params": [],
           "body_match": {
