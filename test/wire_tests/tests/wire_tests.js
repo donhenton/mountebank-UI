@@ -1,5 +1,10 @@
 describe('wire_tests.js', function () {
+    
+    //simple test is defined in test/wire_tests/data/imposter_data.js
+    
     var data = JSON3.stringify(simpleTest);
+    
+    
      
      beforeAll(function (done)
      {
@@ -62,6 +67,9 @@ describe('wire_tests.js', function () {
 
     /**
      * crossOrigin = true will cause a preflight options request
+     * if that's the case, mb needs to handle it by responding to it
+     * see simpleTest for an example of an options response mocked in mb
+     * 
      * 
      * @param {type} done
      * @returns {undefined}
