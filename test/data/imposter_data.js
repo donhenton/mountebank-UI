@@ -29,7 +29,8 @@ harness.imposterCollection =
                                         "value": "text/html"
                                     }
                                 ],
-                                "body": "<h1>Server Error</h3>\n\n<p><em>Cannot use this endpoint for anything except restaurant queries</em></p>"
+                                "body": "<h1>Server Error</h3>\n\n<p><em>Cannot use this endpoint for anything except restaurant queries</em></p>",
+                                "decorate": "function(res,rep) {var x= 'get a  job';}"
                             }
                         ],
                         "match": {
@@ -487,6 +488,9 @@ harness.expected.push(
                                 },
                                 "statusCode": "500",
                                 "body": "<h1>Server Error</h1>\n\n<p><em>Cannot use this endpoint for anything except restaurant queries</em></p>"
+                            },
+                            "_behaviors": {
+                                "decorate": "function(res,rep) {var x= 'get a  job';}"
                             }
                         }
                     ],
@@ -876,45 +880,45 @@ harness.expected.push(
 );// end push expected[1]
 
 
-harness.imposterTest ={"newCollection":{}};
+harness.imposterTest = {"newCollection": {}};
 harness.imposterTest.newCollection = [
-  {
-    "port": 9999,
-    "id": 0,
-    "description": "New Imposter Description 0",
-    "imposters": [
-      {
-        "responses": [
-          {
-            "status": 200,
-            "injection": {
-              "use": false,
-              "body": ""
-            },
-            "headers": [],
-            "body": ""
-          }
-        ],
-        "match": {
-          "path_match": {
-            "type": "equals",
-            "value": "path"
-          },
-          "injection": {
-            "use": false,
-            "body": ""
-          },
-          "verb": "GET",
-          "headers": [],
-          "query_params": [],
-          "body_match": {
-            "type": "equals",
-            "body": ""
-          }
-        }
-      }
-    ]
-  }
+    {
+        "port": 9999,
+        "id": 0,
+        "description": "New Imposter Description 0",
+        "imposters": [
+            {
+                "responses": [
+                    {
+                        "status": 200,
+                        "injection": {
+                            "use": false,
+                            "body": ""
+                        },
+                        "headers": [],
+                        "body": ""
+                    }
+                ],
+                "match": {
+                    "path_match": {
+                        "type": "equals",
+                        "value": "path"
+                    },
+                    "injection": {
+                        "use": false,
+                        "body": ""
+                    },
+                    "verb": "GET",
+                    "headers": [],
+                    "query_params": [],
+                    "body_match": {
+                        "type": "equals",
+                        "body": ""
+                    }
+                }
+            }
+        ]
+    }
 ]
 
 

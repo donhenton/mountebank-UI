@@ -119,6 +119,21 @@ function mountebankService($log, $http)
                         "is": isResponse
                     };
                     newStub.responses.push(newResponse);
+                    
+                    ////decorate ///////////////////////////////
+                    if (!response.decorate)
+                    {
+                        response.decorate = "";
+                    }
+                    if (response.decorate.trim().length > 1)
+                    {
+                        newResponse["_behaviors"] = {"decorate": response.decorate};
+                    }
+                    
+                    
+                    
+                   ////decorate /////////////////////////////// 
+                    
                 }// end if not using injection for response
             })
 
