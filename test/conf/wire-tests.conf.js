@@ -18,6 +18,10 @@ module.exports = function (config) {
             outputFile: 'reports/html_out/karma_wire_tests.html'
 
         },
+          junitReporter: {
+            outputFile: 'reports/junit/wire-test-results.xml',
+            suite: 'Unit Tests'
+        },
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter

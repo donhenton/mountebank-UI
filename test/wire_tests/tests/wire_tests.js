@@ -1,6 +1,6 @@
 describe('wire_tests.js', function () {
     var data = JSON3.stringify(simpleTest);
-    /*
+     
      beforeAll(function (done)
      {
      $.ajax({
@@ -60,51 +60,22 @@ describe('wire_tests.js', function () {
      }, 5000);
     
 
-    it('testTalkingToMb', function (done)
-    {
- 
-        var data = JSON3.stringify({"alpha": 25});
-        $.post("http://localhost:7777/test",data,function (data) {
-
-
-
-
-        },'json').done(function (data) {
-            alert("second success "+ JSON3.stringify(data));
-        })
-                .fail(function (err) {
-                    console.log("error in test " + JSON3.stringify(err));
-                    done.fail();
-                })
-                .always(function () {
-                    done();
-                });
-
-
-
-    }, 5000);
-     */
-    
     
     
     it('testTalkingToMb', function (done)
     {
         $.ajax({
-            type: "POST",
-            url: "http://localhost:7777/decorate",
-            data: JSON3.stringify({alpha: 25}),
-//            headers: {
-//                'Access-Control-Allow-Origin': '*',
-//                'Access-Control-Allow-Methods': 'POST, GET, OPTIONS'
-//
-//
-//            },
-            contentType: 'application/json',
-            crossOrigin: true,
-            error: error,
-            complete: complete,
-            success: success
-        });
+                    type: "POST",
+                     url: "http://localhost:7777/decorate",
+                  // url: "http://donhenton-node.herokuapp.com/morguefile/getData",
+                    data: JSON3.stringify({alpha: 25}),
+
+                    contentType: 'application/json',
+                    crossOrigin: true,
+                    error: error,
+                    complete: complete,
+                    success: success
+                });
         function error(err)
         {
             console.log("error in test " + JSON3.stringify(err));
@@ -112,7 +83,8 @@ describe('wire_tests.js', function () {
         }
         function success(data)
         {
-            expect(data).toEqual({'alpha': 25})
+            expect(data.indexOf(
+                    'The time is') > 0).toBeTruthy();
             done();
         }
         function complete()
