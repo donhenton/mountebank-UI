@@ -28,6 +28,7 @@ describe('wire_tests.js', function () {
      }
      function complete()
      {
+         console.log("finished beforeAll");
      done();
      }
      }, 5000);
@@ -50,12 +51,12 @@ describe('wire_tests.js', function () {
      }
      function success(data)
      {
-     // console.log("delete success " + JSON3.stringify(data));
+     console.log("delete success " );
      done();
      }
      function complete()
      {
-     // console.log("delete complete")
+       console.log("delete complete")
      done();
      }
      
@@ -102,6 +103,7 @@ describe('wire_tests.js', function () {
         }
         function complete()
         {
+            console.log("finished test");
             done();
         }
     }, 5000);

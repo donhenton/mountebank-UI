@@ -10,9 +10,8 @@ module.exports = function (grunt) {
                 '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
                 ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
         mb: {
-             
-            start: ['--port', 2525, '--allowInjection',  '--debug', '--pidfile', 'mb-grunt.pid'],
-            restart: ['--port', 2525, '--allowInjection', '--debug', '--pidfile', 'mb-grunt.pid'],
+            start: ['--port', 2525, '--allowInjection', '--allowCORS', '--debug', '--pidfile', 'mb-grunt.pid'],
+            restart: ['--port', 2525, '--allowInjection', '--allowCORS', '--debug', '--pidfile', 'mb-grunt.pid'],
             stop: ['--pidfile', 'mb-grunt.pid']
         },
         clean: {
@@ -160,8 +159,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-mountebank');
     grunt.loadNpmTasks('grunt-karma');
-    grunt.registerTask('wire-tests', [  'karma:wire_tests' ]);
-    //grunt.registerTask('wire-test', ['mb:start', 'try', 'karma:wire_tests', 'finally', 'mb:stop', 'checkForErrors']);
+    grunt.registerTask('wire-tests-external', ['karma:wire_tests']);
+    grunt.registerTask('wire-tests-internal', ['mb:start', 'try', 'karma:wire_tests', 'finally', 'mb:stop', 'checkForErrors']);
     grunt.registerTask('run-all-tests', ['clean', 'karma:unit_tests']);
     grunt.registerTask('build', ['clean', 'copy', 'concat', 'uglify', 'cssmin'])
 }
