@@ -319,6 +319,20 @@ angular.module('myApp')
             };
             
             /**
+             * used to format the decorate function if any
+             * @param {type} currentResponse
+             * @returns {undefined}
+             */
+            vm.formatDecorate = function(currentResponse)
+            {
+                if (!currentResponse.decorate)
+                {
+                    currentResponse.decorate = "";
+                }
+                currentResponse.decorate = js_beautify(currentResponse.decorate);
+            }
+            
+            /**
              * compose the display for the buttons that switch imposters or sort
              * imposters
              * @param {type} idx 0 based value passed in
