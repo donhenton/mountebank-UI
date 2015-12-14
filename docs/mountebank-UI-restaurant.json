@@ -7,10 +7,10 @@
       {
         "responses": [
           {
-            "status": 200,
+          "status": "500",
             "injection": {
-              "use": true,
-              "body": "function ted() {\n    var x = 'get a job'\n}"
+              "use": false,
+              "body": ""
             },
             "headers": [],
             "body": ""
