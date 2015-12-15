@@ -13,7 +13,7 @@
               "body": ""
             },
             "headers": [],
-            "body": ""
+            "body": "<h1>Server Error</h1> <p><em>Cannot use this endpoint for anything except restaurant queries</em></p>"
           }
         ],
         "match": {
