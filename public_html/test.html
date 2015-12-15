@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>CORS Testing page</title>
+        <meta charset="UTF-8">
+        <link href="mountebank-UI/assets/js/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="mountebank-UI/assets/js/json3/lib/json3.js" type="text/javascript"></script>
+        <script src="mountebank-UI/assets/js/jquery/jquery.min.js" type="text/javascript"></script>
+    </head>
+    <body style="margin:20px">
+        
+        <script>
+
+            function doCall()
+            {
+
+                $.ajax({
+                    type: "POST",
+                     url: "http://localhost:7777/decorate",
+                  // url: "http://donhenton-node.herokuapp.com/morguefile/getData",
+                    data: JSON3.stringify({alpha: 25}),
+
+                    contentType: 'application/json',
+                    crossOrigin: true,
+                    error: error,
+                    complete: complete,
+                    success: success
+                });
+                
+                
+                function error(err)
+        {
+            console.log("error in test " + JSON3.stringify(err));
+            
+        }
+        function success(data)
+        {
+            console.log("success "+JSON3.stringify(data));
+            $('#text').html(data);
+            
+        }
+        function complete()
+        {
+            console.log('complete')
+        }
+                
+                
+                
+
+            }
+
+        </script>
+
+        <div class="container">
+            <div class="row"><p>Testing code for working with Jquery requirement for preflight options call</p></div>
+            
+        <div class="row"><button class="btn btn-primary" onclick="doCall()">Do call</button></div>
+ 
+        <p><div style="  margin:10px" id="text" class="well"></div></p>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,104 @@
+<div class="helpContainer">
+    <h3>Help for Response Decoration</h3>
+    
+    
+    <div class="row">
+        <div><em>Sample function</em></div>
+        
+ <pre><code>function (request, response) {
+    var pad = function (number) {
+            return (number < 10) ? '0' + 
+              number : number.toString();
+        },
+        now = new Date(),
+        time = pad(now.getHours()) + 
+              ':' + pad(now.getMinutes()) + 
+              ':' + pad(now.getSeconds());
+
+    response.body = response.body
+        .replace('${TIME}', time);
+}</code></pre></div>  <h4>Response Stucture</h4>
+    <div class="row">
+        <table class="table table-striped table-bordered">
+
+            <tbody><tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                </tr>
+                <tr>
+                    <td><code>statusCode</code></td>
+                    <td>int</td>
+                    <td><code>200</code></td>
+                </tr>
+                <tr>
+                    <td><code>headers</code></td>
+                    <td>object</td>
+                    <td><code>{ "Connection": "close" }</code></td>
+                </tr>
+                <tr>
+                    <td><code>body</code></td>
+                    <td>string</td>
+                    <td><code>""</code></td>
+                </tr>
+                <tr>
+                    <td><code>_mode</code></td>
+                    <td>string - <code>binary</code> or <code>text</code></td>
+                    <td><code>text</code></td>
+                </tr>
+            </tbody></table>
+    </div>
+<h4>Request Structure</h4>
+
+    <div class="row">
+        <table class="table table-striped table-bordered">
+            <tbody><tr>
+                    <th>Field</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                </tr>
+                <tr>
+                    <td><code>requestFrom</code></td>
+                    <td>The client socket, primarily used for logging and debugging.</td>
+                    <td>string</td>
+                </tr>
+                <tr>
+                    <td><code>path</code></td>
+                    <td>The path of the request, without the querystring</td>
+                    <td>string</td>
+                </tr>
+                <tr>
+                    <td><code>query</code></td>
+                    <td>The querystring of the request</td>
+                    <td>object (as key value pairs)</td>
+                </tr>
+                <tr>
+                    <td><code>method</code></td>
+                    <td>The request method</td>
+                    <td>string</td>
+                </tr>
+                <tr>
+                    <td><code>headers</code></td>
+                    <td>The HTTP headers</td>
+                    <td>object (as key value pairs)</td>
+                </tr>
+                <tr>
+                    <td><code>body</code></td>
+                    <td>The request body</td>
+                    <td>string</td>
+                </tr>
+            </tbody></table>
+    </div>
+
+    <div class="row">
+
+        <button  ng-click="cancel()" style="margin:auto" class="btn btn-primary">Close</button>
+    </div>
+<br>
+    <div class="row">
+
+        <em>Note that the Mountebank server must run with the --allowInjection flag</em>.
+        <a href="http://www.mbtest.org/docs/api/behaviors">Mountebank decoration documentation</a>
+    </div>
+
+</div>

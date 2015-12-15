@@ -27,11 +27,14 @@ describe('mbService_tests.js -- Mountebank Service', function () {
 
     }));
 
-    it('Restaurant Collection Comparison', inject(function (MountebankService) {
+    it('Imposter Collection Goldfile Comparison', inject(function (MountebankService) {
 
         var input = harness.imposterCollection[0];
         var expectedOutput = angular.toJson(harness.expected[0], false);
         var actualOutput = angular.toJson(angular.fromJson(MountebankService.translate(input)), false);
+        //var tt = angular.toJson(angular.fromJson(MountebankService.translate(input)), true);
+        //console.log("\n\n"+tt+"\n\n")
+        
         var dist = harness.getEditDistance(expectedOutput, actualOutput);
         expect(dist).toEqual(1);
         
