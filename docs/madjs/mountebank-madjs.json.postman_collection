@@ -7,7 +7,9 @@
 		"81d685aa-0ec4-14fe-7d34-0a1eaf56ddbc",
 		"c89388b4-2c86-eb30-3adf-868681c60c16",
 		"3024a601-a7ac-4193-8d4b-4a44a8179850",
-		"6853ad7d-d669-06d8-3bcd-c1f8390386a7"
+		"6853ad7d-d669-06d8-3bcd-c1f8390386a7",
+		"e068079e-b7a1-ef46-2698-6724341681d4",
+		"059a8a46-8f9e-0fee-13c7-ede49568e422"
 	],
 	"folders": [],
 	"timestamp": 1447272066799,
@@ -15,6 +17,27 @@
 	"remoteLink": "",
 	"public": false,
 	"requests": [
+		{
+			"id": "059a8a46-8f9e-0fee-13c7-ede49568e422",
+			"headers": "",
+			"url": "http://localhost:7777/decorate",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"collectionId": "d93d4aab-133e-4d2f-097d-56f28a98353b",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Decorate Demo 7777",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1451913863436,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"alpha\": 444}"
+		},
 		{
 			"id": "3024a601-a7ac-4193-8d4b-4a44a8179850",
 			"headers": "",
@@ -117,6 +140,26 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"rawModeData": ""
+		},
+		{
+			"id": "e068079e-b7a1-ef46-2698-6724341681d4",
+			"headers": "",
+			"url": "http://localhost:9500/inject?alpha=100",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "d93d4aab-133e-4d2f-097d-56f28a98353b",
+			"data": [],
+			"dataMode": "params",
+			"name": "Injection Demo 9500",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1451912826793,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {}
 		}
 	]
 }

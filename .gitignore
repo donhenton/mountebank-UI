@@ -12,3 +12,5 @@ bower_components
 /mb.pid
 /mb*.log
 /build/
+/docs/madjs/mb.log
+/docs/madjs/mb.pid
