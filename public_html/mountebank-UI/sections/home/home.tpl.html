@@ -21,18 +21,19 @@
 
                 </select>    
             </div>
-
+            
         </div>
 
     </div>
-    <br>
+    <hr/>
+     
+                <h3>Imposters</h3>
+    
     <div class="row">
 
         <div id="itemSelectorColumn" class="col-sm-2">
 
-            <div>
-                <h3>Imposters</h3>
-            </div>
+            
             <div class="limitY">
 
                 <div ng-repeat="item in home.buffer.data.imposters track by $index">
@@ -61,7 +62,16 @@
         </div>
 
         <div id="formColumn" class="col-sm-10">
-
+            <div class="row">
+                <form class="form-horizontal" novalidate>  
+                <div class="form-group clearfix">
+                       <label class="control-label col-sm-2" for="status">Documentation</label> 
+                       <div class="col-sm-9">
+                           <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="imposter_documentation" name="status" ng-model="home.buffer.data.imposters[home.currentImposterIdx].documentation">
+                       </div>
+                </div>
+                </form>
+            </div>
             <uib-tabset justified="true">
 
                 <uib-tab heading="Response" select="home.tabSelect('Response')"> 
