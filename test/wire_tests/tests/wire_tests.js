@@ -5,7 +5,7 @@ describe('wire_tests.js', function () {
     var data = JSON3.stringify(simpleTest);
     
     
-     
+     //set up mb to have the imposter in place
      beforeAll(function (done)
      {
      $.ajax({
@@ -33,7 +33,7 @@ describe('wire_tests.js', function () {
      }
      }, 5000);
      
-     
+     //remove the imposter
      afterAll(function (done)
      {
      //simpleTest is in wire_tests/data/imposter_data.js
