@@ -389,7 +389,7 @@
             "body": "{\"name\":\"martins mania\",\"zipCode\":\"53217\",\"city\":\"Bonaroo\",\"state\":\"WI\",\"version\":1}"
           }
         },
-        "documentation": "succesful update (PUT) for restaurant 1"
+        "documentation": "successful update (PUT) for restaurant 1"
       },
       {
         "responses": [
