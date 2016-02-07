@@ -252,8 +252,8 @@
           "headers": [],
           "query_params": [],
           "body_match": {
-            "type": "not equals",
-            "body": "{\"name\":\"martins mania\",\"zipCode\":\"53217\",\"city\":\"Bonaroo\",\"state\":\"WI\",\"version\":1}"
+            "type": "equals",
+            "body": "{\"name\":\"bartin fink beanery\",\"zipCode\":\"53217\",\"city\":\"Bonaroo\",\"state\":\"WI\",\"version\":1}"
           }
         },
         "documentation": "failed POST"
@@ -273,7 +273,8 @@
         ],
         "match": {
           "path_match": {
-            "type": "equals"
+            "type": "equals",
+            "value": "/restaurant"
           },
           "injection": {
             "use": false,
