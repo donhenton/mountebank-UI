@@ -7,6 +7,11 @@ The url for this application is
 ## Source Code
 [https://github.com/donhenton/mountebank-UI](https://github.com/donhenton/mountebank-UI)
 
+## Sample Data
+Example data can be found at
+https://github.com/donhenton/mountebank-UI/blob/master/docs/madjs/mountebank-UI-restaurant.json
+The docs folder holds a Powerpoint presentation as well
+
 ## Summary
 
 Mountebank UI is a test double generator for
