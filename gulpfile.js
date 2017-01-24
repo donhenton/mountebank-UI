@@ -21,6 +21,24 @@ gulp.task('clean', function ( ) {
 });
 
 
+gulp.task('serve-cors', function (done) {
+    gulp.src('./cors-explorer').on('error', gutil.log)
+            .pipe(server(
+                    {
+                        livereload: false,
+                        directoryListing: false,
+                        open: true ,
+                        defaultFile: 'cors-explorer.html'
+                        
+
+                    }
+
+
+
+            ));
+});
+
+
 /**
  The use of '_' in the scss file names apparently prevents them 
  from being picked up by the sass processor. if that wasn't the case, they

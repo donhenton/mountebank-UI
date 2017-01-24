@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>CORS Explorer</title>
+        <script src="jquery.min.js" type="text/javascript"></script>
+        <style>
+
+            body
+            {
+                margin: 20px;
+            }
+
+            #results
+            {
+                width:200px;
+                height: 200px;
+            }
+        </style>
+
+        <script>
+            function makeGetCall()
+            {
+
+                $.ajax({
+                    method: "GET",
+                    url: "http://localhost:7400/get-test",
+                    dataType: 'json'
+
+
+                }).done(function (data) {
+                    $('#results').val(JSON.stringify(data))
+                }).fail(function (jqXHR, textStatus, errorThrown)
+                {
+                    $('#results').val(JSON.stringify(jqXHR));
+                })
+
+
+
+
+
+            }
+            function makePostCall()
+            {
+
+                $.ajax({
+                    method: "POST",
+                    headers: {
+                        "x-request-sample":"sample"
+                    },
+                    url: "http://localhost:7400/post-test",
+                    dataType: 'json'
+
+
+                }).done(function (data) {
+                    $('#results').val(JSON.stringify(data))
+                }).fail(function (jqXHR, textStatus, errorThrown)
+                {
+                    $('#results').val(JSON.stringify(jqXHR));
+                })
+
+
+
+
+
+            }
+        </script>
+
+
+
+
+
+
+    </head>
+    <body>
+        <div>
+
+            <table cellpadding="4" cellspacing="4">
+
+                <tr><td><textarea id="results"></textarea></td><td><button onClick="makeGetCall()">Submit GET</button>
+                        <button onClick="makePostCall()">Submit POST</button></td></tr>
+
+
+
+
+
+            </table>
+
+
+
+
+
+        </div>
+    </body>
+</html>
