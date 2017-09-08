@@ -17,7 +17,7 @@ angular.module('myApp').directive('headers',
                 templateUrl: TPL_PATH + 'components/headers/headers.tpl.html',
                 restrict: 'E',
                 scope: {
-                    "array": '=', "customize": '='
+                    "array": '=', "customize": '=?'
                 },
                 compile: function (element, attributes)
                 {
