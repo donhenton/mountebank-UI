@@ -583,5 +583,43 @@
         "documentation": "demonstrates decorating the body via code"
       }
     ]
+  },
+  {
+    "port": "5454",
+    "id": 3,
+    "description": "CORS DEMO",
+    "imposters": [
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": "",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "path"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      }
+    ]
   }
 ]
