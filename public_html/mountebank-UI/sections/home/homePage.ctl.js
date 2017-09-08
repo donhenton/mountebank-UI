@@ -83,7 +83,7 @@ angular.module('myApp')
                 var sortItems = [];
                 angular.forEach(vm.buffer.data.imposters, function (data, idx) {
 
-                    sortItems.push({"value": idx, "ref": angular.copy(data), "text": vm.composeImposterAlias(idx)});
+                    sortItems.push({"value": idx, "ref": angular.copy(data), "text": vm.composeSortAlias(idx)});
                 });
 
                 var modalInstance =
@@ -347,6 +347,21 @@ angular.module('myApp')
                 }
                 
                 return "Item "+(idx+1) +" (" +verb+")";
+            };
+            
+            
+             vm.composeSortAlias = function(idx)
+            {
+                var verb = vm.buffer.data.imposters[idx].match.verb;
+                if (vm.buffer.data.imposters[idx].match.injection.use)
+                {
+                    verb = "INJ";
+                }
+                
+                var labelText = vm.buffer.data.imposters[idx].documentation;
+                
+                
+                return  "(" +verb+")\n"+labelText ;
             };
 
             
