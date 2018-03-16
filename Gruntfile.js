@@ -137,11 +137,7 @@ module.exports = function (grunt) {
             unit_tests: {
                 configFile: 'test/conf/unit-tests.conf.js',
                 singleRun: true
-            },
-            wire_tests: {
-                configFile: 'test/conf/wire-tests.conf.js',
-                singleRun: true
-            }
+            } 
 
         }
 
@@ -155,7 +151,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-mountebank');
     grunt.loadNpmTasks('grunt-karma');
-    grunt.registerTask('wire-tests-external', ['karma:wire_tests']);
     grunt.registerTask('run-all-tests', ['clean', 'karma:unit_tests']);
     grunt.registerTask('build', ['clean', 'copy', 'concat', 'uglify', 'cssmin'])
 }
