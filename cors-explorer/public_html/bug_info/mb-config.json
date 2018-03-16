@@ -1,0 +1,59 @@
+{
+  "port": "7400",
+  "protocol": "http",
+  "allowCORS": true,
+  "stubs": [
+    {
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "body": "{successful: true}"
+          }
+        }
+      ],
+      "predicates": [
+        {
+          "and": [
+            {
+              "equals": {
+                "method": "GET"
+              }
+            },
+            {
+              "contains": {
+                "path": "get-test"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "body": "{success: 'ok'}"
+          }
+        }
+      ],
+      "predicates": [
+        {
+          "and": [
+            {
+              "equals": {
+                "method": "POST"
+              }
+            },
+            {
+              "contains": {
+                "path": "post-test"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
