@@ -85,6 +85,7 @@ function mountebankService($log, $http)
         var translated = {};
         translated.port = data.port;
         translated.protocol = "http";
+        translated.allowCORS = true;
         translated.stubs = [];
         angular.forEach(data.imposters, function (imposter, idx)
         {
