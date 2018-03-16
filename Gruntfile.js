@@ -9,11 +9,7 @@ module.exports = function (grunt) {
                 '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
                 '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
                 ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
-        mb: {
-            start: ['--port', 2525, '--allowInjection', '--allowCORS', '--debug', '--pidfile', 'mb-grunt.pid'],
-            restart: ['--port', 2525, '--allowInjection', '--allowCORS', '--debug', '--pidfile', 'mb-grunt.pid'],
-            stop: ['--pidfile', 'mb-grunt.pid']
-        },
+        
         clean: {
             reports: ['reports', 'build']
         },
@@ -160,7 +156,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-mountebank');
     grunt.loadNpmTasks('grunt-karma');
     grunt.registerTask('wire-tests-external', ['karma:wire_tests']);
-    grunt.registerTask('wire-tests-internal', ['mb:start', 'try', 'karma:wire_tests', 'finally', 'mb:stop', 'checkForErrors']);
     grunt.registerTask('run-all-tests', ['clean', 'karma:unit_tests']);
     grunt.registerTask('build', ['clean', 'copy', 'concat', 'uglify', 'cssmin'])
 }

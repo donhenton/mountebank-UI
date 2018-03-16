@@ -1,3 +1,4 @@
 {
-    "directory": "public_html/mountebank-UI/assets/js"
+    "directory": "public_html/mountebank-UI/assets/js",
+    "strict-ssl": false
 }
