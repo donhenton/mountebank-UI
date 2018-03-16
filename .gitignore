@@ -14,3 +14,4 @@ bower_components
 /build/
 /docs/madjs/mb.log
 /docs/madjs/mb.pid
+/cors-explorer/nbproject/private/

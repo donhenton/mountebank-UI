@@ -8,8 +8,8 @@ Start [mountebank-UI](http://donhenton.github.io/mountebank-UI/public_html/index
 and import the contents of config.json. Send the contents of the config
 to your running mountebank server using the Mountebank JSON page.
 
-From the root of the application run  
-```
-gulp serve-cors
-```
+This demo is set for netbeans internal server, which runs on port 8383. If 
+that's not your port you will have to configure the headers returned by the OPT 
+request to use your port.There are two entries, one for localhost and one for 127.0.0.1
+
 the two buttons will submit CORS requests that should pass.
