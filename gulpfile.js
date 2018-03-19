@@ -22,13 +22,14 @@ gulp.task('clean', function ( ) {
 
 
 gulp.task('serve-cors', function (done) {
-    gulp.src('./cors-explorer').on('error', gutil.log)
+    gulp.src('./cors-explorer/public_html').on('error', gutil.log)
             .pipe(server(
                     {
                         livereload: false,
                         directoryListing: false,
                         open: true ,
-                        defaultFile: 'cors-explorer.html'
+                        defaultFile: 'cors-explorer.html',
+                        port:9000
                         
 
                     }
