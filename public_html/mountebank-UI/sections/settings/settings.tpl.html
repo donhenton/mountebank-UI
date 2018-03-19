@@ -60,11 +60,27 @@
                  <em>(will add a default OPTIONs response and use Origin Url below for  all responses)</em>
                  </div>
             </div>
-             <div ng-if="settings.currentImposter.useCORs === true"  class="form-group">
+            <div ng-if="settings.currentImposter.useCORs === true"  class="form-group">
                 <label class="control-label col-sm-2" for="CORsUrl">CORS Origin Full Url</label> 
 
                 <div  class="col-sm-8">
                     <input  ng-blur="settings.updateList()" type="text" class="form-control"   id="CORsOrigin" name="CORsOrigin" ng-model="settings.currentImposter.CORsOrigin" required> 
+                     
+                </div>
+            </div>
+            <div ng-if="settings.currentImposter.useCORs === true"  class="form-group">
+                <label class="control-label col-sm-2" for="CORsUrl">CORs Headers</label> 
+
+                <div  class="col-sm-8">
+                    <input  ng-blur="settings.updateList()" type="text" class="form-control"   id="allowedCORsHeaders" name="allowedCORsHeaders" ng-model="settings.currentImposter.allowedCORsHeaders" required> 
+                     
+                </div>
+            </div>
+            <div ng-if="settings.currentImposter.useCORs === true"  class="form-group">
+                <label class="control-label col-sm-2" for="CORsUrl">CORs Methods</label> 
+
+                <div  class="col-sm-8">
+                    <input  ng-blur="settings.updateList()" type="text" class="form-control"   id="allowedCORsMethods" name="allowedCORsMethods" ng-model="settings.currentImposter.allowedCORsMethods" required> 
                      
                 </div>
             </div>

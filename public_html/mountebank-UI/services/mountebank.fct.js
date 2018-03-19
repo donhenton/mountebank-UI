@@ -87,7 +87,7 @@ function mountebankService($log, $http) {
 
     if (data.useCORs) {
       
-      translated.stubs.push(createOptionsStub(data.CORsOrigin));
+      translated.stubs.push(createOptionsStub(data));
     }
     
 
@@ -271,7 +271,7 @@ function mountebankService($log, $http) {
 
 //////////// CORS //////////////////////////////////////////////
 
-  function createOptionsStub(originUrl) {
+  function createOptionsStub(data) {
 
     var optionStub =
           {
@@ -304,7 +304,13 @@ function mountebankService($log, $http) {
 
     var optionStubCopy = angular.copy(optionStub);
     optionStubCopy.responses[0].is.headers["Access-Control-Allow-Origin"]
-          = originUrl;
+          = data.CORsOrigin;
+    optionStubCopy.responses[0].is.headers["Access-Control-Allow-Headers"]
+          = data.allowedCORsHeaders;
+    optionStubCopy.responses[0].is.headers["Access-Control-Allow-Methods"]
+          = data.allowedCORsMethods;
+    optionStubCopy.responses[0].is.headers["Allow"]
+          = data.allowedCORsMethods;
     return optionStubCopy;
 
   }

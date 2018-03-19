@@ -86,6 +86,9 @@ function impostersService($log, localStorageService, $rootScope)
         var newIdx = collection.length;
         newCollection.port = 9999;
         newCollection.useCORs = false;
+        newCollection.CORsOrigin = 'http://localhost:8383';
+        newCollection.allowedCORsHeaders = 'application/json,Content-Type';
+        newCollection.allowedCORsMethods = 'GET,POST,PUT,PATCH,DELETE';
         newCollection.id = newIdx;
         newCollection.description = "New Imposter Description " + newIdx;
         newCollection.imposters = [];
