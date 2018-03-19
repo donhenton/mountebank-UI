@@ -52,8 +52,15 @@ For more see the [Mountebank Injection Documentation](href="http://www.mbtest.or
 This is the page where one can delete and add collections, as well as
 modify the properties
 associated with a collection, currently the description and the port.
+### CORS support
+**Use Cors** allows you to specify placing a CORS response OPTIONS handler and
+a Origin header on each request automatically. These headers and responses will 
+use the origin url specified in the **CORS Origin Full Url** slot.
+Note that Method Headers are set to POST,PUT,DELETE,GET,PATCH. If you use
+the injection feature, you will have to include the Response headers manually,
+but the OPTION response will still be added.
 
-## Mountebank JSON Page</div>   
+## Mountebank JSON Page
 This page provides a read only display of the JSON that can be posted to 
 Mountebank's imposters endpoint. Additionally one can post directly to
 mountebank via a form. Provide the base url to mountebank, and choose the
