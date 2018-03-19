@@ -282,8 +282,8 @@ function mountebankService($log, $http) {
                     "Access-Control-Allow-Headers": "Content-Type,x-request-sample",
                     "Access-Control-Allow-Origin": "you-didn't specifiy a CORsOrigin ",
                     "Access-Control-Allow-Credentials": "true",
-                    "Allow": "GET,POST",
-                    "Access-Control-Allow-Methods": "GET"
+                    "Allow": "GET,POST,DELETE,PUT,PATCH",
+                    "Access-Control-Allow-Methods": "GET,POST,DELETE,PUT,PATCH"
                   },
                   "statusCode": 200
                 }
