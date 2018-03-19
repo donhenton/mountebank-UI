@@ -131,10 +131,10 @@ describe('imposterService_tests.js -- Imposters Service', function () {
                 ImpostersService.deleteCollectionAt(1);
 
                 var exportedStuff = ImpostersService.exportCollection();
-                //console.log("exported\n\n\n"+exportedStuff+"\n\n\n")
+               // console.log("exported\n\n\n"+exportedStuff+"\n\n\n")
                 var expectedStuffObj = harness.imposterTest.newCollection;
                 var expectedStuff = angular.toJson(expectedStuffObj,true);
-                //console.log("expected\n\n\n"+expectedStuff+"\n\n\n")
+               // console.log("expected\n\n\n"+expectedStuff+"\n\n\n")
                 
                 var dist = harness.getEditDistance(exportedStuff, expectedStuff);
                 expect(dist).toEqual(0);

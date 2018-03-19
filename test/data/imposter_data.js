@@ -884,6 +884,10 @@ harness.imposterTest = {"newCollection": {}};
 harness.imposterTest.newCollection = [
     {
         "port": 9999,
+        "useCORs": false,
+        "CORsOrigin": "http://localhost:8383",
+        "allowedCORsHeaders": "application/json,Content-Type",
+        "allowedCORsMethods": "GET,POST,PUT,PATCH,DELETE",	
         "id": 0,
         "description": "New Imposter Description 0",
         "imposters": [
