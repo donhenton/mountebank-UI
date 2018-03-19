@@ -85,6 +85,7 @@ function impostersService($log, localStorageService, $rootScope)
         var newCollection = {};
         var newIdx = collection.length;
         newCollection.port = 9999;
+        newCollection.useCORs = false;
         newCollection.id = newIdx;
         newCollection.description = "New Imposter Description " + newIdx;
         newCollection.imposters = [];

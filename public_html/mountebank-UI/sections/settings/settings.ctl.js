@@ -70,6 +70,9 @@ angular.module('myApp')
             vm.updateList = function ()
             {
                 vm.collectionItems = ImpostersService.getCollectionItems();
+                if (!vm.currentImposter.useCORs) {
+                  delete vm.currentImposter.CORsOrigin ;
+                }
             }
 
             vm.createNewCollection = function ()
