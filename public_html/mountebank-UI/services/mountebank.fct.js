@@ -83,33 +83,40 @@ function mountebankService($log, $http) {
     translated.port = data.port;
     translated.protocol = "http";
     translated.stubs = [];
+
+
+    if (data.useCORs) {
+      
+      translated.stubs.push(createOptionsStub(data.CORsOrigin));
+    }
+    
+
     angular.forEach(data.imposters, function (imposter, idx) {
 
 
-      var newStub = {"responses": [], "predicates": []}
+      var newStub = {"responses": [], "predicates": []};
       translated.stubs.push(newStub);
-      //responses
-
-      if (data.useCORS) {
-
-      createOptionStub(originUrl);
-
-
-
-      }
-
-
-
       angular.forEach(imposter.responses, function (response, idx) {
         if (response.injection.use) {
 
           newStub.responses.push({"inject": response.injection.body});
         } else {
           var headerVar = processHeaders(response.headers);
+
+
           var isResponse = {};
           if (headerVar !== null) {
             isResponse["headers"] = headerVar;
           }
+
+          if (data.useCORs) {
+            if (!isResponse["headers"]) {
+              isResponse["headers"] = {};
+            }
+            isResponse["headers"]["Access-Control-Allow-Origin"] = data.CORsOrigin;
+          }
+
+
           if (isInteger(response.status)) {
             isResponse["statusCode"] = response.status;
           }
@@ -264,9 +271,7 @@ function mountebankService($log, $http) {
 
 //////////// CORS //////////////////////////////////////////////
 
-  function createOptionStub(originUrl) {
-
-    
+  function createOptionsStub(originUrl) {
 
     var optionStub =
           {
@@ -275,7 +280,7 @@ function mountebankService($log, $http) {
                 "is": {
                   "headers": {
                     "Access-Control-Allow-Headers": "Content-Type,x-request-sample",
-                    "Access-Control-Allow-Origin": "http://localhost:8383",
+                    "Access-Control-Allow-Origin": "you-didn't specifiy a CORsOrigin ",
                     "Access-Control-Allow-Credentials": "true",
                     "Allow": "GET,POST",
                     "Access-Control-Allow-Methods": "GET"
@@ -296,11 +301,11 @@ function mountebankService($log, $http) {
               }
             ]
           }
-          
-          var optionStubCopy = angular.copy(optionStub);
-          optionStubCopy.responses[0].is.headers["Access-Control-Allow-Origin"]
-            = originUrl;
-          return optionStubCopy;
+
+    var optionStubCopy = angular.copy(optionStub);
+    optionStubCopy.responses[0].is.headers["Access-Control-Allow-Origin"]
+          = originUrl;
+    return optionStubCopy;
 
   }
 
