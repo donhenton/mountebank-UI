@@ -24,7 +24,7 @@
 
                 $.ajax({
                     method: "GET",
-                    url: "http://localhost:7400/get-test",
+                    url: "http://localhost:9000/restaurant/1",
                     dataType: 'json'
 
 
@@ -44,12 +44,11 @@
             {
 
                 $.ajax({
-                    method: "POST",
-                    headers: {
-                        "x-request-sample":"sample"
-                    },
-                    url: "http://localhost:7400/post-test",
-                    dataType: 'json'
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    type: 'post',
+                    data: '{"name":"martins mania","zipCode":"53217","city":"Bonaroo","state":"WI","version":1}',
+                    url: "http://localhost:9000/restaurant" 
 
 
                 }).done(function (data) {

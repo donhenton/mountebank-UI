@@ -1,0 +1,629 @@
+[
+  {
+    "port": "9000",
+    "id": 0,
+    "description": "Restaurant Collection (9000)",
+    "imposters": [
+      {
+        "responses": [
+          {
+            "status": "500",
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": "<h1>Server Error</h1> <p><em>Cannot use this endpoint for anything except restaurant queries</em></p>",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "path"
+          },
+          "injection": {
+            "use": true,
+            "body": "function(request, logger) {\n    var isNotRestaurant = false;\n    if (request.path.indexOf('/restaurant') !== 0) {\n        isNotRestaurant = true;\n    }\n    return isNotRestaurant;\n}"
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        },
+        "documentation": "injection to prevent not restaurant calls"
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n        \"name\": \"Huddle House\",\n        \"zipCode\": \"30701\",\n        \"city\": \"Calhoun\",\n        \"state\": \"GA\",\n        \"version\": 1,\n        \"id\": 1,\n        \"reviewDTOs\": [{\n                \"starRating\": 3,\n                \"reviewListing\": \"A real gas\",\n                \"stampDate\": 1422964478318,\n                \"id\": 10\n            }, {\n                \"starRating\": 4,\n                \"reviewListing\": \"Can you say \\\"gastric bypass\\\"?\",\n                \"stampDate\": 1422964478318,\n                \"id\": 11\n            }]\n    }",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant/1"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        },
+        "documentation": "get for restaurant 1"
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\n        \"name\": \"John Browne's Pub & Eatery\",\n        \"zipCode\": \"46235\",\n        \"city\": \"Indianapolis\",\n        \"state\": \"IN\",\n        \"version\": 1,\n        \"id\": 3,\n        \"reviewDTOs\": [{\n                \"starRating\": 2,\n                \"reviewListing\": \"Impeccable service!\",\n                \"stampDate\": 1422964478318,\n                \"id\": 12\n            }]\n    }",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant/2"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        },
+        "documentation": "get for restaurant 2"
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "[\n  {\n    \"name\": \"Huddle House\",\n    \"zipCode\": \"30701\",\n    \"city\": \"Calhoun\",\n    \"state\": \"GA\",\n    \"version\": 1,\n    \"id\": 1,\n    \"reviewDTOs\": [\n      {\n        \"starRating\": 3,\n        \"reviewListing\": \"A real gas\",\n        \"stampDate\": 1422964478318,\n        \"id\": 10\n      },\n      {\n        \"starRating\": 4,\n        \"reviewListing\": \"Can you say \\\"gastric bypass\\\"?\",\n        \"stampDate\": 1422964478318,\n        \"id\": 11\n      }\n    ]\n  },\n  {\n    \"name\": \"John Browne's Pub & Eatery\",\n    \"zipCode\": \"46235\",\n    \"city\": \"Indianapolis\",\n    \"state\": \"IN\",\n    \"version\": 1,\n    \"id\": 3,\n    \"reviewDTOs\": [\n      {\n        \"starRating\": 2,\n        \"reviewListing\": \"Impeccable service!\",\n        \"stampDate\": 1422964478318,\n        \"id\": 12\n      }\n    ]\n  },\n  {\n    \"name\": \"Ling's Express\",\n    \"zipCode\": \"53217\",\n    \"city\": \"Milwaukee\",\n    \"state\": \"WI\",\n    \"version\": 1,\n    \"id\": 2,\n    \"reviewDTOs\": [\n      {\n        \"starRating\": 6,\n        \"reviewListing\": \"Consider suicide first\",\n        \"stampDate\": 1422964478318,\n        \"id\": 14\n      },\n      {\n        \"starRating\": 1,\n        \"reviewListing\": \"Impeccable service!\",\n        \"stampDate\": 1422964478318,\n        \"id\": 13\n      },\n      {\n        \"starRating\": 4,\n        \"reviewListing\": \"A root canal would be better\",\n        \"stampDate\": 1422964478318,\n        \"id\": 15\n      }\n    ]\n  }\n]",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "matches",
+            "value": "^\\/restaurant$|^\\/restaurant\\/$"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        },
+        "documentation": "get all restaurants use regex to handle /restaurant or /restaurant/ with no id"
+      },
+      {
+        "responses": [
+          {
+            "status": "404",
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": "{\"error\": \"Item not found\"}",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "matches",
+            "value": "/restaurant/*"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        },
+        "documentation": "404 catch for any id other than 1 or 2"
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "body": "{\n  \"id\": 52\n}",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "POST",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": "{\"name\":\"martins mania\",\"zipCode\":\"53217\",\"city\":\"Bonaroo\",\"state\":\"WI\",\"version\":1}"
+          }
+        },
+        "documentation": "successful POST"
+      },
+      {
+        "responses": [
+          {
+            "status": "500",
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": "{\n  \"message\": \"restaurant add failed\",\n  \"errorClass\": \"com.dhenton9000.spring.mvc.controllers.ResourceException\"\n}",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "POST",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": "{\"name\":\"bartin fink beanery\",\"zipCode\":\"53217\",\"city\":\"Bonaroo\",\"state\":\"WI\",\"version\":1}"
+          }
+        },
+        "documentation": "failed POST"
+      },
+      {
+        "responses": [
+          {
+            "status": "500",
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": "{\n  \"message\": \"for restaurant posting only\",\n  \"errorClass\": \"com.dhenton9000.spring.mvc.controllers.ResourceException\"\n}",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "POST",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        },
+        "documentation": "catch all error for POSTS without body"
+      },
+      {
+        "responses": [
+          {
+            "status": "404",
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=UTF-8"
+              }
+            ],
+            "body": "{\n  \"message\": \"cannot find restaurant with given key\",\n  \"errorClass\": \"com.dhenton9000.spring.mvc.controllers.ResourceNotFoundException\"\n}",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "not equals",
+            "value": "/restaurant/1"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "DELETE",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        },
+        "documentation": "Failed delete because it couldn't find the restaurant, will fail for all keys except 1"
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": "",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant/1"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "DELETE",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        },
+        "documentation": "successful delete for restaurant 1"
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": "{\"message\": \"successful update\"}",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/restaurant/1"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "PUT",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "contains",
+            "body": "{\"name\":\"martins mania\",\"zipCode\":\"53217\",\"city\":\"Bonaroo\",\"state\":\"WI\",\"version\":1}"
+          }
+        },
+        "documentation": "successful update (PUT) for restaurant 1"
+      },
+      {
+        "responses": [
+          {
+            "status": "500",
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": "{\n  \"message\": \"update failed\",\n  \"errorClass\": \"com.dhenton9000.spring.mvc.controllers.ResourceException\"\n}",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "not equals",
+            "value": "/restraurant/1"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "PUT",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        },
+        "documentation": "catch fail for update of restaurants except 1"
+      }
+    ],
+    "useCORs": true,
+    "CORsOrigin": "http://localhost:8383",
+    "allowedCORsHeaders": "ContentType,Content-Type",
+    "allowedCORsMethods": "GET,PUT,POST,DELETE,PATCH"
+  },
+  {
+    "port": "9500",
+    "id": 1,
+    "description": "Imposters Using Injection (9500)",
+    "imposters": [
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": true,
+              "body": "function processRequest(request, state, logger) {\n\n\n    var handlebars = require('handlebars');\n    var JSON = require(\"JSON3\")\n    var sentIn = JSON.stringify(request, null);\n    // logger.info('sentIn ' + sentIn);\n    var source = '{\"book\": \"{{title}}\",\"publication\": {{year}}, \"ISBN\": \"{{random}}\" }';\n    var ran = Math.floor(1053 + Math.random() * 124 + .5) + \"-ADGJK-\" + Math.floor(1057 + Math.random() * 124 + .5)\n\n    var data = {\n        \"title\": \"Anne of Green Gables\",\n        \"year\": 1985,\n        \"random\": ran\n    };\n\n    var template = handlebars.compile(source);\n    var textJSON = template(data);\n\n    return {\n        headers: {\n            'Content-Type': 'application/json'\n        },\n        body: textJSON,\n        statusCode: 200\n    };\n}"
+            },
+            "headers": [],
+            "body": ""
+          },
+          {
+            "status": 200,
+            "injection": {
+              "use": true,
+              "body": "function processRequest(request, state, logger) {\n\n\n    var handlebars = require('handlebars');\n    var JSON = require(\"JSON3\")\n    var sentIn = JSON.stringify(request, null);\n    //logger.info('sentIn ' + sentIn);\n    var source = '{\"book\": \"{{title}}\",\"publication\": {{year}}, \"ISBN\": \"{{random}}\" }';\n    var ran = Math.floor(1053 + Math.random() * 124 + .5) + \"-BONZO-\" + Math.floor(1057 + Math.random() * 124 + .5)\n\n    var data = {\n        \"title\": \"Jabberwocky\",\n        \"year\": 1888,\n        \"random\": ran\n    };\n\n    var template = handlebars.compile(source);\n    var textJSON = template(data);\n\n    return {\n        headers: {\n            'Content-Type': 'application/json'\n        },\n        body: textJSON,\n        statusCode: 200\n    };\n}"
+            },
+            "headers": [],
+            "body": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/inject"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [
+            {
+              "key": "alpha",
+              "value": "100"
+            }
+          ],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        },
+        "documentation": "demonstrates using injection to compose responses"
+      }
+    ]
+  },
+  {
+    "port": "7777",
+    "id": 2,
+    "description": "decoration testing (7777)",
+    "imposters": [
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Access-Control-Allow-Origin",
+                "value": "*"
+              },
+              {
+                "key": "Access-Control-Allow-Headers",
+                "value": "Content-Type"
+              }
+            ],
+            "body": "",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "OPTIONS",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        },
+        "documentation": "options to satisfy preflight CORS requests"
+      },
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-type",
+                "value": "text/html"
+              },
+              {
+                "key": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ],
+            "body": "alpha The time is ${TIME}",
+            "decorate": "function(request, response) {\n    var pad = function(number) {\n            return (number < 10) ? '0' +\n                number : number.toString();\n        },\n        now = new Date(),\n        time = pad(now.getHours()) +\n        ':' + pad(now.getMinutes()) +\n        ':' + pad(now.getSeconds());\n\n    response.body = response.body\n        .replace('${TIME}', time + ' from alpha');\n}"
+          },
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [
+              {
+                "key": "Content-Type",
+                "value": "text/html"
+              },
+              {
+                "key": "Access-Control-Allow-Origin",
+                "value": "*"
+              }
+            ],
+            "body": "beta alpha The time is ${TIME}",
+            "decorate": "function(request, response) {\n    var pad = function(number) {\n            return (number < 10) ? '0' +\n                number : number.toString();\n        },\n        now = new Date(),\n        time = pad(now.getHours()) +\n        ':' + pad(now.getMinutes()) +\n        ':' + pad(now.getSeconds());\n\n    response.body = response.body\n        .replace('${TIME}', time + ' from beta');\n}"
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "/decorate"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "POST",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        },
+        "documentation": "demonstrates decorating the body via code"
+      }
+    ]
+  },
+  {
+    "port": "5454",
+    "id": 3,
+    "description": "CORS DEMO",
+    "imposters": [
+      {
+        "responses": [
+          {
+            "status": 200,
+            "injection": {
+              "use": false,
+              "body": ""
+            },
+            "headers": [],
+            "body": "",
+            "decorate": ""
+          }
+        ],
+        "match": {
+          "path_match": {
+            "type": "equals",
+            "value": "path"
+          },
+          "injection": {
+            "use": false,
+            "body": ""
+          },
+          "verb": "GET",
+          "headers": [],
+          "query_params": [],
+          "body_match": {
+            "type": "equals",
+            "body": ""
+          }
+        }
+      }
+    ]
+  }
+]
