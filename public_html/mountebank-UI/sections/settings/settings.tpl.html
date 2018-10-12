@@ -53,11 +53,16 @@
 
             <!-- Default -->
             <div class="form-group">
+                 
                 <label class="control-label col-sm-2" for="addDefault">Add Default?</label> 
-
+               
+               
                 <div class="col-sm-1">
                     <input  ng-change="settings.updateList()" ng-blur="settings.updateList()" type="checkbox" class="form-control"   id="addDefault" name="addDefault" ng-model="settings.currentImposter.addDefault" required> 
 
+                </div>
+                 <div class="col-sm-4">
+                <a  ng-click="$event.preventDefault(); settings.doHelpDisplay('defaultBody')"  href="">Default Body Sample</a>
                 </div>
 
             </div>

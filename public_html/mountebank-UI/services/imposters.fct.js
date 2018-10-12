@@ -31,6 +31,7 @@ function impostersService($log, localStorageService, $rootScope)
                 "getSampleResponse": getSampleResponse,
                 "exportCollection": exportCollection,
                 "importCollection": importCollection,
+                "getSampleDefaultBody": getSampleDefaultBody,
                 "save": save
             }
 
@@ -86,6 +87,8 @@ function impostersService($log, localStorageService, $rootScope)
         var newIdx = collection.length;
         newCollection.port = 9999;
         newCollection.useCORs = false;
+        newCollection.addDefault = false;
+        newCollection.defaultBody = JSON.stringify(getSampleDefaultBody());
         newCollection.CORsOrigin = 'http://localhost:8383';
         newCollection.allowedCORsHeaders = 'application/json,Content-Type';
         newCollection.allowedCORsMethods = 'GET,POST,PUT,PATCH,DELETE';
@@ -112,8 +115,19 @@ function impostersService($log, localStorageService, $rootScope)
             "body": "" 
             
         };
+    }  ;
+    
+    
+    function getSampleDefaultBody() {
+      return {
+        "statusCode": 200,
+        "headers": {
+          "connection": "close",
+           
+        } ,
+        "body": "stuff"
+      }
     }
-    ;
 
     function createNewImposter()
     {

@@ -1,7 +1,7 @@
 angular.module('myApp')
 
         .controller('SettingsCtrl', function ($scope, $log, TPL_PATH,HEADER_LOCATION,
-                ImpostersService, currentImposter, collectionItems) {
+                ImpostersService, currentImposter, $uibModal, collectionItems) {
             var vm = this;
 
             vm.currentImposter = currentImposter;
@@ -99,7 +99,18 @@ angular.module('myApp')
                 }
               
             }
-            
+            vm.doHelpDisplay = function(type)
+            {
+                //type is predicate or response
+                $uibModal.open({
+                            templateUrl: TPL_PATH + 'sections/help/help_'+
+                                    type+'.tpl.html',
+                            controller: 'HelpCtrl' ,
+                            "size":"med"
+                             
+                        });
+                
+            };
             
             vm.isJsonString = function (str) {
                if (!str) return false;
