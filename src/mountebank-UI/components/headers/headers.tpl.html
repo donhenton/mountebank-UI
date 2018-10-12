@@ -1,0 +1,32 @@
+<div class="form-group grouping-box">
+    <div class="internalHeaderRow">
+        <span class="internalHeader">{{customize.headerText}}</span> 
+
+        <button ng-click="addResponseHeader()" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign"></i>Add</button>
+
+    </div>
+    <div class="limitY" style="height:120px">
+
+        <div ng-repeat="header in array"> 
+
+            <div class="row">
+
+                <label class="control-label col-sm-1" for="status">{{customize.keyLabel}}</label> 
+
+                <div class="col-sm-4">
+                    <input ng-blur="inputChange(this, $event)" type="text" class="form-control input-sm"   id="response_key_{{$index}}" name="status" ng-model="header.key" required>
+                </div>
+                <label class="control-label col-sm-1" for="status">Value</label> 
+                <div class="col-sm-4">
+                    <input ng-blur="inputChange(this, $event)" type="text" class="form-control input-sm"   id="response_value_{{$index}}" name="status" ng-model="header.value" required>
+
+                </div>
+                <div class="col-sm-1 center-block">
+                    <button style="height:100%" ng-click="deleteResponseHeader($index)" class="center-block btn btn-danger btn-sm"><i  class="glyphicon glyphicon-minus-sign"></i> Delete</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

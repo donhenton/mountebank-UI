@@ -1,0 +1,37 @@
+<ng-include src="import.headerLocation"></ng-include>   
+
+<div class="container">
+    <div class="row">
+        <h3>Import/Export Entire Collection</h3>
+        
+        <p class="well well-sm"> To export all collections, 
+            cut and paste the JSON below and save to an external file.
+            To import a collection, cut and paste from a file that 
+            has been saved from here and press the 'Save Collection' button.
+        </p>
+        
+        <div class="row grouping-box">
+
+
+            <textarea   ng-model="import.collectionJSON" style="width:100%;height:250px">
+                 
+            </textarea>
+
+        </div>
+    </div>
+
+
+
+    <br>
+    <div>
+        
+        
+        <form    class="form-horizontal" name="settings.submitForm"   role="form">   
+            
+            <button  ng-click="import.saveCollection()" class="btn btn-primary">Save Collection</button>
+             <span ng-class='import.messageClasses'>{{import.message}}</span> 
+
+
+        </form>
+    </div>
+</div>

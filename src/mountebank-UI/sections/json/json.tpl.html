@@ -1,0 +1,36 @@
+<ng-include src="json.headerLocation"></ng-include>   
+
+<div class="container">
+    <div class="row">
+        <h3>Mountebank JSON for '{{json.currentImposter.description}}'</h3>
+        <div class="row grouping-box">
+
+
+            <textarea readonly="true" ng-model="json.displayData" style="width:100%;height:250px">
+                    
+            </textarea>
+
+        </div>
+    </div>
+
+
+
+    <br>
+    <div class="row grouping-box">
+        <span class="internalTitle">Submit To Mountebank</span>
+        <span ng-class='json.messageClasses'>{{json.message}}</span> 
+        <form    class="form-horizontal" name="settings.submitForm"   role="form">   
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="name">Mountebank Url</label> 
+
+                <div class="col-sm-6">
+                    <input  type="text" class="form-control" ng-model="json.mounteBankUrl" required>
+                </div>
+            </div>
+            <button  ng-click="json.postToMountbank()" class="btn btn-primary">Submit to Mountebank</button>
+            <button  ng-click="json.deleteFromMountebank()" class="btn btn-danger">Delete From Mountebank</button>
+
+
+        </form>
+    </div>
+</div>

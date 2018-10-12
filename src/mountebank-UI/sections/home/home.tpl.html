@@ -1,0 +1,324 @@
+<ng-include src="home.headerLocation"></ng-include>  
+
+
+<div>
+    <div id="messageRow" class="row">
+        <div>
+            <span class="emphasis text-danger">{{home.errorMessage}}</span> 
+
+
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2">
+                <label class="control-label internalTitle col-sm-2" for="status">Collection</h3>
+            </div>
+            <div class="col-sm-8">
+                <select  ng-change="home.changeCollection()" ng-model="home.collectionSelectorIdx" class="form-control" id="collectionSelector">
+                    <option ng-repeat="item in home.collectionItems track by item.id" ng-selected="item.selected == true"     value="{{item.id}}">{{item.description}}</option>  
+
+
+                </select>    
+            </div>
+            
+        </div>
+
+    </div>
+    <hr/>
+     
+                <h3>Imposters</h3>
+    
+    <div class="row">
+
+        <div id="itemSelectorColumn" class="col-sm-2">
+
+            
+            <div class="limitY">
+
+                <div ng-repeat="item in home.buffer.data.imposters track by $index">
+                    <div>
+
+
+
+                        <button uib-tooltip={{item.documentation}} tooltip-placement="auto top" class="btn btn-sm  btn-primary pull-right" 
+                                style="margin: 5px"
+                                ng-click="home.changeImposter($index)" id="imposter_{{$index}}">
+                            <i   ng-hide="$index != home.currentImposterIdx" class="glyphicon glyphicon-arrow-right"></i> {{home.composeImposterAlias($index)}}</button>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <div class="row pull-left">
+
+                <button  ng-click="home.addImposter()" class="btn btn-med btn-primary">Add New</button>
+
+                <button ng-disabled="home.buffer.data.imposters.length == 1" ng-click="home.deleteImposter()"  class="btn btn-med btn-danger">Delete</button>
+
+                <button style="margin-top:5px" ng-disabled="home.buffer.data.imposters.length == 1" ng-click="home.sortImposters()"  class="btn btn-med btn-primary">Sort Imposters</button>
+            </div>
+
+        </div>
+
+        <div id="formColumn" class="col-sm-10">
+            <div class="row">
+                <form class="form-horizontal" novalidate>  
+                <div class="form-group clearfix">
+                       <label class="control-label col-sm-2" for="status">Documentation</label> 
+                       <div class="col-sm-9">
+                           <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="imposter_documentation" name="status" ng-model="home.buffer.data.imposters[home.currentImposterIdx].documentation">
+                       </div>
+                </div>
+                </form>
+            </div>
+            <uib-tabset justified="true">
+
+                <uib-tab heading="Response" select="home.tabSelect('Response')"> 
+                    <br>
+                    <div class="row">
+
+                        <form name="home.responseForm" class="form-horizontal" novalidate>   
+
+
+
+
+                            <div class="row">
+                                <div class="form-group paginatorBox">
+                                    <table id="responsePaginatorTable">
+                                        <tr><td><em>Selected Response</em> </td>
+                                            <td><button ng-click="home.addResponse()" class="btn btn-primary btn-xs"><i class="glyphicon glyphicon-plus-sign"></i> Add Response</button></td>
+                                            <td><button ng-disabled="home.buffer.data.imposters[home.currentImposterIdx].responses.length == 1" ng-click="home.deleteResponse()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-minus-sign"></i> Delete Current Response</button></td></tr>
+                                        <tr><td colspan="3"> 
+                                                <span ng-repeat="item in home.buffer.data.imposters[home.currentImposterIdx].responses track by $index">
+                                                    <span ng-if="$index === home.currentResponseIdx" class="responseSelection selectedResponse">
+                                                        {{$index + 1}}
+
+                                                    </span>
+                                                    <span ng-if="$index !== home.currentResponseIdx" class="responseSelection notSelectedResponse">
+                                                        <a ng-click="$event.preventDefault(); home.moveResponseTo($index)" href="">{{$index + 1}}</a>
+
+                                                    </span>
+                                                </span>   
+                                            </td></tr>
+                                    </table>
+
+                                </div>
+                            </div>
+
+                            <div class="row">                                                                                                                             
+                                <input id="injectionUseForResponse" name="injectionUseForResponse" type="checkbox"  ng-click="home.swapInjectionForResponse()"  ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use">  
+
+                                <label  ng-if="!home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use" for="injectionUseForResponse"><em style="padding:5px">Click To Use Injection <span class="label label-danger"> All other criteria will be lost</span></em></label> 
+
+                                <label  ng-if="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use"  for="injectionUseForResponse"><em style="padding:5px">Click To Use Standard <span class="label label-danger"> Injection criteria will be lost</span></em></label> 
+
+                            </div>
+
+                            <div ng-if="!home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-1" for="status">Status</label> 
+                                        <div class="col-sm-2">
+                                            <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_status" name="status" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].status" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <i ng-if="!home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use" >(Click on the section below)</i> 
+                                <uib-accordion close-others="false">
+                                    <uib-accordion-group heading="Headers">
+                                        <headers array="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].headers"></headers>
+                                    </uib-accordion-group>
+                                    <uib-accordion-group heading="Body">
+                                        <div class="form-group grouping-box">
+                                            <div class="internalHeaderRow">
+
+                                                <span 
+                                                    ng-if="home.isJsonString(home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body)"
+                                                    >
+                                                    <button ng-click="home.formatJson('responseBody', true)" class="btn btn-primary btn-xs">Pretty Print JSON</button>
+                                                    <button ng-click="home.formatJson('responseBody', false)" class="btn btn-primary btn-xs">Unformat JSON</button>
+                                                </span>
+                                            </div>
+                                            <textarea ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].body" style="width:98%;height:150px"></textarea>
+                                        </div>
+                                    </uib-accordion-group>
+                                    <uib-accordion-group heading="Decorate">
+                                        <div class="injectionContainer">
+                                            <div>
+                                                <button class="btn btn-small" ng-click="home.formatDecorate(home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx])"   href="">Format</button>
+                                                <a  ng-click="$event.preventDefault(); home.doHelpDisplay('decorate')" class="pull-right" href="">Decoration Help</a>
+                                            </div>
+                                            <br>
+                                            <div>
+                                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].decorate" style="width:100%;height:350px"></textarea>
+                                            </div>
+                                        </div>
+                                    </uib-accordion-group>
+
+
+
+                                </uib-accordion>
+                            </div> <!-- end ng-if not using inject response -->
+
+                            <div ng-if="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.use">
+                                <div class="injectionContainer">
+                                    <div>
+                                        <button class="btn btn-small" ng-click="home.formatInjection(home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection)"   href="">Format</button>
+                                        <a  ng-click="$event.preventDefault(); home.doHelpDisplay('response')" class="pull-right" href="">Response Injection Help</a>
+                                    </div>
+                                    <br>
+                                    <div>
+                                        <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].injection.body" style="width:100%;height:350px"></textarea>
+                                    </div>
+                                </div>
+                            </div><!-- end ng-if   using inject response -->
+                        </form>
+                    </div>
+
+
+
+                </uib-tab>
+
+                <uib-tab heading="Match Criteria" select="home.tabSelect('Criteria')"> 
+                    <br>
+                    <form name="home.criteriaForm" class="form-horizontal" novalidate>  
+                        <div>
+                            <input id="injectionUse" name="injectionUse" type="checkbox"  ng-click="home.swapInjectionForMatch()"  ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use">  
+
+                            <label  ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" for="injectionUse"><em style="padding:5px">Click To Use Injection <span class="label label-danger"> All other criteria will be lost</span></em></label> 
+
+                            <label  ng-if="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use"  for="injectionUse"><em style="padding:5px">Click To Use Standard <span class="label label-danger"> Injection criteria will be lost</span></em></label> 
+
+                        </div>
+                        <br>
+                        <div ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" class="row">
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-1" for="path">Path</label> 
+
+
+                                <div class="col-sm-2">
+                                    <select   class="form-control"   id="response_verb" name="verb" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.path_match.type" required>
+
+                                        <option ng-repeat="item in home.matchTypes" value="{{item}}">{{item}}</option>   
+
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input ng-blur="home.inputChange(this, $event)" type="text" class="form-control"   id="response_path" name="status" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.path_match.value" required>
+                                </div>
+
+
+                                <label class="control-label col-sm-1" for="verb">Verb</label> 
+
+                                <div class="col-sm-2">
+                                    <select ng-blur="home.inputChange(this, $event)"  class="form-control"   id="response_verb" name="verb" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.verb" required>
+                                        <option>GET</option>
+                                        <option>POST</option>
+                                        <option>PUT</option>
+                                        <option>DELETE</option>
+                                        <option>OPTIONS</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <i ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" >(Click on the section below)</i>
+                        <uib-accordion  ng-if="!home.buffer.data.imposters[home.currentImposterIdx].match.injection.use" close-others="false">
+
+
+
+
+                            <uib-accordion-group heading="Headers">
+                                <headers  array="home.buffer.data.imposters[home.currentImposterIdx].match.headers"></headers>
+                            </uib-accordion-group>
+                            <uib-accordion-group   heading="Body">
+
+                                <div class="form-group grouping-box">
+
+
+
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="path">Match Type</label> 
+                                        <div class="col-sm-3">
+                                            <select   class="form-control"   id="response_verb" name="verb" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.type" required>
+
+                                                <option ng-repeat="item in home.matchTypes" value="{{item}}">{{item}}</option>   
+
+                                            </select>
+                                        </div>
+                                        <br/>
+                                    </div>
+                                    <div class="internalHeaderRow">
+
+                                        <span 
+                                            ng-if="home.isJsonString(home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body)"
+                                            >
+                                            <button ng-click="home.formatJson('matchBody', true)" class="btn btn-primary btn-xs">Pretty Print JSON</button>
+                                            <button ng-click="home.formatJson('matchBody', false)" class="btn btn-primary btn-xs">Unformat JSON</button>
+                                        </span>
+                                    </div>
+                                    <br>    
+                                    <div>
+                                        <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.body_match.body" style="width:98%;height:150px"></textarea>
+                                    </div>
+                                </div>
+                            </uib-accordion-group>
+
+                            <uib-accordion-group heading="Query Params">
+
+                                <headers customize="home.queryParamCustomizer" array="home.buffer.data.imposters[home.currentImposterIdx].match.query_params"></headers>
+                            </uib-accordion-group>  
+                        </uib-accordion>
+
+
+                        <div ng-if="home.buffer.data.imposters[home.currentImposterIdx].match.injection.use">
+
+                            <div class="injectionContainer">
+
+                                <div>
+                                    <button class="btn btn-small" ng-click="home.formatInjection(home.buffer.data.imposters[home.currentImposterIdx].match.injection)"   href="">Format</button>
+
+                                    <a  ng-click="$event.preventDefault(); home.doHelpDisplay('predicate')" class="pull-right" href="">Match Injection Help</a>
+                                </div>
+                                <br>
+                                <div>
+                                    <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].match.injection.body" style="width:100%;height:350px"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </form>
+
+
+
+
+                </uib-tab>
+
+
+
+
+            </uib-tabset>
+        </div><!-- end formColumn -->
+
+    </div>   
+
+
+
+
+
+
+

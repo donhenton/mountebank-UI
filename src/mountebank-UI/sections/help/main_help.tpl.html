@@ -1,0 +1,94 @@
+<ng-include src="help.headerLocation"></ng-include>  
+<h3>Help</h3>
+<div class="container">
+    <div class="row">
+        <div class="helpHeader">Summary</div>   
+        Mountebank UI is a code generator for
+        the <a  target='_new' href="http://www.mbtest.org">Mountebank</a> server. This program helps
+        the user formulate the various sections of the JSON that is used with 
+        Mountebank's API to create a test double. Source code for this application is
+        located at <a href="https://github.com/donhenton/mountebank-UI">
+            https://github.com/donhenton/mountebank-UI</a>. Sample data may be found at
+        <a href="https://github.com/donhenton/mountebank-UI/blob/master/docs/madjs/mountebank-UI-restaurant.json">
+            https://github.com/donhenton/mountebank-UI/blob/master/docs/madjs/mountebank-UI-restaurant.json</a>. 
+        A powerpoint presentation is available there as well. 
+    </div>
+
+    <div class="row">
+        <div class='helpHeader'>The Home Page</div>   
+        This is the page where one can set the response or multiple responses, 
+        and the required criteria. This page works on the current <em>Imposter
+            Collection</em> which is all the imposters for a given port. An imposter
+        is a given response/match pair. New imposters can be added or deleted
+        on this page as well. Additionally, one can change the sort order of 
+        imposters, as Mountebank apparently uses short-circuit matching logic.
+        
+         <h5>Support for Injection</h5> 
+        
+         <p>Injection of predicates and responses is supported in Mountebank UI. To use
+            it, beware that it is either Injection OR Standard, and using one will wipe
+            out any work for the other. Select the work areas via the toggle checkbox.
+            For more see the 
+            <a target="_new" href="http://www.mbtest.org/docs/api/injection">Mountebank Injection Documentation</a>.
+         </p>
+        
+
+         <h5>Notes</h5> 
+        <ul>
+            <li>Currently only the http protocol is supported. The use case is test
+                doubles for REST services</li>
+            <li>For any element in Response or Match, if left blank it will not be 
+                included in the mountebank json.</li>
+            <li>Query elements in match criteria use only deepEquals</li>
+            <li>Method is not optional</li>
+            <li>The match logic is each group (body, query parameters, headers)
+                are AND'd together. Complex logic using OR is not currently 
+                available. You can use injection instead.</li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <div class='helpHeader'>Collection Maintenance Page</div>   
+        This is the page where one can delete and add collections, as well as
+        modify the properties
+        associated with a collection. 
+        <h5>CORS support</h5>
+        <em>Use Cors</em> allows you to specify placing a CORS response OPTIONS handler and
+        a Origin header on each request automatically. These headers and responses will 
+        use the origin url specified in the <em>CORS Origin Full Url</em> slot.
+        Note that Method Headers are set to POST,PUT,DELETE,GET,PATCH. If you use
+        the injection feature, you will have to include the Response headers manually,
+        but the OPTION response will still be added.
+        
+       <h5>Default Response</h5>
+        <em>Add Default</em> allows adding a catch-all response to your collection. This
+        will be returned if no match takes place. The default response to send if no 
+        predicate matches. Also represents the default values that get merged into 
+        a response that doesn't specify every field.
+        
+        
+    </div>
+
+    <div class="row">
+        <div class='helpHeader'>Mountebank JSON Page</div>   
+        This page provides a read only display of the JSON that can be posted to 
+        Mountebank's imposter's endpoint. Additionally one can post directly 
+        mountebank via a form. Provide the base url to mountebank, and choose the
+        action, either post or delete. Note that Mountebank will need the '--allowCORS'
+        option for this to work.
+
+
+    </div>
+    <div class="row">
+        <div class='helpHeader'>Persistence</div>   
+        All data is persisted to local storage. If accessing this application
+        for the first time, an initial collection will be created. The data can 
+        be exported and imported using the menu item <em>Import/Export</em>. 
+        The persisted data is in a format
+        which allows the creation of the Mountebank data, it is not in the 
+        Mountebank format.
+
+
+    </div>
+
+</div>

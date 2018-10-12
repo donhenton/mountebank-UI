@@ -1,0 +1,28 @@
+<div class="sortContainer">
+    <div>
+        <h4>Sort Imposters</h4>
+        <div><em><i>Drag and Drop Items to establish new sort order</i></em></div>
+        <br>
+        <div class="sortHolder">
+
+            <div ui-sortable="sortCallbacks" ng-model="sortItems" class="list">
+                <div ng-repeat="item in sortItems" class="item">
+                    
+                   {{item.text}}
+                </div>
+            </div>
+
+
+        </div>
+        <div> 
+            <div>
+                <div style="margin-top: 5px">
+                    <button type="submit"   ng-click="ok()" class="btn btn-primary">Submit</button>
+                 
+                    <button type="submit"  ng-click="cancel()" class="btn btn-danger">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
