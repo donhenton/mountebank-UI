@@ -1,0 +1,14 @@
+{
+  "name": "angular-route",
+  "version": "1.4.14",
+  "license": "MIT",
+  "main": "./angular-route.js",
+  "ignore": [],
+  "dependencies": {
+    "angular": "1.4.14"
+  },
+  "_source": "art://angular/bower-angular-route",
+  "_target": "~1.4.7",
+  "_release": "v1.4.14",
+  "_originalSource": "angular-route"
+}

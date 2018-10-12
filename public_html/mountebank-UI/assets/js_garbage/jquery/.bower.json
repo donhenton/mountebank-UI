@@ -1,0 +1,15 @@
+{
+  "name": "jquery",
+  "version": "2.0.3",
+  "description": "jQuery component",
+  "keywords": [
+    "jquery",
+    "component"
+  ],
+  "main": "jquery.js",
+  "license": "MIT",
+  "_source": "art://jquery/jquery-dist",
+  "_target": "~2.0.3",
+  "_release": "2.0.3",
+  "_originalSource": "jquery"
+}

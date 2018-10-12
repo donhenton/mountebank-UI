@@ -83,7 +83,7 @@ gulp.task('minify-copy-js', function () {
     
     
      gulp.src(
-             'public_html/mountebank-UI/assets/js/js-beautify/js/lib/beautify.js' 
+             'public_html/mountebank-UI/assets/js/js-beautify/beautify.js' 
     
             ).pipe(gulp.dest('./build/public_html/mountebank-UI/assets/js/'));
   

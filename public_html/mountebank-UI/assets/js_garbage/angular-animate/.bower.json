@@ -1,0 +1,14 @@
+{
+  "name": "angular-animate",
+  "version": "1.4.14",
+  "license": "MIT",
+  "main": "./angular-animate.js",
+  "ignore": [],
+  "dependencies": {
+    "angular": "1.4.14"
+  },
+  "_source": "art://angular/bower-angular-animate",
+  "_target": "~1.4.7",
+  "_release": "v1.4.14",
+  "_originalSource": "angular-animate"
+}
