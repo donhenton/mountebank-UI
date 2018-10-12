@@ -83,4 +83,6 @@ which allows the creation of the Mountebank data, it is not in the
 Mountebank format.
 
 ## Dev Notes
-Dev server: gulp dev
+Dev server: gulp dev will serve from src
+gulp serve-html will serve from the public_html folder, which is the build
+folder for gh-pages. gulp build is used to create public_html
