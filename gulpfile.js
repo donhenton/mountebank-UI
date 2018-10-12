@@ -173,4 +173,22 @@ gulp.task('serve', function (done) {
             ));
 });
 
+gulp.task('dev', function (done) {
+    gulp.src('public_html').on('error', gutil.log)
+            .pipe(server(
+                    {
+                        livereload: true,
+                        directoryListing: false,
+                        open: true ,
+                        defaultFile: 'index.html'
+                        
+
+                    }
+
+
+
+            ));
+});
+
+
 gulp.task('build', ['clean', 'minify-copy-js', 'copy-resources','prepare-index-html']);

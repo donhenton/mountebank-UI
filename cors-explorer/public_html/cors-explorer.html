@@ -18,45 +18,70 @@
             }
         </style>
 
+
+
+
+
+
+
+
         <script>
-            function makeGetCall()
-            {
-
-                $.ajax({
-                    method: "GET",
-                    url: "http://localhost:9000/restaurant/1",
-                    dataType: 'json'
 
 
-                }).done(function (data) {
-                    $('#results').val(JSON.stringify(data))
-                }).fail(function (jqXHR, textStatus, errorThrown)
-                {
-                    $('#results').val(JSON.stringify(jqXHR));
-                })
+            function makeSecGetCall() {
+
+
+              $.ajax({
+                method: "GET",
+                url: "http://donhenton-spring-boot.herokuapp.com/sec/applications/all",
+                dataType: 'json'
+
+
+              }).done(function (data) {
+                $('#results').val(JSON.stringify(data))
+              }).fail(function (jqXHR, textStatus, errorThrown) {
+                $('#results').val(JSON.stringify(jqXHR));
+              })
+
+            }
+
+
+
+
+            function makeGetCall() {
+
+              $.ajax({
+                method: "GET",
+                url: "http://localhost:9000/restaurant/1",
+                dataType: 'json'
+
+
+              }).done(function (data) {
+                $('#results').val(JSON.stringify(data))
+              }).fail(function (jqXHR, textStatus, errorThrown) {
+                $('#results').val(JSON.stringify(jqXHR));
+              })
 
 
 
 
 
             }
-            function makePostCall()
-            {
+            function makePostCall() {
 
-                $.ajax({
-                    dataType: 'json',
-                    contentType: 'application/json',
-                    type: 'post',
-                    data: '{"name":"martins mania","zipCode":"53217","city":"Bonaroo","state":"WI","version":1}',
-                    url: "http://localhost:9000/restaurant" 
+              $.ajax({
+                dataType: 'json',
+                contentType: 'application/json',
+                type: 'post',
+                data: '{"name":"martins mania","zipCode":"53217","city":"Bonaroo","state":"WI","version":1}',
+                url: "http://localhost:9000/restaurant"
 
 
-                }).done(function (data) {
-                    $('#results').val(JSON.stringify(data))
-                }).fail(function (jqXHR, textStatus, errorThrown)
-                {
-                    $('#results').val(JSON.stringify(jqXHR));
-                })
+              }).done(function (data) {
+                $('#results').val(JSON.stringify(data))
+              }).fail(function (jqXHR, textStatus, errorThrown) {
+                $('#results').val(JSON.stringify(jqXHR));
+              })
 
 
 
@@ -76,9 +101,10 @@
 
             <table cellpadding="4" cellspacing="4">
 
-                <tr><td><textarea id="results"></textarea></td><td><button onClick="makeGetCall()">Submit GET</button>
-                        <button onClick="makePostCall()">Submit POST</button></td></tr>
-
+                <tr> <td><textarea id="results"></textarea></td></tr>
+                <tr> <td><button onClick="makeGetCall()">Restaurant Submit GET</button></td></tr>
+                <tr> <td> <button onClick="makePostCall()">Restaurant Submit POST</button></td></tr>
+                <tr> <td> <button onClick="makeSecGetCall()">Sec DB GET Call</button></td></tr>
 
 
 
