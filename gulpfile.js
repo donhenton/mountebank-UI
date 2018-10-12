@@ -156,7 +156,7 @@ gulp.task('prepare-index-html', function () {
 
 });
 
-gulp.task('serve', function (done) {
+gulp.task('serve-build', function (done) {
     gulp.src('build/public_html').on('error', gutil.log)
             .pipe(server(
                     {
