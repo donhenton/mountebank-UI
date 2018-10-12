@@ -1,7 +1,7 @@
 angular.module('myApp')
 
         .controller('SettingsCtrl', function ($scope, $log, TPL_PATH,HEADER_LOCATION,
-                ImpostersService, currentImposter, collectionItems) {
+                ImpostersService, currentImposter, $uibModal, collectionItems) {
             var vm = this;
 
             vm.currentImposter = currentImposter;
@@ -80,6 +80,50 @@ angular.module('myApp')
                 vm.currentCollectionIdx = vm.currentImposter.id; // the index into the collection array
                 vm.collectionSelectorIdx = vm.currentCollectionIdx.toString();
             }
+            
+            vm.formatDefault = function(pretty) {
+              
+             
+               if (vm.isJsonString( vm.currentImposter.defaultBody))
+                {
+                    var jRef = angular.fromJson(vm.currentImposter.defaultBody);
+                    if (pretty === true)
+                    {
+                         vm.currentImposter.defaultBody = angular.toJson(jRef, true);
+                    }
+                    else
+                    {
+                         vm.currentImposter.defaultBody = angular.toJson(jRef, false);
+                    }
+
+                }
+              
+            }
+            vm.doHelpDisplay = function(type)
+            {
+                //type is predicate or response
+                $uibModal.open({
+                            templateUrl: TPL_PATH + 'sections/help/help_'+
+                                    type+'.tpl.html',
+                            controller: 'HelpCtrl' ,
+                            "size":"med"
+                             
+                        });
+                
+            };
+            
+            vm.isJsonString = function (str) {
+               if (!str) return false;
+               if (str.trim().length == 0) {
+                 return false;
+               }
+                try {
+                    angular.fromJson(str);
+                } catch (e) {
+                    return false;
+                }
+                return true;
+            };
 
         });
 

@@ -60,6 +60,13 @@ Note that Method Headers are set to POST,PUT,DELETE,GET,PATCH. If you use
 the injection feature, you will have to include the Response headers manually,
 but the OPTION response will still be added.
 
+### Default Response
+**Add Default** allows adding a catch-all response to your collection. This
+will be returned if no match takes place. The default response to send if no 
+predicate matches. Also represents the default values that get merged into 
+a response that doesn't specify every field.
+
+
 ## Mountebank JSON Page
 This page provides a read only display of the JSON that can be posted to 
 Mountebank's imposters endpoint. Additionally one can post directly to
@@ -74,3 +81,6 @@ be exported and imported using the menu item **Import/Export**.
 The persisted data is in a format
 which allows the creation of the Mountebank data, it is not in the 
 Mountebank format.
+
+## Dev Notes
+Dev server: gulp dev

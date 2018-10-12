@@ -90,6 +90,16 @@ function mountebankService($log, $http) {
       translated.stubs.push(createOptionsStub(data));
     }
     
+    if (data.addDefault) {
+      var defAdd = null;
+      try {
+        defAdd = JSON.parse(data.defaultBody);
+        translated.defaultResponse = defAdd;
+      } catch (e) {
+      }
+
+
+    }  
 
     angular.forEach(data.imposters, function (imposter, idx) {
 
@@ -115,7 +125,6 @@ function mountebankService($log, $http) {
             }
             isResponse["headers"]["Access-Control-Allow-Origin"] = data.CORsOrigin;
           }
-
 
           if (isInteger(response.status)) {
             isResponse["statusCode"] = response.status;
