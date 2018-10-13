@@ -7,7 +7,6 @@ bower_components
 /app/assets
 /nbproject/private/
 /npm-debug.log
-/public_html/mountebank-UI/assets/js/
 /reports/
 /mb.pid
 /mb*.log
