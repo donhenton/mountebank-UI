@@ -1,0 +1,30 @@
+<div class="helpContainer">
+    <h3>Help for Wait</h3>
+
+
+    <div class="row">
+        <p>If a number is passed in, mountebank will wait that number of milliseconds before returning. If a string is
+            passed in, it is expected to be a parameterless JavaScript function that returns the number of milliseconds
+            to wait.</p>
+    </div>
+    <div class="row">
+        <div><em>Wait function sample</em></div>
+        <pre><code>
+function() { 
+    return Math.floor(Math.random() * 901) + 100; 
+}
+        </code></pre>
+    </div>
+
+    <div class="row">
+
+        <button ng-click="cancel()" style="margin:auto" class="btn btn-primary">Close</button>
+    </div>
+    <br>
+    <div class="row">
+
+        <em>Note that the Mountebank server must run with the --allowInjection flag</em>.
+        <a href="http://www.mbtest.org/docs/api/behaviors">Mountebank decoration documentation</a>
+    </div>
+
+</div>

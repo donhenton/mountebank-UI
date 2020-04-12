@@ -331,6 +331,20 @@ angular.module('myApp')
                 }
                 currentResponse.decorate = js_beautify(currentResponse.decorate);
             }
+
+            /**
+             * used to format the wait function if any
+             * @param {type} currentResponse
+             * @returns {undefined}
+             */
+            vm.formatWait = function(currentResponse)
+            {
+                if (!currentResponse.wait)
+                {
+                    currentResponse.wait = "";
+                }
+                currentResponse.wait = js_beautify(currentResponse.wait);
+            }
             
             /**
              * compose the display for the buttons that switch imposters or sort
