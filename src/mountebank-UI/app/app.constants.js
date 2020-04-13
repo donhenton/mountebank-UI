@@ -8,7 +8,7 @@ angular.module('app.constants',[])
     var path = window.location.pathname;
     var pathCol = path.split("/");
    // console.log(pathCol);
-    var pathItem = 'http://' + window.location.host;
+    var pathItem = window.location.protocol + '//' + window.location.host;
     
     for (var i=0;i<pathCol.length-1;i++)
     {
