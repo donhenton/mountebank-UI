@@ -158,6 +158,12 @@ function mountebankService($log, $http) {
 
           ////wait /////////////////////////////// 
 
+          var isBehaviorsExists = Object.keys(newResponse["_behaviors"]).length > 0;
+
+          if(!isBehaviorsExists) {
+            delete newResponse._behaviors
+          }
+
         }// end if not using injection for response
       })
 
