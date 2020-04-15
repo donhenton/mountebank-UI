@@ -31,7 +31,7 @@
     
     <div class="row">
 
-        <div id="itemSelectorColumn" class="col-sm-2">
+        <div id="itemSelectorColumn" class="col-sm-4">
 
             
             <div class="limitY">
@@ -41,7 +41,7 @@
 
 
 
-                        <button uib-tooltip={{item.documentation}} tooltip-placement="auto top" class="btn btn-sm  btn-primary pull-right" 
+                        <button uib-tooltip={{item.documentation}} tooltip-placement="auto top" class="btn btn-sm  btn-primary w-100 text-left" 
                                 style="margin: 5px"
                                 ng-click="home.changeImposter($index)" id="imposter_{{$index}}">
                             <i   ng-hide="$index != home.currentImposterIdx" class="glyphicon glyphicon-arrow-right"></i> {{home.composeImposterAlias($index)}}</button>
@@ -61,7 +61,7 @@
 
         </div>
 
-        <div id="formColumn" class="col-sm-10">
+        <div id="formColumn" class="col-sm-8">
             <div class="row">
                 <form class="form-horizontal" novalidate>  
                 <div class="form-group clearfix">
