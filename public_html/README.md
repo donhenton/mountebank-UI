@@ -88,5 +88,7 @@ Mountebank format.
 
 ## Dev Notes
 Dev server: gulp dev will serve from src
-gulp serve-html will serve from the public_html folder, which is the build
+
+gulp serve-public will serve from the public_html folder, which is the build
+
 folder for gh-pages. gulp build is used to create public_html
