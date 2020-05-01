@@ -331,6 +331,20 @@ angular.module('myApp')
                 }
                 currentResponse.decorate = js_beautify(currentResponse.decorate);
             }
+
+            /**
+             * used to format the wait function if any
+             * @param {type} currentResponse
+             * @returns {undefined}
+             */
+            vm.formatWait = function(currentResponse)
+            {
+                if (!currentResponse.wait)
+                {
+                    currentResponse.wait = "";
+                }
+                currentResponse.wait = js_beautify(currentResponse.wait);
+            }
             
             /**
              * compose the display for the buttons that switch imposters or sort
@@ -340,10 +354,15 @@ angular.module('myApp')
              */
             vm.composeImposterAlias = function(idx)
             {
-                var verb = vm.buffer.data.imposters[idx].match.verb;
+                var imposter = vm.buffer.data.imposters[idx]
+                var verb = imposter.match.verb;
                 if (vm.buffer.data.imposters[idx].match.injection.use)
                 {
                     verb = "INJ";
+                }
+
+                if(imposter.documentation && imposter.documentation.length > 0) {
+                    return "(" +verb+") " + imposter.documentation
                 }
                 
                 return "Item "+(idx+1) +" (" +verb+")";

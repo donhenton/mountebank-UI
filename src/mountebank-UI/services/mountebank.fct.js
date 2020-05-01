@@ -133,7 +133,8 @@ function mountebankService($log, $http) {
             isResponse["body"] = response.body;
           }
           var newResponse = {
-            "is": isResponse
+            "is": isResponse,
+            "_behaviors": {}
           };
           newStub.responses.push(newResponse);
 
@@ -142,12 +143,26 @@ function mountebankService($log, $http) {
             response.decorate = "";
           }
           if (response.decorate.trim().length > 1) {
-            newResponse["_behaviors"] = {"decorate": response.decorate};
+            newResponse["_behaviors"] = Object.assign(newResponse["_behaviors"], {"decorate": response.decorate});
           }
 
-
-
           ////decorate /////////////////////////////// 
+
+          ////wait ///////////////////////////////
+          if (!response.wait) {
+            response.wait = "";
+          }
+          if (response.wait.trim().length > 1) {
+            newResponse["_behaviors"] = Object.assign(newResponse["_behaviors"], {"wait": response.wait});
+          }
+
+          ////wait /////////////////////////////// 
+
+          var isBehaviorsExists = Object.keys(newResponse["_behaviors"]).length > 0;
+
+          if(!isBehaviorsExists) {
+            delete newResponse._behaviors
+          }
 
         }// end if not using injection for response
       })

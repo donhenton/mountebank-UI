@@ -31,7 +31,7 @@
     
     <div class="row">
 
-        <div id="itemSelectorColumn" class="col-sm-2">
+        <div id="itemSelectorColumn" class="col-sm-4">
 
             
             <div class="limitY">
@@ -41,7 +41,7 @@
 
 
 
-                        <button uib-tooltip={{item.documentation}} tooltip-placement="auto top" class="btn btn-sm  btn-primary pull-right" 
+                        <button uib-tooltip={{item.documentation}} tooltip-placement="auto top" class="btn btn-sm  btn-primary w-100 text-left" 
                                 style="margin: 5px"
                                 ng-click="home.changeImposter($index)" id="imposter_{{$index}}">
                             <i   ng-hide="$index != home.currentImposterIdx" class="glyphicon glyphicon-arrow-right"></i> {{home.composeImposterAlias($index)}}</button>
@@ -50,7 +50,7 @@
 
             </div>
             <br>
-            <div class="row pull-left">
+            <div class="row pull-left mL0">
 
                 <button  ng-click="home.addImposter()" class="btn btn-med btn-primary">Add New</button>
 
@@ -61,7 +61,7 @@
 
         </div>
 
-        <div id="formColumn" class="col-sm-10">
+        <div id="formColumn" class="col-sm-8">
             <div class="row">
                 <form class="form-horizontal" novalidate>  
                 <div class="form-group clearfix">
@@ -156,6 +156,19 @@
                                             <br>
                                             <div>
                                                 <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].decorate" style="width:100%;height:350px"></textarea>
+                                            </div>
+                                        </div>
+                                    </uib-accordion-group>
+
+                                    <uib-accordion-group heading="Wait">
+                                        <div class="injectionContainer">
+                                            <div>
+                                                <button class="btn btn-small" ng-click="home.formatWait(home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx])"   href="">Format</button>
+                                                <a  ng-click="$event.preventDefault(); home.doHelpDisplay('Wait')" class="pull-right" href="">Decoration Help</a>
+                                            </div>
+                                            <br>
+                                            <div>
+                                                <textarea  ng-blur="home.inputChange(this, $event)" class="form-control" ng-model="home.buffer.data.imposters[home.currentImposterIdx].responses[home.currentResponseIdx].wait" style="width:100%;height:350px"></textarea>
                                             </div>
                                         </div>
                                     </uib-accordion-group>

@@ -147,3 +147,15 @@ div.injectionContainer
 {
      border: #1b6d85 ridge; width:90%; padding:10px 
 }
+
+.w-100 {
+    width: 100%;
+}
+
+.btn.text-left {
+    text-align: left;
+}
+
+.mL0 {
+    margin-left: 0px !important;
+}
