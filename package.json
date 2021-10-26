@@ -57,7 +57,7 @@
     "test": "node_modules/.bin/karma start my.conf.js"
   },
   "dependencies": {
-    "jquery-ui": "1.12.1",
+    "jquery-ui": "1.13.0",
     "jquery-ui-dist": "1.12.1",
     "js-beautify": "1.8.7"
   }
