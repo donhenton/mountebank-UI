@@ -51,7 +51,7 @@
     "karma-phantomjs-launcher": "~0.1.4",
     "karma-qunit": "~0.1.1",
     "qunitjs": "^1.14.0",
-    "shelljs": "^0.2.6"
+    "shelljs": "^0.8.5"
   },
   "scripts": {
     "test": "node_modules/.bin/karma start my.conf.js"
